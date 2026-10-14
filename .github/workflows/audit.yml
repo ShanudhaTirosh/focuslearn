@@ -1,0 +1,38 @@
+name: Dependency audit
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"      # Mondays 03:00 UTC
+  pull_request:
+    paths:
+      - "apps/admin/**"
+      - "backend/supabase/functions/**"
+      - "**/pubspec.lock"
+      - "pnpm-lock.yaml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+      - name: pnpm audit (fail on high or critical)
+        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
+        run: pnpm audit --audit-level high
+      - name: Skipped
+        if: ${{ hashFiles('pnpm-lock.yaml') == '' }}
+        run: echo "No pnpm lockfile yet"
+
+  osv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: OSV scan (covers pub, gradle, npm lockfiles when present)
+        run: |
+          docker run --rm -v "$PWD:/src" ghcr.io/google/osv-scanner:latest \
+            scan source --recursive /src || [ $? -eq 128 ]   # 128 = no lockfiles found

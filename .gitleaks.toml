@@ -1,0 +1,15 @@
+title = "FocusLearn gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Template and example files only"
+paths = [
+  '''\.env\.example$''',
+  '''docs/.*\.md$''',
+]
+regexes = [
+  '''CHANGE_ME[A-Z0-9_]*''',
+  '''your-.*-here''',
+]

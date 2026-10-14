@@ -1,0 +1,56 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.age
+*.keystore
+*.jks
+key.properties
+service-account*.json
+google-services.json
+cloudflared/*.json
+infra/docker/volumes/
+infra/backup/out/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.g.dart.bak
+.packages
+pubspec_overrides.yaml
+
+# Android
+**/android/.gradle/
+**/android/local.properties
+**/android/app/release/
+
+# Windows native
+**/windows/flutter/ephemeral/
+*.obj
+*.pdb
+
+# Node
+node_modules/
+dist/
+.vite/
+coverage/
+
+# Supabase local
+backend/supabase/.branches/
+backend/supabase/.temp/
+
+# Logs, dumps
+*.log
+*.dump
+*.sql.gz

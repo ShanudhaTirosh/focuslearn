@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required top-level files exist
+        run: |
+          for f in README.md CLAUDE.md .gitignore .editorconfig .gitleaks.toml docs/LIMITATIONS.md; do
+            test -f "$f" || { echo "Missing $f"; exit 1; }
+          done
+
+      - name: No committed env files (other than examples)
+        run: |
+          bad=$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)
+          if [ -n "$bad" ]; then echo "Committed env files:"; echo "$bad"; exit 1; fi
+
+      - name: Shellcheck
+        run: |
+          files=$(git ls-files '*.sh')
+          if [ -n "$files" ]; then shellcheck $files; else echo "No shell scripts"; fi
+
+  sql-migrations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Migration filenames are ordered and unique
+        run: |
+          shopt -s nullglob
+          files=(backend/supabase/migrations/*.sql)
+          if [ ${#files[@]} -eq 0 ]; then echo "No migrations yet"; exit 0; fi
+          prefixes=$(for f in "${files[@]}"; do basename "$f" | cut -d_ -f1; done)
+          dupes=$(echo "$prefixes" | sort | uniq -d)
+          [ -z "$dupes" ] || { echo "Duplicate migration prefixes: $dupes"; exit 1; }
+
+  admin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+      - uses: actions/setup-node@v4
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install, lint, typecheck, test, build
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter admin lint
+          pnpm --filter admin typecheck
+          pnpm --filter admin test --run
+          pnpm --filter admin build
+      - name: Skipped
+        if: ${{ hashFiles('apps/admin/package.json') == '' }}
+        run: echo "apps/admin not created yet"
+
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') != '' }}
+        with:
+          channel: stable
+          cache: true
+      - name: Analyze and test
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') != '' }}
+        run: |
+          for d in packages/core packages/design_system apps/mobile; do
+            if [ -f "$d/pubspec.yaml" ]; then
+              (cd "$d" && flutter pub get && dart format --set-exit-if-changed . && flutter analyze && flutter test)
+            fi
+          done
+      - name: Skipped
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') == '' }}
+        run: echo "Flutter apps not created yet"
