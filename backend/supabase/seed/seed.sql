@@ -8,3 +8,4 @@ values
   ('science', 'Physics', 'Mechanics', 'Linear Motion Equation', 'v^2 = u^2 + 2as', 'Uniform accelerated linear motion', 'published'),
   ('science', 'Physics', 'Electricity', 'Ohm''s Law', 'V = IR', 'Voltage, current and resistance relation', 'published'),
   ('technology', 'Engineering Tech', 'Electronics', 'Resistors in Parallel', '\frac{1}{R_p} = \frac{1}{R_1} + \frac{1}{R_2}', 'Equivalent resistance for parallel circuit', 'published');
+
