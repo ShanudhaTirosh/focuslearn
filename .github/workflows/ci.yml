@@ -16,7 +16,7 @@ jobs:
   hygiene:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Required top-level files exist
         run: |
@@ -43,7 +43,7 @@ jobs:
   infra-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: All offline suites
         run: bash infra/scripts/tests/run-all.sh
       - name: Migration lint (also inside the suites; kept as its own clear failure line)
@@ -52,7 +52,7 @@ jobs:
   dart-core:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: subosito/flutter-action@v2
         if: ${{ hashFiles('packages/core/pubspec.yaml') != '' }}
         with:
@@ -73,7 +73,7 @@ jobs:
   admin:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
         if: ${{ hashFiles('apps/admin/package.json') != '' }}
       - uses: actions/setup-node@v4
@@ -96,7 +96,7 @@ jobs:
   flutter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: subosito/flutter-action@v2
         if: ${{ hashFiles('apps/mobile/pubspec.yaml') != '' }}
         with:

@@ -18,7 +18,7 @@ jobs:
   node:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
         if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
       - name: pnpm audit (fail on high or critical)
@@ -31,7 +31,7 @@ jobs:
   osv:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: OSV scan (covers pub, gradle, npm lockfiles when present)
         run: |
           docker run --rm -v "$PWD:/src" ghcr.io/google/osv-scanner:latest \
