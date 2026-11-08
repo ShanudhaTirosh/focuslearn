@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
       - name: pnpm audit (fail on high or critical)
         if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
