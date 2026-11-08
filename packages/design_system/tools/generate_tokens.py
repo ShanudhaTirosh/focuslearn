@@ -138,7 +138,11 @@ def main(argv):
         path = OUT[key]
         if "--check" in argv:
             if not os.path.exists(path) or open(path, encoding="utf-8").read() != text:
-                stale.append(os.path.relpath(path, ROOT))
+                try:
+                    rel = os.path.relpath(path, ROOT)
+                except ValueError:
+                    rel = path
+                stale.append(rel)
         else:
             os.makedirs(os.path.dirname(path), exist_ok=True)
             open(path, "w", encoding="utf-8").write(text)
