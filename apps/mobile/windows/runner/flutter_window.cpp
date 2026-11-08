@@ -27,6 +27,29 @@ bool FlutterWindow::OnCreate() {
   RegisterPlugins(flutter_controller_->engine());
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
 
+  platform_channel_ = std::make_unique<flutter::MethodChannel<flutter::EncodableValue>>(
+      flutter_controller_->engine()->messenger(),
+      "com.shanutechx.focuslearn/platform",
+      &flutter::StandardMethodCodec::GetInstance());
+
+  HWND hwnd = GetHandle();
+  platform_channel_->SetMethodCallHandler([hwnd](const auto& call, auto result) {
+    if (call.method_name() == "setAlwaysOnTop") {
+      const auto* args = std::get_if<flutter::EncodableMap>(call.arguments());
+      bool enabled = true;
+      if (args) {
+        auto it = args->find(flutter::EncodableValue("enabled"));
+        if (it != args->end() && std::holds_alternative<bool>(it->second)) {
+          enabled = std::get<bool>(it->second);
+        }
+      }
+      SetWindowPos(hwnd, enabled ? HWND_TOPMOST : HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+      result->Success(flutter::EncodableValue(true));
+    } else {
+      result->NotImplemented();
+    }
+  });
+
   flutter_controller_->engine()->SetNextFrameCallback([&]() {
     this->Show();
   });
@@ -40,6 +63,10 @@ bool FlutterWindow::OnCreate() {
 }
 
 void FlutterWindow::OnDestroy() {
+  if (platform_channel_) {
+    platform_channel_ = nullptr;
+  }
+
   if (flutter_controller_) {
     flutter_controller_ = nullptr;
   }

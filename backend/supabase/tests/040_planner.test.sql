@@ -21,8 +21,13 @@ select set_config('request.jwt.claims', '{"sub":"00000000-0000-0000-0000-0000000
 select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-0000000000b2', true);
 set local role authenticated;
 select lives_ok($$ insert into public.subjects (id, name) values ('10000000-0000-0000-0000-0000000000b2', 'Economics') $$, 'B can create a subject');
-select lives_ok($$ insert into public.timetable_events (id, subject_id, title, start_utc, end_utc) values ('20000000-0000-0000-0000-0000000000b2', '10000000-0000-0000-0000-0000000000b2', 'B class', '2026-10-21T04:00:00Z', '2026-10-21T06:00:00Z') $$, 'B can create an event');
-select lives_ok($$ insert into public.event_recurrences (event_id, rrule) values ('20000000-0000-0000-0000-0000000000b2', 'FREQ=DAILY') $$, 'B can create a recurrence');
+select lives_ok($$
+  insert into public.timetable_events (id, subject_id, title, start_utc, end_utc)
+  values
+    ('20000000-0000-0000-0000-0000000000b1', '10000000-0000-0000-0000-0000000000b2', 'B class 1', '2026-10-21T04:00:00Z', '2026-10-21T06:00:00Z'),
+    ('20000000-0000-0000-0000-0000000000b2', '10000000-0000-0000-0000-0000000000b2', 'B class 2', '2026-10-21T07:00:00Z', '2026-10-21T09:00:00Z')
+$$, 'B can create an event');
+select lives_ok($$ insert into public.event_recurrences (event_id, rrule) values ('20000000-0000-0000-0000-0000000000b1', 'FREQ=DAILY') $$, 'B can create a recurrence');
 reset role;
 
 -- user A: subjects

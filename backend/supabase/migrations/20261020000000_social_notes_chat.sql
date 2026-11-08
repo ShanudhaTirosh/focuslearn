@@ -3,73 +3,6 @@
 -- Helper functions live in schema `private` with set search_path = ''.
 -- Minors and privacy by default: friendships require mutual consent, notes are private until shared.
 
--- ---------------------------------------------------------------- helpers
-create or replace function private.not_blocked(p_a uuid, p_b uuid)
-returns boolean
-language sql
-stable
-set search_path = ''
-as $$
-  select not exists (
-    select 1 from public.friendships
-    where user_a = least(p_a, p_b)
-      and user_b = greatest(p_a, p_b)
-      and status = 'blocked'
-  );
-$$;
-
-create or replace function private.is_group_member(p_group uuid, p_user uuid)
-returns boolean
-language sql
-stable
-set search_path = ''
-as $$
-  select exists (
-    select 1 from public.group_members
-    where group_id = p_group
-      and user_id = p_user
-      and revoked_at is null
-  );
-$$;
-
-create or replace function private.is_conversation_member(p_conv uuid, p_user uuid)
-returns boolean
-language sql
-stable
-set search_path = ''
-as $$
-  select exists (
-    select 1 from public.conversation_members
-    where conversation_id = p_conv
-      and user_id = p_user
-  );
-$$;
-
-create or replace function private.can_read_note(p_note uuid, p_user uuid)
-returns boolean
-language sql
-stable
-set search_path = ''
-as $$
-  select exists (
-    select 1 from public.notes n
-    where n.id = p_note
-      and n.deleted_at is null
-      and (
-        n.owner_id = p_user
-        or exists (
-          select 1 from public.note_shares s
-          where s.note_id = n.id
-            and s.revoked_at is null
-            and (
-              s.grantee_user_id = p_user
-              or (s.grantee_group_id is not null and private.is_group_member(s.grantee_group_id, p_user))
-            )
-        )
-      )
-  );
-$$;
-
 -- ---------------------------------------------------------------- friendships
 create table public.friendships (
   id uuid primary key default gen_random_uuid(),
@@ -180,7 +113,83 @@ create table public.messages (
 alter table public.messages enable row level security;
 alter table public.messages force row level security;
 
+-- ---------------------------------------------------------------- helpers
+create or replace function private.not_blocked(p_a uuid, p_b uuid)
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select not exists (
+    select 1 from public.friendships
+    where user_a = least(p_a, p_b)
+      and user_b = greatest(p_a, p_b)
+      and status = 'blocked'
+  );
+$$;
+
+create or replace function private.is_group_member(p_group uuid, p_user uuid)
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.group_members
+    where group_id = p_group
+      and user_id = p_user
+      and revoked_at is null
+  );
+$$;
+
+create or replace function private.is_conversation_member(p_conv uuid, p_user uuid)
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.conversation_members
+    where conversation_id = p_conv
+      and user_id = p_user
+  );
+$$;
+
+create or replace function private.can_read_note(p_note uuid, p_user uuid)
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.notes n
+    where n.id = p_note
+      and n.deleted_at is null
+      and (
+        n.owner_id = p_user
+        or exists (
+          select 1 from public.note_shares s
+          where s.note_id = n.id
+            and s.revoked_at is null
+            and (
+              s.grantee_user_id = p_user
+              or (s.grantee_group_id is not null and private.is_group_member(s.grantee_group_id, p_user))
+            )
+        )
+      )
+  );
+$$;
+
 -- ---------------------------------------------------------------- access & policies
+grant execute on function private.not_blocked(uuid, uuid) to authenticated;
+grant execute on function private.is_group_member(uuid, uuid) to authenticated;
+grant execute on function private.is_conversation_member(uuid, uuid) to authenticated;
+grant execute on function private.can_read_note(uuid, uuid) to authenticated;
+
 grant select, insert, update on public.friendships to authenticated;
 grant select, insert, update on public.groups to authenticated;
 grant select, insert, update on public.group_members to authenticated;

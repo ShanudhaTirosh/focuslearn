@@ -5,6 +5,7 @@
 #   start|stop|status|logs [service]|health|exposure
 #   secrets   print key credentials (contains secrets)
 set -euo pipefail
+export COMPOSE_PATH_SEPARATOR=":"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 STACK="$ROOT/docker/stack"

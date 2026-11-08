@@ -33,7 +33,7 @@ class SubjectsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: Spacing.md),
                   DropdownButtonFormField<String>(
-                    value: stream,
+                    initialValue: stream,
                     decoration: InputDecoration(labelText: l10n.streamLabel),
                     items: <DropdownMenuItem<String>>[
                       DropdownMenuItem<String>(value: 'technology', child: Text(l10n.streamTechnology)),

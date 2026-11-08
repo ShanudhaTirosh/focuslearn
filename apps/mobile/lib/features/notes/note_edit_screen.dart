@@ -99,7 +99,7 @@ class _NoteEditScreenState extends ConsumerState<NoteEditScreen> {
                 ),
                 const SizedBox(height: Spacing.md),
                 DropdownButtonFormField<String?>(
-                  value: _selectedSubjectId,
+                  initialValue: _selectedSubjectId,
                   decoration: InputDecoration(labelText: l10n.plannerSubjects),
                   items: <DropdownMenuItem<String?>>[
                     const DropdownMenuItem<String?>(value: null, child: Text('General')), // l10n-ok

@@ -63,6 +63,7 @@ render_override() {
     echo "  auth:"
     echo "    environment:"
     echo '      GOTRUE_PASSWORD_MIN_LENGTH: "10"'
+    echo '      GOTRUE_MAILER_AUTOCONFIRM: "true"'
     if [ "$captcha" = 1 ]; then
       echo '      GOTRUE_SECURITY_CAPTCHA_ENABLED: "true"'
       echo '      GOTRUE_SECURITY_CAPTCHA_PROVIDER: turnstile'

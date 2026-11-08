@@ -173,7 +173,7 @@ class _EventEditScreenState extends ConsumerState<EventEditScreen> {
                 ),
                 const SizedBox(height: Spacing.md),
                 DropdownButtonFormField<String?>(
-                  value: _selectedSubjectId,
+                  initialValue: _selectedSubjectId,
                   decoration: InputDecoration(labelText: l10n.plannerSubjects),
                   items: <DropdownMenuItem<String?>>[
                     const DropdownMenuItem<String?>(value: null, child: Text('No Subject')), // l10n-ok

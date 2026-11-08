@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
+import '../../app/providers.dart';
 import '../../l10n/generated/app_localizations.dart';
 
 class _FormulaItem {
@@ -13,59 +15,95 @@ class _FormulaItem {
 }
 
 /// Curated study formula reference for Sri Lankan G.C.E. A/L streams.
-class FormulaLibraryScreen extends StatelessWidget {
+class FormulaLibraryScreen extends ConsumerStatefulWidget {
   const FormulaLibraryScreen({super.key});
 
-  static const List<_FormulaItem> _formulas = <_FormulaItem>[
-    _FormulaItem(
+  @override
+  ConsumerState<FormulaLibraryScreen> createState() => _FormulaLibraryScreenState();
+}
+
+class _FormulaLibraryScreenState extends ConsumerState<FormulaLibraryScreen> {
+  final List<_FormulaItem> _items = <_FormulaItem>[
+    const _FormulaItem(
       stream: 'Commerce',
       title: 'Accounting Equation',
       formula: 'Assets = Liabilities + Owner\'s Equity',
       description: 'The foundation of double-entry bookkeeping.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Commerce',
       title: 'Break-Even Point (Units)',
       formula: 'BEP = Fixed Costs / (Price - Variable Cost)',
       description: 'The volume where total revenue equals total costs.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Commerce',
       title: 'Compound Interest',
       formula: 'A = P(1 + r/n)^(nt)',
       description: 'Total accumulated amount with periodic compounding.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Science / Maths',
       title: 'Newton\'s Second Law',
       formula: 'F = m * a',
       description: 'Force is equal to mass multiplied by acceleration.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Science / Maths',
       title: 'Kinetic Energy',
       formula: 'Ek = 1/2 * m * v^2',
       description: 'Work needed to accelerate a body of mass m to velocity v.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Science / Maths',
       title: 'Ideal Gas Law',
       formula: 'P * V = n * R * T',
       description: 'Equation of state of a hypothetical ideal gas.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Technology',
       title: 'Ohm\'s Law',
       formula: 'V = I * R',
       description: 'Voltage equals current times resistance in an electrical circuit.',
     ),
-    _FormulaItem(
+    const _FormulaItem(
       stream: 'Technology',
       title: 'Electrical Power',
       formula: 'P = V * I = I^2 * R',
       description: 'The rate at which electrical energy is transferred.',
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() async {
+      try {
+        final client = ref.read(supabaseClientProvider);
+        final res = await client
+            .from('formula_entries')
+            .select('stream, title, latex, description')
+            .eq('status', 'published');
+
+        if (mounted && (res as List<dynamic>).isNotEmpty) {
+          final fetched = (res as List<dynamic>).map((row) {
+            return _FormulaItem(
+              stream: (row['stream'] as String?)?.toUpperCase() ?? 'GENERAL',
+              title: (row['title'] as String?) ?? 'Formula',
+              formula: (row['latex'] as String?) ?? '',
+              description: (row['description'] as String?) ?? '',
+            );
+          }).toList();
+
+          setState(() {
+            _items.insertAll(0, fetched);
+          });
+        }
+      } catch (_) {
+        // Offline resilience fallback
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +120,7 @@ class FormulaLibraryScreen extends StatelessWidget {
           child: ContentWidth(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: _formulas.map((f) {
+              children: _items.map((f) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: Spacing.md),
                   child: AppCard(

@@ -4,6 +4,7 @@ import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
 import '../../l10n/generated/app_localizations.dart';
 import 'social_models.dart';
+import 'social_repository.dart';
 
 /// Social hub for study groups and peer accountability.
 class SocialScreen extends ConsumerStatefulWidget {
@@ -55,9 +56,11 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
               child: Text(l10n.cancel),
             ),
             FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 final code = controller.text.trim();
                 if (code.isNotEmpty) {
+                  await ref.read(socialRepositoryProvider).joinGroup(code);
+                  ref.invalidate(myGroupsProvider);
                   setState(() {
                     _groups.add(
                       StudyGroup(
@@ -67,7 +70,9 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
                       ),
                     );
                   });
-                  Navigator.of(ctx).pop();
+                  if (ctx.mounted) {
+                    Navigator.of(ctx).pop();
+                  }
                 }
               },
               child: Text(l10n.continueLabel),
@@ -91,6 +96,11 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final colors = context.colors;
+
+    final remoteGroups = ref.watch(myGroupsProvider).valueOrNull;
+    final remoteFriends = ref.watch(myFriendsProvider).valueOrNull;
+    final activeGroups = (remoteGroups != null && remoteGroups.isNotEmpty) ? remoteGroups : _groups;
+    final activeFriends = (remoteFriends != null && remoteFriends.isNotEmpty) ? remoteFriends : _friends;
 
     return Scaffold(
       appBar: AppBar(
@@ -121,10 +131,10 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
               child: _tabIndex == 0
                   ? ListView.separated(
                       padding: const EdgeInsets.all(Spacing.md),
-                      itemCount: _groups.length,
+                      itemCount: activeGroups.length,
                       separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
                       itemBuilder: (context, index) {
-                        final g = _groups[index];
+                        final g = activeGroups[index];
                         return InkWell(
                           onTap: () => _openChat(g),
                           borderRadius: BorderRadius.circular(Radii.lg),
@@ -154,10 +164,10 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
                     )
                   : ListView.separated(
                       padding: const EdgeInsets.all(Spacing.md),
-                      itemCount: _friends.length,
+                      itemCount: activeFriends.length,
                       separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
                       itemBuilder: (context, index) {
-                        final f = _friends[index];
+                        final f = activeFriends[index];
                         return AppCard(
                           child: Row(
                             children: <Widget>[
@@ -194,16 +204,16 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
   }
 }
 
-class _GroupChatScreen extends StatefulWidget {
+class _GroupChatScreen extends ConsumerStatefulWidget {
   const _GroupChatScreen({required this.group});
 
   final StudyGroup group;
 
   @override
-  State<_GroupChatScreen> createState() => _GroupChatScreenState();
+  ConsumerState<_GroupChatScreen> createState() => _GroupChatScreenState();
 }
 
-class _GroupChatScreenState extends State<_GroupChatScreen> {
+class _GroupChatScreenState extends ConsumerState<_GroupChatScreen> {
   final TextEditingController _msgController = TextEditingController();
   final List<ChatMessage> _messages = <ChatMessage>[
     ChatMessage(
@@ -216,6 +226,20 @@ class _GroupChatScreenState extends State<_GroupChatScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    Future.microtask(() async {
+      final remote = await ref.read(socialRepositoryProvider).fetchMessages(widget.group.id);
+      if (mounted && remote.isNotEmpty) {
+        setState(() {
+          _messages.clear();
+          _messages.addAll(remote);
+        });
+      }
+    });
+  }
+
+  @override
   void dispose() {
     _msgController.dispose();
     super.dispose();
@@ -224,12 +248,13 @@ class _GroupChatScreenState extends State<_GroupChatScreen> {
   void _send() {
     final text = _msgController.text.trim();
     if (text.isEmpty) return;
+    ref.read(socialRepositoryProvider).sendMessage(groupId: widget.group.id, body: text);
     setState(() {
       _messages.add(
         ChatMessage(
           id: 'msg-${DateTime.now().millisecondsSinceEpoch}',
           senderId: 'me',
-          senderName: 'You',
+          senderName: 'You', // l10n-ok
           body: text,
           createdAt: DateTime.now(),
         ),

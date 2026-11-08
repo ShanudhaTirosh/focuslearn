@@ -82,7 +82,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 DropdownButtonFormField<String>(
-                  value: _category,
+                  initialValue: _category,
                   decoration: const InputDecoration(labelText: 'Category'), // l10n-ok
                   items: _categories.keys.map((cat) {
                     return DropdownMenuItem<String>(value: cat, child: Text(cat)); // l10n-ok
@@ -110,7 +110,8 @@ class _ConverterScreenState extends State<ConverterScreen> {
                   children: <Widget>[
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _fromUnit,
+                        key: ValueKey<String>('from_$_fromUnit'),
+                        initialValue: _fromUnit,
                         decoration: const InputDecoration(labelText: 'From'), // l10n-ok
                         items: units.map((u) => DropdownMenuItem<String>(value: u, child: Text(u))).toList(), // l10n-ok
                         onChanged: (u) {
@@ -134,7 +135,8 @@ class _ConverterScreenState extends State<ConverterScreen> {
                     ),
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: _toUnit,
+                        key: ValueKey<String>('to_$_toUnit'),
+                        initialValue: _toUnit,
                         decoration: const InputDecoration(labelText: 'To'), // l10n-ok
                         items: units.map((u) => DropdownMenuItem<String>(value: u, child: Text(u))).toList(), // l10n-ok
                         onChanged: (u) {

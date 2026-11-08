@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, ShieldAlert, Users, FileText, Activity } from 'lucide-react';
+import { supabase } from './lib/supabase';
 import { OverviewTab } from './components/OverviewTab';
 import { ModerationTab, ReportItem } from './components/ModerationTab';
 import { UsersTab, DeletionRequest } from './components/UsersTab';
@@ -65,7 +66,36 @@ export const App: React.FC = () => {
   const [deletions, setDeletions] = useState<DeletionRequest[]>(initialDeletions);
   const [auditLogs, setAuditLogs] = useState<AuditEntry[]>(initialAuditLogs);
 
-  const handleActionReport = (reportId: string, status: 'actioned' | 'dismissed') => {
+  useEffect(() => {
+    async function loadLiveData() {
+      try {
+        const { data: repData } = await supabase.from('reports').select('*').order('created_at', { ascending: false });
+        if (repData && repData.length > 0) {
+          setReports(repData as ReportItem[]);
+        }
+
+        const { data: delData } = await supabase.from('deletion_requests').select('*').order('requested_at', { ascending: false });
+        if (delData && delData.length > 0) {
+          setDeletions(delData as DeletionRequest[]);
+        }
+
+        const { data: audData } = await supabase.from('audit_logs').select('*').order('created_at', { ascending: false });
+        if (audData && audData.length > 0) {
+          setAuditLogs(audData as AuditEntry[]);
+        }
+      } catch (_) {
+        // Fall back gracefully when local server or auth is still connecting
+      }
+    }
+    loadLiveData();
+  }, []);
+
+  const handleActionReport = async (reportId: string, status: 'actioned' | 'dismissed') => {
+    try {
+      await supabase.from('reports').update({ status }).eq('id', reportId);
+    } catch (_) {
+      // Local fallback
+    }
     setReports(prev => prev.map(r => r.id === reportId ? { ...r, status } : r));
     setAuditLogs(prev => [
       {
