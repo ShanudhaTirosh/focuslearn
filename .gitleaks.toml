@@ -1,0 +1,18 @@
+title = "FocusLearn gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Templates, docs and test fixtures only (fake values: the AWS documentation example key, 'pg-secret-value', and similar)"
+paths = [
+  '''\.env\.example$''',
+  '''docs/.*\.md$''',
+  '''infra/.*/tests/.*''',
+  '''infra/cloudflare/r2-spike/r2_spike\.py$''',
+]
+regexes = [
+  '''CHANGE_ME[A-Z0-9_]*''',
+  '''your-.*-here''',
+  '''AKIAIOSFODNN7EXAMPLE''',
+]

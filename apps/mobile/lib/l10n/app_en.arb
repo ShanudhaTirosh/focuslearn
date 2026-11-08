@@ -1,0 +1,139 @@
+{
+  "@@locale": "en",
+  "appName": "FocusLearn",
+  "emailLabel": "Email",
+  "passwordLabel": "Password",
+  "signIn": "Sign in",
+  "signUp": "Sign up",
+  "createAccount": "Create account",
+  "forgotPassword": "Forgot your password?",
+  "resetPasswordTitle": "Reset your password",
+  "sendResetLink": "Send reset email",
+  "resetEmailSentGeneric": "If an account exists for that address, we have sent an email with the next steps.",
+  "checkInboxTitle": "Check your email",
+  "checkInboxBody": "If this address can be used, we sent a message with a confirmation link. Open it, then come back here and sign in.",
+  "resendEmail": "Send the email again",
+  "resendIn": "Send again in {seconds} s",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "backToSignIn": "Back to sign in",
+  "noAccountYet": "New here? Create an account",
+  "haveAccount": "Already have an account? Sign in",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "signupTermsNote": "You will review the terms of use and the privacy notice before you start.",
+  "passwordHelp": "At least 10 characters. A few words together work well.",
+  "errorBlank": "This field cannot be empty.",
+  "errorTooShort": "This is too short.",
+  "errorTooLong": "This is too long.",
+  "errorInvalidFormat": "This does not look right.",
+  "errorControlChar": "Remove special control characters.",
+  "errorOutOfRange": "This value is out of range.",
+  "errorTooYoung": "You must be at least 13 to use FocusLearn.",
+  "errorUnknownValue": "Choose one of the options.",
+  "errorTooMany": "There are too many items.",
+  "errorCommonPassword": "This password is too common. Choose another.",
+  "errorContainsEmail": "Do not use your email name in your password.",
+  "errorGeneric": "Something is not right. Check this field.",
+  "authInvalidCredentials": "The email or password is not correct.",
+  "authEmailNotConfirmed": "Confirm your email first. Open the link we sent you.",
+  "authRateLimited": "Too many attempts. Wait a few minutes and try again.",
+  "authCaptchaFailed": "We could not check that you are not a robot. Try again.",
+  "authWeakPassword": "Choose a stronger password.",
+  "authSamePassword": "Choose a password you have not used before.",
+  "authNetwork": "No connection. Check your internet and try again.",
+  "authServer": "The service is having trouble. Try again later.",
+  "authUnknown": "Something went wrong. Try again.",
+  "onboardingTitle": "Set up your profile",
+  "onboardingIntro": "A few details so FocusLearn fits your studies. You can change most of them later.",
+  "displayNameLabel": "Display name",
+  "birthYearLabel": "Year of birth",
+  "streamLabel": "A/L stream",
+  "subjectsLabel": "Subjects (optional)",
+  "subjectsHelp": "Separate subjects with commas.",
+  "timeZoneNote": "Time zone: {zone}",
+  "@timeZoneNote": {
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "minorNotice": "Your profile will be private and other people cannot find you by searching.",
+  "acceptTermsLabel": "I have read the terms of use and the privacy notice (draft versions).",
+  "mustAcceptTerms": "You need to accept to continue.",
+  "continueLabel": "Continue",
+  "streamTechnology": "Technology",
+  "streamCommerce": "Commerce",
+  "streamScience": "Science",
+  "streamMathematics": "Mathematics",
+  "streamArts": "Arts",
+  "streamOther": "Other",
+  "welcomeUser": "Welcome, {name}",
+  "@welcomeUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homePlannerSoon": "Your timetable and study planner will appear here in a coming release.",
+  "settings": "Settings",
+  "loadingProfile": "Loading your profile",
+  "errorLoadProfile": "We could not load your profile.",
+  "retry": "Try again",
+  "settingsTitle": "Settings",
+  "accountSection": "Account",
+  "signedInAs": "Signed in as {email}",
+  "@signedInAs": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "signOut": "Sign out",
+  "signOutOthers": "Sign out of other devices",
+  "signOutOthersBody": "Every other device where you are signed in will have to sign in again. This device stays signed in.",
+  "signOutOthersConfirm": "Sign out others",
+  "preferencesSection": "Preferences",
+  "languageLabel": "Language",
+  "languageEnglish": "English",
+  "languageSinhala": "Sinhala",
+  "languageTamil": "Tamil",
+  "themeLabel": "Theme",
+  "themeSystem": "Same as device",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "devicesSection": "Your devices",
+  "devicesNone": "No devices yet.",
+  "thisDevice": "This device",
+  "removeDevice": "Remove",
+  "removeDeviceBody": "Remove this device from your list?",
+  "devicesNote": "Removing a device does not end its session by itself. Use “Sign out of other devices” as well.",
+  "privacySection": "Privacy",
+  "deletionTitle": "Delete my account",
+  "deletionBody": "We will delete your account and your data after 7 days. You can cancel before then.",
+  "requestDeletion": "Request deletion",
+  "deletionPending": "Deletion is scheduled for {date}.",
+  "@deletionPending": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelDeletion": "Cancel deletion",
+  "cancel": "Cancel",
+  "deviceRevokedSignedOut": "This device was removed from your account. Sign in again to continue.",
+  "configMissingUrl": "The server address is missing from this build.",
+  "configMissingKey": "The public key is missing from this build.",
+  "configSecretKey": "This build contains a secret key. It must never ship in an app: rebuild with the publishable key.",
+  "configInsecureUrl": "The server address must use https.",
+  "doneMessage": "Done."
+}

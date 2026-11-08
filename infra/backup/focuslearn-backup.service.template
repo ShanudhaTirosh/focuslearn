@@ -1,0 +1,12 @@
+[Unit]
+Description=FocusLearn encrypted backup to R2
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=@RUN_USER@
+WorkingDirectory=@REPO@
+ExecStart=/usr/bin/env bash @REPO@/infra/backup/backup.sh
+Nice=10
+TimeoutStartSec=1800

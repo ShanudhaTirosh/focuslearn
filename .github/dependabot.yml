@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "npm"
+    directory: "/apps/admin"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "npm"
+    directory: "/backend/supabase/functions"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "pub"
+    directory: "/apps/mobile"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "gradle"
+    directory: "/apps/mobile/android"
+    schedule: { interval: "weekly" }

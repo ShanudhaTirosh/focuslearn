@@ -1,0 +1,844 @@
+{
+ "authError": [
+  {
+   "code": "invalid_credentials",
+   "kind": "invalid_credentials",
+   "name": "wrong password",
+   "network": false,
+   "status": 400
+  },
+  {
+   "code": "email_not_confirmed",
+   "kind": "email_not_confirmed",
+   "name": "email not confirmed",
+   "network": false,
+   "status": 400
+  },
+  {
+   "code": "over_request_rate_limit",
+   "kind": "rate_limited",
+   "name": "rate limit by code",
+   "network": false,
+   "status": 429
+  },
+  {
+   "code": "over_email_send_rate_limit",
+   "kind": "rate_limited",
+   "name": "e-mail rate limit by code",
+   "network": false,
+   "status": 429
+  },
+  {
+   "code": null,
+   "kind": "rate_limited",
+   "name": "rate limit by status only",
+   "network": false,
+   "status": 429
+  },
+  {
+   "code": "captcha_failed",
+   "kind": "captcha_failed",
+   "name": "captcha failed",
+   "network": false,
+   "status": 400
+  },
+  {
+   "code": "weak_password",
+   "kind": "weak_password",
+   "name": "weak password",
+   "network": false,
+   "status": 422
+  },
+  {
+   "code": "user_already_exists",
+   "kind": "email_taken",
+   "name": "user already exists",
+   "network": false,
+   "status": 422
+  },
+  {
+   "code": "email_exists",
+   "kind": "email_taken",
+   "name": "email exists",
+   "network": false,
+   "status": 422
+  },
+  {
+   "code": "same_password",
+   "kind": "same_password",
+   "name": "same password",
+   "network": false,
+   "status": 422
+  },
+  {
+   "code": null,
+   "kind": "server",
+   "name": "server error without a code",
+   "network": false,
+   "status": 503
+  },
+  {
+   "code": "invalid_credentials",
+   "kind": "network",
+   "name": "network failure wins over everything",
+   "network": true,
+   "status": null
+  },
+  {
+   "code": "something_new",
+   "kind": "unknown",
+   "name": "unknown code",
+   "network": false,
+   "status": 400
+  },
+  {
+   "code": "_network",
+   "kind": "unknown",
+   "name": "a metadata key in the mapping is never a real code",
+   "network": false,
+   "status": 400
+  },
+  {
+   "code": null,
+   "kind": "unknown",
+   "name": "nothing known at all",
+   "network": false,
+   "status": null
+  }
+ ],
+ "avatarKey": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "objects/00000000-0000-0000-0000-0000000000a1/00000000-0000-0000-0000-000000000001",
+   "name": "own folder",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "wrong_owner",
+   "db": "invalid",
+   "in": "objects/00000000-0000-0000-0000-0000000000b2/00000000-0000-0000-0000-000000000001",
+   "name": "someone else's folder",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "invalid_format",
+   "db": "invalid",
+   "in": "public/00000000-0000-0000-0000-0000000000a1/00000000-0000-0000-0000-000000000001",
+   "name": "wrong prefix",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "invalid_format",
+   "db": "invalid",
+   "in": "objects/00000000-0000-0000-0000-0000000000a1/../00000000-0000-0000-0000-000000000001",
+   "name": "path traversal",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "invalid_format",
+   "db": "invalid",
+   "in": "objects/00000000-0000-0000-0000-0000000000a1",
+   "name": "missing file part",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "invalid_format",
+   "db": "invalid",
+   "in": "objects/00000000-0000-0000-0000-0000000000a1/00000000-0000-0000-0000-000000000001\n",
+   "name": "a trailing newline is not allowed (Python \"$\" would accept it; the database and Dart do not)",
+   "user": "00000000-0000-0000-0000-0000000000a1"
+  },
+  {
+   "client": "invalid_format",
+   "db": "invalid",
+   "in": "objects/00000000-0000-0000-0000-0000000000A1/00000000-0000-0000-0000-000000000001",
+   "name": "uppercase hex is not allowed",
+   "user": "00000000-0000-0000-0000-0000000000A1"
+  }
+ ],
+ "birthYear": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": true,
+   "name": "typical A/L student",
+   "now": 2026,
+   "year": 2008
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": true,
+   "name": "age 13 is the client minimum",
+   "now": 2026,
+   "year": 2013
+  },
+  {
+   "client": "too_young",
+   "db": "ok",
+   "minor": true,
+   "name": "age 12 is too young for the client",
+   "now": 2026,
+   "year": 2014
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": true,
+   "name": "year difference 18 is still a possible minor",
+   "now": 2026,
+   "year": 2008
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": false,
+   "name": "year difference 19 is not",
+   "now": 2026,
+   "year": 2007
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": false,
+   "name": "the boundary moves with the year",
+   "now": 2027,
+   "year": 2008
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": false,
+   "name": "adult",
+   "now": 2026,
+   "year": 1990
+  },
+  {
+   "client": "out_of_range",
+   "db": "invalid",
+   "minor": false,
+   "name": "1946 (age 80) is below the database minimum, so the client rejects it too",
+   "now": 2026,
+   "year": 1946
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": false,
+   "name": "age 80 is the client maximum",
+   "now": 2040,
+   "year": 1960
+  },
+  {
+   "client": "out_of_range",
+   "db": "ok",
+   "minor": false,
+   "name": "age 81 is above the client maximum (the database allows it)",
+   "now": 2040,
+   "year": 1959
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "minor": false,
+   "name": "1950 is the database minimum",
+   "now": 2026,
+   "year": 1950
+  },
+  {
+   "client": "out_of_range",
+   "db": "invalid",
+   "minor": false,
+   "name": "1949 is below the database minimum",
+   "now": 2026,
+   "year": 1949
+  },
+  {
+   "client": "out_of_range",
+   "db": "ok",
+   "minor": true,
+   "name": "a future birth year",
+   "now": 2026,
+   "year": 2030
+  },
+  {
+   "client": "out_of_range",
+   "db": "invalid",
+   "minor": true,
+   "name": "2101 is above the database maximum",
+   "now": 2026,
+   "year": 2101
+  }
+ ],
+ "clientKey": [
+  {
+   "client": "ok",
+   "in": "sb_publishable_abc123",
+   "name": "publishable key"
+  },
+  {
+   "client": "secret_key",
+   "in": "sb_secret_abc123",
+   "name": "secret key"
+  },
+  {
+   "client": "secret_key",
+   "in": "  sb_secret_abc123 ",
+   "name": "secret key with surrounding spaces"
+  },
+  {
+   "client": "ok",
+   "in": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIn0.c2lnbmF0dXJl",
+   "name": "legacy anon JWT"
+  },
+  {
+   "client": "secret_key",
+   "in": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UifQ.c2lnbmF0dXJl",
+   "name": "legacy service_role JWT"
+  },
+  {
+   "client": "ok",
+   "in": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYXV0aGVudGljYXRlZCIsImlzcyI6InN1cGFiYXNlIn0.c2lnbmF0dXJl",
+   "name": "a JWT with another role"
+  },
+  {
+   "client": "ok",
+   "in": "a.b.c",
+   "name": "three dot-separated words that are not a JWT"
+  },
+  {
+   "client": "blank",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "client": "blank",
+   "in": "   ",
+   "name": "only spaces"
+  }
+ ],
+ "deviceName": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "Redmi 9",
+   "name": "typical"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "  Laptop ",
+   "name": "trimmed",
+   "normalized": "Laptop"
+  },
+  {
+   "client": "blank",
+   "db": "invalid",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+   "name": "60 characters"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+   "name": "61 characters"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "a\u0007b",
+   "name": "control character"
+  }
+ ],
+ "displayName": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "Amal",
+   "name": "plain name"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "  Amal  ",
+   "name": "spaces around are trimmed",
+   "normalized": "Amal"
+  },
+  {
+   "client": "blank",
+   "db": "invalid",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "client": "blank",
+   "db": "invalid",
+   "in": "     ",
+   "name": "only spaces"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "name": "exactly 40 characters"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "name": "41 characters"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa     ",
+   "name": "40 characters plus 5 trailing spaces (trim first)",
+   "normalized": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "අඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅ",
+   "name": "40 Sinhala letters count as 40 (code points, not bytes)"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": "අඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅ",
+   "name": "41 Sinhala letters"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "ශ්‍රී",
+   "name": "Sinhala 'shri' contains a zero-width joiner and must be allowed"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "தமிழ்",
+   "name": "Tamil"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "🙂",
+   "name": "one emoji counts as one character"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂",
+   "name": "40 emoji are 40 characters (UTF-16 would say 80)"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": "🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂🙂",
+   "name": "41 emoji"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "a\tb",
+   "name": "tab inside"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "Amal\n",
+   "name": "newline at the end"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "a\u0000b",
+   "name": "NUL character"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "ab",
+   "name": "DEL character"
+  },
+  {
+   "client": "control_char",
+   "db": "invalid",
+   "in": "ab",
+   "name": "C1 control character (NEL)"
+  },
+  {
+   "client": "blank",
+   "db": "ok",
+   "in": " ",
+   "name": "no-break space only: the database allows it, the client is stricter"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "Amal Perera",
+   "name": "no-break space between words"
+  }
+ ],
+ "email": [
+  {
+   "client": "ok",
+   "in": "amal@example.com",
+   "name": "ordinary",
+   "normalized": "amal@example.com"
+  },
+  {
+   "client": "ok",
+   "in": "  amal@example.com ",
+   "name": "surrounding spaces are trimmed",
+   "normalized": "amal@example.com"
+  },
+  {
+   "client": "ok",
+   "in": "\t amal@example.com\n",
+   "name": "tabs and newlines around are trimmed",
+   "normalized": "amal@example.com"
+  },
+  {
+   "client": "invalid_format",
+   "in": "amal.example.com",
+   "name": "no at sign"
+  },
+  {
+   "client": "invalid_format",
+   "in": "amal@localhost",
+   "name": "no dot in the domain"
+  },
+  {
+   "client": "invalid_format",
+   "in": "am al@example.com",
+   "name": "space inside"
+  },
+  {
+   "client": "invalid_format",
+   "in": "a@b@example.com",
+   "name": "two at signs"
+  },
+  {
+   "client": "blank",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "client": "ok",
+   "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+   "name": "254 characters is the maximum"
+  },
+  {
+   "client": "too_long",
+   "in": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com",
+   "name": "255 characters"
+  }
+ ],
+ "password": [
+  {
+   "client": "ok",
+   "email": "amal@example.com",
+   "in": "correct horse battery",
+   "name": "a passphrase"
+  },
+  {
+   "client": "ok",
+   "email": "amal@example.com",
+   "in": "kQ7vN2xLp9",
+   "name": "exactly 10 characters"
+  },
+  {
+   "client": "too_short",
+   "email": "amal@example.com",
+   "in": "kQ7vN2xLp",
+   "name": "9 characters"
+  },
+  {
+   "client": "ok",
+   "email": "amal@example.com",
+   "in": "abcdefghijklmnop",
+   "name": "no composition rules: all lowercase is fine"
+  },
+  {
+   "client": "common_password",
+   "email": "amal@example.com",
+   "in": "password123",
+   "name": "common password"
+  },
+  {
+   "client": "common_password",
+   "email": "amal@example.com",
+   "in": "PASSWORD123",
+   "name": "common password in capitals"
+  },
+  {
+   "client": "common_password",
+   "email": "amal@example.com",
+   "in": "1234567890",
+   "name": "common password: digits"
+  },
+  {
+   "client": "contains_email",
+   "email": "amal.perera@example.com",
+   "in": "amal.perera2026!",
+   "name": "contains the e-mail name"
+  },
+  {
+   "client": "ok",
+   "email": "am@example.com",
+   "in": "amal-is-great-2026",
+   "name": "short e-mail names (under 4) are not checked"
+  },
+  {
+   "client": "ok",
+   "email": "x@example.com",
+   "in": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+   "name": "72 bytes is the maximum"
+  },
+  {
+   "client": "too_long",
+   "email": "x@example.com",
+   "in": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1b",
+   "name": "73 bytes"
+  },
+  {
+   "client": "too_long",
+   "email": "x@example.com",
+   "in": "අඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅ",
+   "name": "25 Sinhala letters are only 25 characters but 75 bytes"
+  },
+  {
+   "client": "ok",
+   "email": "x@example.com",
+   "in": "අඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅඅ",
+   "name": "24 Sinhala letters are 72 bytes"
+  },
+  {
+   "client": "too_short",
+   "email": "x@example.com",
+   "in": "",
+   "name": "empty"
+  }
+ ],
+ "stream": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "technology",
+   "name": "technology"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": "other",
+   "name": "other"
+  },
+  {
+   "client": "unknown_value",
+   "db": "invalid",
+   "in": "astrology",
+   "name": "unknown"
+  },
+  {
+   "client": "unknown_value",
+   "db": "invalid",
+   "in": "Commerce",
+   "name": "wrong case"
+  },
+  {
+   "client": "unknown_value",
+   "db": "invalid",
+   "in": "",
+   "name": "empty"
+  }
+ ],
+ "subjects": [
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": [],
+   "name": "none"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": [
+    "ICT",
+    "Physics",
+    "Combined Mathematics"
+   ],
+   "name": "three subjects"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": [
+    "s0",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11"
+   ],
+   "name": "12 subjects"
+  },
+  {
+   "client": "too_many",
+   "db": "invalid",
+   "in": [
+    "s0",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12"
+   ],
+   "name": "13 subjects"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": [
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   ],
+   "name": "one subject of 60 characters"
+  },
+  {
+   "client": "too_long",
+   "db": "ok",
+   "in": [
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   ],
+   "name": "one subject of 61 characters: client stricter than db"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": [
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+    "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+   ],
+   "name": "12 subjects of 60 characters: joined with commas that is 731, above the database limit of 720"
+  },
+  {
+   "client": "ok",
+   "db": "ok",
+   "in": [
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+   ],
+   "name": "joined length exactly 720 (eleven of 59 and one of 60, plus 11 commas)"
+  },
+  {
+   "client": "too_long",
+   "db": "invalid",
+   "in": [
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+   ],
+   "name": "joined length 721 (ten of 59 and two of 60, plus 11 commas)"
+  },
+  {
+   "client": "blank",
+   "db": "ok",
+   "in": [
+    "ICT",
+    "  "
+   ],
+   "name": "blank subject"
+  }
+ ],
+ "timeZone": [
+  {
+   "client": "ok",
+   "in": "Asia/Colombo",
+   "name": "Colombo"
+  },
+  {
+   "client": "ok",
+   "in": "UTC",
+   "name": "UTC"
+  },
+  {
+   "client": "ok",
+   "in": "America/Argentina/Buenos_Aires",
+   "name": "three parts"
+  },
+  {
+   "client": "ok",
+   "in": "Etc/GMT+5",
+   "name": "with plus sign"
+  },
+  {
+   "client": "invalid_format",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "client": "invalid_format",
+   "in": "Asia/ Colombo",
+   "name": "space"
+  },
+  {
+   "client": "invalid_format",
+   "in": "../etc/passwd",
+   "name": "traversal"
+  },
+  {
+   "client": "invalid_format",
+   "in": "Asia/Colombo\n",
+   "name": "trailing newline"
+  }
+ ]
+}

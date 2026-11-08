@@ -1,0 +1,1130 @@
+{
+ "achievements": [
+  {
+   "expect": [],
+   "longest": 0,
+   "name": "nothing yet",
+   "sessions": 0,
+   "total_seconds": 0
+  },
+  {
+   "expect": [
+    "first_session"
+   ],
+   "longest": 0,
+   "name": "the first session",
+   "sessions": 1,
+   "total_seconds": 300
+  },
+  {
+   "expect": [
+    "first_session"
+   ],
+   "longest": 2,
+   "name": "just short of everything",
+   "sessions": 24,
+   "total_seconds": 35999
+  },
+  {
+   "expect": [
+    "first_session",
+    "sessions_25",
+    "hours_10",
+    "streak_3",
+    "streak_7"
+   ],
+   "longest": 7,
+   "name": "25 sessions, 10 hours, a 7-day streak",
+   "sessions": 25,
+   "total_seconds": 36000
+  },
+  {
+   "expect": [
+    "first_session",
+    "sessions_25",
+    "hours_10",
+    "hours_50",
+    "streak_3",
+    "streak_7",
+    "streak_30"
+   ],
+   "longest": 30,
+   "name": "everything",
+   "sessions": 100,
+   "total_seconds": 180000
+  },
+  {
+   "expect": [
+    "first_session",
+    "sessions_25",
+    "hours_10",
+    "streak_3",
+    "streak_7"
+   ],
+   "longest": 29,
+   "name": "29-day streak, 179999 seconds",
+   "sessions": 25,
+   "total_seconds": 179999
+  },
+  {
+   "expect": [
+    "first_session",
+    "hours_10",
+    "hours_50",
+    "streak_3"
+   ],
+   "longest": 3,
+   "name": "few sessions but many hours",
+   "sessions": 5,
+   "total_seconds": 200000
+  }
+ ],
+ "constants": {
+  "countedMinSeconds": 300,
+  "defaultGoalSeconds": 1800,
+  "maxSessionSeconds": 28800,
+  "overrunSeconds": 300,
+  "restDaySpacing": 7,
+  "skewSeconds": 300,
+  "staleDays": 14,
+  "treeStages": [
+   [
+    300,
+    "seedling"
+   ],
+   [
+    900,
+    "sapling"
+   ],
+   [
+    1500,
+    "tree"
+   ],
+   [
+    3000,
+    "grove"
+   ]
+  ]
+ },
+ "longest": [
+  {
+   "days": [],
+   "expect": 0,
+   "goal": 1800,
+   "name": "no data"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     2000
+    ],
+    [
+     "2026-10-02",
+     2000
+    ],
+    [
+     "2026-10-03",
+     2000
+    ],
+    [
+     "2026-10-05",
+     2000
+    ],
+    [
+     "2026-10-06",
+     2000
+    ],
+    [
+     "2026-10-07",
+     2000
+    ]
+   ],
+   "expect": 6,
+   "goal": 1800,
+   "name": "a rest day joins two runs (1-3, 5-7, 4 missed)"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     2000
+    ],
+    [
+     "2026-10-02",
+     2000
+    ],
+    [
+     "2026-10-03",
+     2000
+    ],
+    [
+     "2026-10-06",
+     2000
+    ],
+    [
+     "2026-10-07",
+     2000
+    ]
+   ],
+   "expect": 3,
+   "goal": 1800,
+   "name": "a two-day gap separates runs"
+  },
+  {
+   "days": [
+    [
+     "2026-10-09",
+     2000
+    ]
+   ],
+   "expect": 1,
+   "goal": 1800,
+   "name": "one met day"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     1000
+    ],
+    [
+     "2026-10-02",
+     1000
+    ]
+   ],
+   "expect": 0,
+   "goal": 1800,
+   "name": "only unmet days"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     2000
+    ],
+    [
+     "2026-10-02",
+     2000
+    ],
+    [
+     "2026-10-04",
+     2000
+    ],
+    [
+     "2026-10-06",
+     2000
+    ],
+    [
+     "2026-10-07",
+     2000
+    ]
+   ],
+   "expect": 3,
+   "goal": 1800,
+   "name": "two gaps close together: the second is not forgiven (best run is 3)"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     2000
+    ],
+    [
+     "2026-10-02",
+     2000
+    ],
+    [
+     "2026-10-03",
+     2000
+    ],
+    [
+     "2026-10-04",
+     2000
+    ],
+    [
+     "2026-10-05",
+     2000
+    ],
+    [
+     "2026-10-06",
+     2000
+    ],
+    [
+     "2026-10-07",
+     2000
+    ],
+    [
+     "2026-10-08",
+     2000
+    ],
+    [
+     "2026-10-09",
+     2000
+    ],
+    [
+     "2026-10-10",
+     2000
+    ],
+    [
+     "2026-10-11",
+     2000
+    ],
+    [
+     "2026-10-12",
+     2000
+    ],
+    [
+     "2026-10-13",
+     2000
+    ],
+    [
+     "2026-10-14",
+     2000
+    ],
+    [
+     "2026-10-15",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ],
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-19",
+     2000
+    ],
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-21",
+     2000
+    ],
+    [
+     "2026-10-22",
+     2000
+    ],
+    [
+     "2026-10-23",
+     2000
+    ],
+    [
+     "2026-10-24",
+     2000
+    ],
+    [
+     "2026-10-25",
+     2000
+    ],
+    [
+     "2026-10-26",
+     2000
+    ],
+    [
+     "2026-10-27",
+     2000
+    ],
+    [
+     "2026-10-28",
+     2000
+    ],
+    [
+     "2026-10-29",
+     2000
+    ],
+    [
+     "2026-10-30",
+     2000
+    ]
+   ],
+   "expect": 30,
+   "goal": 1800,
+   "name": "a perfect month of 30 days"
+  },
+  {
+   "days": [
+    [
+     "2026-10-01",
+     2000
+    ],
+    [
+     "2026-10-02",
+     2000
+    ],
+    [
+     "2026-10-03",
+     2000
+    ],
+    [
+     "2026-10-04",
+     2000
+    ],
+    [
+     "2026-10-05",
+     2000
+    ],
+    [
+     "2026-10-06",
+     2000
+    ],
+    [
+     "2026-10-07",
+     2000
+    ],
+    [
+     "2026-10-08",
+     2000
+    ],
+    [
+     "2026-10-09",
+     2000
+    ],
+    [
+     "2026-10-10",
+     2000
+    ],
+    [
+     "2026-10-11",
+     2000
+    ],
+    [
+     "2026-10-12",
+     2000
+    ],
+    [
+     "2026-10-13",
+     2000
+    ],
+    [
+     "2026-10-14",
+     2000
+    ],
+    [
+     "2026-10-15",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ],
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-19",
+     2000
+    ],
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-21",
+     2000
+    ],
+    [
+     "2026-10-22",
+     2000
+    ],
+    [
+     "2026-10-23",
+     2000
+    ],
+    [
+     "2026-10-24",
+     2000
+    ],
+    [
+     "2026-10-25",
+     2000
+    ],
+    [
+     "2026-10-26",
+     2000
+    ],
+    [
+     "2026-10-27",
+     2000
+    ],
+    [
+     "2026-10-28",
+     2000
+    ],
+    [
+     "2026-10-29",
+     2000
+    ]
+   ],
+   "expect": 29,
+   "goal": 1800,
+   "name": "29 days"
+  }
+ ],
+ "streak": [
+  {
+   "days": [],
+   "goal": 1800,
+   "name": "no data",
+   "rest_days": 0,
+   "streak": 0,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "only today met",
+   "rest_days": 0,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     1000
+    ],
+    [
+     "2026-10-19",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "today still open, yesterday met: the streak is kept",
+   "rest_days": 0,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-19",
+     2000
+    ],
+    [
+     "2026-10-20",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "three days in a row",
+   "rest_days": 0,
+   "streak": 3,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-20",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "one isolated missed day is a rest day (19)",
+   "rest_days": 1,
+   "streak": 3,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "two missed days in a row break the streak",
+   "rest_days": 0,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "a second rest day within 7 days is not forgiven",
+   "rest_days": 1,
+   "streak": 2,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ],
+    [
+     "2026-10-15",
+     2000
+    ],
+    [
+     "2026-10-14",
+     2000
+    ],
+    [
+     "2026-10-13",
+     2000
+    ],
+    [
+     "2026-10-11",
+     2000
+    ],
+    [
+     "2026-10-10",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "rest days exactly 7 days apart (19 and 12) are both forgiven",
+   "rest_days": 2,
+   "streak": 9,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ],
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-16",
+     2000
+    ],
+    [
+     "2026-10-15",
+     2000
+    ],
+    [
+     "2026-10-14",
+     2000
+    ],
+    [
+     "2026-10-12",
+     2000
+    ],
+    [
+     "2026-10-11",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "rest days 6 days apart (19 and 13): the second one breaks the streak",
+   "rest_days": 1,
+   "streak": 6,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     1800
+    ]
+   ],
+   "goal": 1800,
+   "name": "exactly the goal counts",
+   "rest_days": 0,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     1799
+    ]
+   ],
+   "goal": 1800,
+   "name": "one second under the goal does not",
+   "rest_days": 0,
+   "streak": 0,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-18",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "yesterday and today both open: yesterday becomes a pending rest day",
+   "rest_days": 1,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-18",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "two days of nothing after a met day",
+   "rest_days": 1,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-15",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "last met day too long ago",
+   "rest_days": 0,
+   "streak": 0,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-19",
+     700
+    ],
+    [
+     "2026-10-20",
+     700
+    ]
+   ],
+   "goal": 600,
+   "name": "a different goal (600)",
+   "rest_days": 0,
+   "streak": 2,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-20",
+     1000
+    ],
+    [
+     "2026-10-20",
+     900
+    ]
+   ],
+   "goal": 1800,
+   "name": "several rows for one day add up",
+   "rest_days": 0,
+   "streak": 1,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-09-30",
+     2000
+    ],
+    [
+     "2026-10-01",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "across a month boundary",
+   "rest_days": 0,
+   "streak": 2,
+   "today": "2026-10-01"
+  },
+  {
+   "days": [
+    [
+     "2026-12-31",
+     2000
+    ],
+    [
+     "2027-01-01",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "across a year boundary",
+   "rest_days": 0,
+   "streak": 2,
+   "today": "2027-01-01"
+  },
+  {
+   "days": [
+    [
+     "2026-10-21",
+     5000
+    ]
+   ],
+   "goal": 1800,
+   "name": "a met day in the future is ignored",
+   "rest_days": 0,
+   "streak": 0,
+   "today": "2026-10-20"
+  },
+  {
+   "days": [
+    [
+     "2026-10-17",
+     2000
+    ],
+    [
+     "2026-10-18",
+     2000
+    ]
+   ],
+   "goal": 1800,
+   "name": "a rest day then an open today",
+   "rest_days": 1,
+   "streak": 2,
+   "today": "2026-10-20"
+  }
+ ],
+ "tree": [
+  {
+   "counted": false,
+   "stage": "none",
+   "validated": 0
+  },
+  {
+   "counted": false,
+   "stage": "none",
+   "validated": 1
+  },
+  {
+   "counted": false,
+   "stage": "none",
+   "validated": 299
+  },
+  {
+   "counted": true,
+   "stage": "seedling",
+   "validated": 300
+  },
+  {
+   "counted": true,
+   "stage": "seedling",
+   "validated": 899
+  },
+  {
+   "counted": true,
+   "stage": "sapling",
+   "validated": 900
+  },
+  {
+   "counted": true,
+   "stage": "sapling",
+   "validated": 1499
+  },
+  {
+   "counted": true,
+   "stage": "tree",
+   "validated": 1500
+  },
+  {
+   "counted": true,
+   "stage": "tree",
+   "validated": 2999
+  },
+  {
+   "counted": true,
+   "stage": "grove",
+   "validated": 3000
+  },
+  {
+   "counted": true,
+   "stage": "grove",
+   "validated": 28800
+  }
+ ],
+ "validated": [
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1500,
+   "name": "a full 25-minute session",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1500,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1500,
+   "name": "the client claims more than the clock allows (elapsed 1500)",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1800,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1200,
+   "name": "the client reports less than elapsed",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1200,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1200,
+   "name": "300 seconds paused out of 1500 elapsed",
+   "paused": 300,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1500,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T11:00:00Z",
+   "expect": 1800,
+   "name": "ran an hour on a 25-minute plan: the plan plus 300 seconds (1800)",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T11:00:05Z",
+   "reported": 3600,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:28:20Z",
+   "expect": 1700,
+   "name": "an overrun inside the 300 seconds (elapsed 1700, cap 1800)",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:28:25Z",
+   "reported": 1700,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:15:00Z",
+   "expect": 900,
+   "name": "exactly the cap: plan 600, elapsed 900",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-17T10:15:05Z",
+   "reported": 900,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:10:00Z",
+   "expect": 360,
+   "name": "a 60-second plan that ran 600 seconds: cap 360",
+   "paused": 0,
+   "planned": 60,
+   "received": "2026-10-17T10:10:05Z",
+   "reported": 600,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T09:00:00Z",
+   "expect": 28800,
+   "name": "the 8-hour cap (elapsed 32400 on a 28800 plan)",
+   "paused": 0,
+   "planned": 28800,
+   "received": "2026-10-17T09:00:05Z",
+   "reported": 32400,
+   "started": "2026-10-17T00:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:00:00Z",
+   "expect": 0,
+   "name": "the end is before the start",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1500,
+   "started": "2026-10-17T10:25:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:00:00Z",
+   "expect": 0,
+   "name": "zero length",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:00:05Z",
+   "reported": 100,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:10:00Z",
+   "expect": 600,
+   "name": "the end is exactly 300 s ahead of the server clock: tolerated",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-17T10:05:00Z",
+   "reported": 600,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:10:00Z",
+   "expect": 0,
+   "name": "the end is 301 s ahead of the server clock: nothing",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-17T10:04:59Z",
+   "reported": 600,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-01T10:10:00Z",
+   "expect": 600,
+   "name": "received exactly 14 days after it ended: still counts",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-15T10:10:00Z",
+   "reported": 600,
+   "started": "2026-10-01T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-01T10:10:00Z",
+   "expect": 0,
+   "name": "received 14 days and 1 second after it ended: nothing (no back-filling a streak)",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-15T10:10:01Z",
+   "reported": 600,
+   "started": "2026-10-01T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 0,
+   "name": "a negative report",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": -5,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1500,
+   "name": "a negative pause counts as none",
+   "paused": -100,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1500,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 1500,
+   "name": "a negative pause cannot create extra time (elapsed 1500, report 1600)",
+   "paused": -100,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1600,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 0,
+   "name": "a pause longer than the session leaves nothing",
+   "paused": 5000,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 1500,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:25:00Z",
+   "expect": 0,
+   "name": "nothing reported",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T10:25:05Z",
+   "reported": 0,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-17T10:04:59Z",
+   "expect": 299,
+   "name": "a short session of 299 seconds is accepted as 299 (it just does not count)",
+   "paused": 0,
+   "planned": 600,
+   "received": "2026-10-17T10:05:00Z",
+   "reported": 299,
+   "started": "2026-10-17T10:00:00Z"
+  },
+  {
+   "ended": "2026-10-14T10:25:00Z",
+   "expect": 1500,
+   "name": "a session synced late from an offline phone (3 days)",
+   "paused": 0,
+   "planned": 1500,
+   "received": "2026-10-17T08:00:00Z",
+   "reported": 1500,
+   "started": "2026-10-14T10:00:00Z"
+  }
+ ]
+}

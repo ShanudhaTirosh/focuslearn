@@ -1,0 +1,11 @@
+[Unit]
+Description=FocusLearn heartbeat (health check, then ping the external monitor)
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=@RUN_USER@
+WorkingDirectory=@REPO@
+ExecStart=/usr/bin/env bash @REPO@/infra/scripts/heartbeat.sh
+TimeoutStartSec=120

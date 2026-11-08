@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily FocusLearn backup (02:30 Sri Lanka time)
+
+[Timer]
+# 21:00 UTC is 02:30 in Asia/Colombo (UTC+05:30, no DST)
+OnCalendar=*-*-* 21:00:00 UTC
+# Run at the next boot if the laptop was off at the scheduled time
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required top-level files exist
+        run: |
+          for f in README.md CLAUDE.md .gitignore .gitattributes .editorconfig .gitleaks.toml \
+                   docs/LIMITATIONS.md docs/RUNBOOK.md docs/PHASE0_EXIT.md docs/THREAT_MODEL.md docs/CAPABILITY_MATRIX.md; do
+            test -f "$f" || { echo "Missing $f"; exit 1; }
+          done
+
+      - name: No committed env files (other than examples)
+        run: |
+          bad=$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)
+          if [ -n "$bad" ]; then echo "Committed env files:"; echo "$bad"; exit 1; fi
+
+      - name: No committed secrets-looking artefacts
+        run: |
+          bad=$(git ls-files | grep -E '\.(age|pem|key|jks|keystore|dump)$|cloudflared/.*\.json$|service-account.*\.json$' || true)
+          if [ -n "$bad" ]; then echo "Suspicious files:"; echo "$bad"; exit 1; fi
+
+      - name: Shellcheck (warnings and above)
+        run: |
+          files=$(git ls-files '*.sh')
+          if [ -n "$files" ]; then shellcheck -x -S warning $files; else echo "No shell scripts"; fi
+
+  infra-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: All offline suites
+        run: bash infra/scripts/tests/run-all.sh
+      - name: Migration lint (also inside the suites; kept as its own clear failure line)
+        run: python3 infra/scripts/lint-migrations.py
+
+  dart-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        if: ${{ hashFiles('packages/core/pubspec.yaml') != '' }}
+        with:
+          channel: stable
+          cache: true
+      - name: Analyze and test (pure Dart; vectors from test-vectors/)
+        if: ${{ hashFiles('packages/core/pubspec.yaml') != '' }}
+        working-directory: packages/core
+        run: |
+          dart pub get
+          dart analyze --fatal-infos
+          dart test
+        # No `dart format --set-exit-if-changed` yet: run `dart format .` once on a machine with Dart, commit, then add the check.
+      - name: Skipped
+        if: ${{ hashFiles('packages/core/pubspec.yaml') == '' }}
+        run: echo "packages/core not created yet"
+
+  admin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+      - uses: actions/setup-node@v4
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install, lint, typecheck, test, build
+        if: ${{ hashFiles('apps/admin/package.json') != '' }}
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm --filter admin lint
+          pnpm --filter admin typecheck
+          pnpm --filter admin test --run
+          pnpm --filter admin build
+      - name: Skipped
+        if: ${{ hashFiles('apps/admin/package.json') == '' }}
+        run: echo "apps/admin not created yet"
+
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') != '' }}
+        with:
+          channel: stable
+          cache: true
+      - name: Generate localisations, analyze and test (design system, then app)
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') != '' }}
+        run: |
+          for d in packages/design_system apps/mobile; do
+            echo "=== $d"
+            (cd "$d" && flutter pub get && flutter analyze --no-fatal-infos && flutter test)
+          done
+        # --no-fatal-infos: newer Flutter versions deprecate some Material APIs. Warnings and errors still fail the job;
+        # fix the deprecation notices after the first real run. No `dart format` gate yet (run `dart format .` once, commit, then add it).
+      - name: Skipped
+        if: ${{ hashFiles('apps/mobile/pubspec.yaml') == '' }}
+        run: echo "Flutter apps not created yet"

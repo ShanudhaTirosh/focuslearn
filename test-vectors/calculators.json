@@ -1,0 +1,3854 @@
+{
+ "cases": [
+  {
+   "args": [
+    "15",
+    "2400"
+   ],
+   "fn": "percent_of",
+   "name": "15% of 2400",
+   "out": {
+    "result": "360.00"
+   },
+   "steps": [
+    "x = base × percent ÷ 100",
+    "x = 2400 × 15 ÷ 100",
+    "x = 360.00"
+   ]
+  },
+  {
+   "args": [
+    "12.5",
+    "80"
+   ],
+   "fn": "percent_of",
+   "name": "12.5% of 80",
+   "out": {
+    "result": "10.00"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "500"
+   ],
+   "fn": "percent_of",
+   "name": "0% of anything",
+   "out": {
+    "result": "0.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "33.33"
+   ],
+   "fn": "percent_of",
+   "name": "100% is the whole",
+   "out": {
+    "result": "33.33"
+   }
+  },
+  {
+   "args": [
+    "12.5",
+    "1"
+   ],
+   "fn": "percent_of",
+   "name": "exact half rounds up: 0.125",
+   "out": {
+    "result": "0.13"
+   }
+  },
+  {
+   "args": [
+    "13.5",
+    "1"
+   ],
+   "fn": "percent_of",
+   "name": "exact half rounds up: 0.135",
+   "out": {
+    "result": "0.14"
+   }
+  },
+  {
+   "args": [
+    "0.5",
+    "1"
+   ],
+   "fn": "percent_of",
+   "name": "exact half rounds up: 0.005",
+   "out": {
+    "result": "0.01"
+   }
+  },
+  {
+   "args": [
+    "0.4",
+    "1"
+   ],
+   "fn": "percent_of",
+   "name": "below a half rounds down: 0.004",
+   "out": {
+    "result": "0.00"
+   }
+  },
+  {
+   "args": [
+    "50",
+    "-250"
+   ],
+   "fn": "percent_of",
+   "name": "negative base",
+   "out": {
+    "result": "-125.00"
+   }
+  },
+  {
+   "args": [
+    "12.5",
+    "-1"
+   ],
+   "fn": "percent_of",
+   "name": "negative exact half rounds AWAY from zero: -0.125",
+   "out": {
+    "result": "-0.13"
+   }
+  },
+  {
+   "args": [
+    "0.4",
+    "-1"
+   ],
+   "fn": "percent_of",
+   "name": "a tiny negative rounds to 0.00, never -0.00",
+   "out": {
+    "result": "0.00"
+   }
+  },
+  {
+   "args": [
+    "abc",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: letters"
+  },
+  {
+   "args": [
+    "1,5",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: a comma decimal"
+  },
+  {
+   "args": [
+    "010",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: a leading zero"
+  },
+  {
+   "args": [
+    "1e3",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: an exponent"
+  },
+  {
+   "args": [
+    "",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: empty"
+  },
+  {
+   "args": [
+    "1234567890123456",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: 16 digits"
+  },
+  {
+   "args": [
+    "1.123456789",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: 9 decimals"
+  },
+  {
+   "args": [
+    "+5",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: a plus sign"
+  },
+  {
+   "args": [
+    ".5",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: no leading digit"
+  },
+  {
+   "args": [
+    "5.",
+    "10"
+   ],
+   "error": "invalid_number",
+   "fn": "percent_of",
+   "name": "invalid number: no trailing digits"
+  },
+  {
+   "args": [
+    "360",
+    "2400"
+   ],
+   "fn": "percent_what",
+   "name": "360 of 2400",
+   "out": {
+    "percent": "15.00"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "3"
+   ],
+   "fn": "percent_what",
+   "name": "1 of 3",
+   "out": {
+    "percent": "33.33"
+   }
+  },
+  {
+   "args": [
+    "2",
+    "3"
+   ],
+   "fn": "percent_what",
+   "name": "2 of 3",
+   "out": {
+    "percent": "66.67"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "5"
+   ],
+   "fn": "percent_what",
+   "name": "0 of 5",
+   "out": {
+    "percent": "0.00"
+   }
+  },
+  {
+   "args": [
+    "5",
+    "0"
+   ],
+   "error": "division_by_zero",
+   "fn": "percent_what",
+   "name": "the whole is zero"
+  },
+  {
+   "args": [
+    "80",
+    "100"
+   ],
+   "fn": "percent_change",
+   "name": "80 to 100",
+   "out": {
+    "percent": "25.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "80"
+   ],
+   "fn": "percent_change",
+   "name": "100 to 80",
+   "out": {
+    "percent": "-20.00"
+   }
+  },
+  {
+   "args": [
+    "3",
+    "4"
+   ],
+   "fn": "percent_change",
+   "name": "3 to 4",
+   "out": {
+    "percent": "33.33"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "100"
+   ],
+   "fn": "percent_change",
+   "name": "no change",
+   "out": {
+    "percent": "0.00"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "5"
+   ],
+   "error": "division_by_zero",
+   "fn": "percent_change",
+   "name": "from zero"
+  },
+  {
+   "args": [
+    "-5",
+    "3"
+   ],
+   "error": "negative_not_allowed",
+   "fn": "percent_change",
+   "name": "a negative start"
+  },
+  {
+   "args": [
+    "2400",
+    "15"
+   ],
+   "fn": "percent_increase",
+   "name": "2400 up 15%",
+   "out": {
+    "result": "2760.00"
+   }
+  },
+  {
+   "args": [
+    "0.5",
+    "1"
+   ],
+   "fn": "percent_increase",
+   "name": "0.505 rounds up",
+   "out": {
+    "result": "0.51"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "0"
+   ],
+   "fn": "percent_increase",
+   "name": "up 0%",
+   "out": {
+    "result": "100.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "-5"
+   ],
+   "error": "negative_not_allowed",
+   "fn": "percent_increase",
+   "name": "a negative percent"
+  },
+  {
+   "args": [
+    "2400",
+    "12.5"
+   ],
+   "fn": "percent_decrease",
+   "name": "2400 down 12.5%",
+   "out": {
+    "result": "2100.00"
+   }
+  },
+  {
+   "args": [
+    "2400",
+    "100"
+   ],
+   "fn": "percent_decrease",
+   "name": "down 100%",
+   "out": {
+    "result": "0.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "33.33"
+   ],
+   "fn": "percent_decrease",
+   "name": "100 down 33.33%",
+   "out": {
+    "result": "66.67"
+   }
+  },
+  {
+   "args": [
+    "2400",
+    "100.01"
+   ],
+   "error": "percent_over_100",
+   "fn": "percent_decrease",
+   "name": "more than 100%"
+  },
+  {
+   "args": [
+    [
+     "120",
+     "80",
+     "40"
+    ]
+   ],
+   "fn": "ratio_simplify",
+   "name": "120:80:40",
+   "out": {
+    "parts": [
+     "3",
+     "2",
+     "1"
+    ]
+   }
+  },
+  {
+   "args": [
+    [
+     "0.5",
+     "1.5"
+    ]
+   ],
+   "fn": "ratio_simplify",
+   "name": "decimals",
+   "out": {
+    "parts": [
+     "1",
+     "3"
+    ]
+   }
+  },
+  {
+   "args": [
+    [
+     "2.50",
+     "1.25"
+    ]
+   ],
+   "fn": "ratio_simplify",
+   "name": "two decimals",
+   "out": {
+    "parts": [
+     "2",
+     "1"
+    ]
+   }
+  },
+  {
+   "args": [
+    [
+     "7",
+     "13"
+    ]
+   ],
+   "fn": "ratio_simplify",
+   "name": "already simplest",
+   "out": {
+    "parts": [
+     "7",
+     "13"
+    ]
+   }
+  },
+  {
+   "args": [
+    [
+     "0",
+     "5"
+    ]
+   ],
+   "fn": "ratio_simplify",
+   "name": "a zero part",
+   "out": {
+    "parts": [
+     "0",
+     "1"
+    ]
+   }
+  },
+  {
+   "args": [
+    [
+     "0",
+     "0"
+    ]
+   ],
+   "error": "all_zero",
+   "fn": "ratio_simplify",
+   "name": "all zero"
+  },
+  {
+   "args": [
+    [
+     "5"
+    ]
+   ],
+   "error": "need_two_parts",
+   "fn": "ratio_simplify",
+   "name": "one part"
+  },
+  {
+   "args": [
+    [
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "error": "too_many_parts",
+   "fn": "ratio_simplify",
+   "name": "eleven parts"
+  },
+  {
+   "args": [
+    [
+     "-1",
+     "2"
+    ]
+   ],
+   "error": "negative_not_allowed",
+   "fn": "ratio_simplify",
+   "name": "a negative part"
+  },
+  {
+   "args": [
+    [
+     "a",
+     "2"
+    ]
+   ],
+   "error": "invalid_number",
+   "fn": "ratio_simplify",
+   "name": "not a number"
+  },
+  {
+   "args": [
+    "1000",
+    [
+     "2",
+     "3"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "1000 in 2:3",
+   "out": {
+    "shares": [
+     "400.00",
+     "600.00"
+    ]
+   }
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "100 in 1:1:1, the extra cent goes to the first part (equal remainders)",
+   "out": {
+    "shares": [
+     "33.34",
+     "33.33",
+     "33.33"
+    ]
+   }
+  },
+  {
+   "args": [
+    "10",
+    [
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "10 in 1:1:1",
+   "out": {
+    "shares": [
+     "3.34",
+     "3.33",
+     "3.33"
+    ]
+   }
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1",
+     "2"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "100 in 1:2, the extra cent goes to the LARGEST remainder",
+   "out": {
+    "shares": [
+     "33.33",
+     "66.67"
+    ]
+   }
+  },
+  {
+   "args": [
+    "0.01",
+    [
+     "1",
+     "1"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "one cent between two",
+   "out": {
+    "shares": [
+     "0.01",
+     "0.00"
+    ]
+   }
+  },
+  {
+   "args": [
+    "1000",
+    [
+     "0",
+     "1"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "a zero part",
+   "out": {
+    "shares": [
+     "0.00",
+     "1000.00"
+    ]
+   }
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1",
+     "2",
+     "2"
+    ]
+   ],
+   "fn": "ratio_split",
+   "name": "exact shares",
+   "out": {
+    "shares": [
+     "20.00",
+     "40.00",
+     "40.00"
+    ]
+   }
+  },
+  {
+   "args": [
+    "100.005",
+    [
+     "1",
+     "1"
+    ]
+   ],
+   "error": "too_many_decimals",
+   "fn": "ratio_split",
+   "name": "more than cents"
+  },
+  {
+   "args": [
+    "100",
+    [
+     "0",
+     "0"
+    ]
+   ],
+   "error": "all_zero",
+   "fn": "ratio_split",
+   "name": "all parts zero"
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1",
+     "-1"
+    ]
+   ],
+   "error": "invalid_number",
+   "fn": "ratio_split",
+   "name": "a negative part"
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1.5",
+     "2"
+    ]
+   ],
+   "error": "invalid_number",
+   "fn": "ratio_split",
+   "name": "a decimal part"
+  },
+  {
+   "args": [
+    "100",
+    [
+     "1"
+    ]
+   ],
+   "error": "need_two_parts",
+   "fn": "ratio_split",
+   "name": "one part"
+  },
+  {
+   "args": [
+    "-5",
+    [
+     "1",
+     "1"
+    ]
+   ],
+   "error": "negative_not_allowed",
+   "fn": "ratio_split",
+   "name": "a negative amount"
+  },
+  {
+   "args": [
+    "3",
+    "4",
+    "9"
+   ],
+   "fn": "proportion",
+   "name": "3:4 = 9:x",
+   "out": {
+    "x": "12"
+   }
+  },
+  {
+   "args": [
+    "7",
+    "2",
+    "3"
+   ],
+   "fn": "proportion",
+   "name": "7:2 = 3:x",
+   "out": {
+    "x": "0.8571428571"
+   }
+  },
+  {
+   "args": [
+    "2",
+    "-3",
+    "4"
+   ],
+   "fn": "proportion",
+   "name": "a negative term",
+   "out": {
+    "x": "-6"
+   }
+  },
+  {
+   "args": [
+    "3",
+    "4",
+    "0"
+   ],
+   "fn": "proportion",
+   "name": "c is zero",
+   "out": {
+    "x": "0"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "4",
+    "9"
+   ],
+   "error": "division_by_zero",
+   "fn": "proportion",
+   "name": "a is zero"
+  },
+  {
+   "args": [
+    "800",
+    "1000"
+   ],
+   "fn": "profit_loss",
+   "name": "profit 800 to 1000",
+   "out": {
+    "amount": "200.00",
+    "kind": "profit",
+    "percent_on_cost": "25.00",
+    "percent_on_selling": "20.00"
+   },
+   "steps": [
+    "Profit or loss = selling price − cost price",
+    "= 1000 − 800 = 200.00",
+    "Percent on cost = |difference| ÷ cost × 100 = 25.00",
+    "Margin on selling price = |difference| ÷ selling price × 100 = 20.00"
+   ]
+  },
+  {
+   "args": [
+    "1000",
+    "800"
+   ],
+   "fn": "profit_loss",
+   "name": "loss 1000 to 800",
+   "out": {
+    "amount": "200.00",
+    "kind": "loss",
+    "percent_on_cost": "20.00",
+    "percent_on_selling": "25.00"
+   },
+   "steps": [
+    "Profit or loss = selling price − cost price",
+    "= 800 − 1000 = -200.00",
+    "Percent on cost = |difference| ÷ cost × 100 = 20.00",
+    "Margin on selling price = |difference| ÷ selling price × 100 = 25.00"
+   ]
+  },
+  {
+   "args": [
+    "500",
+    "500"
+   ],
+   "fn": "profit_loss",
+   "name": "break even",
+   "out": {
+    "amount": "0.00",
+    "kind": "even",
+    "percent_on_cost": "0.00",
+    "percent_on_selling": "0.00"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "0"
+   ],
+   "fn": "profit_loss",
+   "name": "given away: margin on a zero price is undefined",
+   "out": {
+    "amount": "1000.00",
+    "kind": "loss",
+    "percent_on_cost": "100.00",
+    "percent_on_selling": "n/a"
+   }
+  },
+  {
+   "args": [
+    "3",
+    "4"
+   ],
+   "fn": "profit_loss",
+   "name": "3 to 4",
+   "out": {
+    "amount": "1.00",
+    "kind": "profit",
+    "percent_on_cost": "33.33",
+    "percent_on_selling": "25.00"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "5"
+   ],
+   "error": "must_be_positive",
+   "fn": "profit_loss",
+   "name": "zero cost"
+  },
+  {
+   "args": [
+    "-5",
+    "3"
+   ],
+   "error": "must_be_positive",
+   "fn": "profit_loss",
+   "name": "negative cost"
+  },
+  {
+   "args": [
+    "5",
+    "-3"
+   ],
+   "error": "negative_not_allowed",
+   "fn": "profit_loss",
+   "name": "negative selling price"
+  },
+  {
+   "args": [
+    "800",
+    "25"
+   ],
+   "fn": "selling_from_markup",
+   "name": "800 with 25% markup",
+   "out": {
+    "selling": "1000.00"
+   }
+  },
+  {
+   "args": [
+    "99.99",
+    "10"
+   ],
+   "fn": "selling_from_markup",
+   "name": "99.99 with 10%",
+   "out": {
+    "selling": "109.99"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "0"
+   ],
+   "fn": "selling_from_markup",
+   "name": "0% markup",
+   "out": {
+    "selling": "100.00"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "10"
+   ],
+   "error": "must_be_positive",
+   "fn": "selling_from_markup",
+   "name": "zero cost"
+  },
+  {
+   "args": [
+    "800",
+    "20"
+   ],
+   "fn": "selling_from_margin",
+   "name": "800 with 20% margin on the selling price",
+   "out": {
+    "selling": "1000.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "99"
+   ],
+   "fn": "selling_from_margin",
+   "name": "99% margin",
+   "out": {
+    "selling": "10000.00"
+   }
+  },
+  {
+   "args": [
+    "3",
+    "10"
+   ],
+   "fn": "selling_from_margin",
+   "name": "3 with 10% margin",
+   "out": {
+    "selling": "3.33"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "0"
+   ],
+   "fn": "selling_from_margin",
+   "name": "0% margin",
+   "out": {
+    "selling": "100.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "100"
+   ],
+   "error": "margin_must_be_below_100",
+   "fn": "selling_from_margin",
+   "name": "100% margin is impossible"
+  },
+  {
+   "args": [
+    "10000",
+    "8",
+    "3"
+   ],
+   "fn": "simple_interest",
+   "name": "10000 at 8% for 3 years",
+   "out": {
+    "amount": "12400.00",
+    "interest": "2400.00"
+   },
+   "steps": [
+    "I = P × r × t ÷ 100",
+    "I = 10000 × 8 × 3 ÷ 100",
+    "I = 2400.00",
+    "A = P + I = 10000 + 2400.00 = 12400.00"
+   ]
+  },
+  {
+   "args": [
+    "5000",
+    "7.5",
+    "2.5"
+   ],
+   "fn": "simple_interest",
+   "name": "fractions of a year",
+   "out": {
+    "amount": "5937.50",
+    "interest": "937.50"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "0",
+    "5"
+   ],
+   "fn": "simple_interest",
+   "name": "0% interest",
+   "out": {
+    "amount": "100.00",
+    "interest": "0.00"
+   }
+  },
+  {
+   "args": [
+    "1234.56",
+    "3.5",
+    "1"
+   ],
+   "fn": "simple_interest",
+   "name": "cents",
+   "out": {
+    "amount": "1277.77",
+    "interest": "43.21"
+   }
+  },
+  {
+   "args": [
+    "-1",
+    "5",
+    "1"
+   ],
+   "error": "negative_not_allowed",
+   "fn": "simple_interest",
+   "name": "negative principal"
+  },
+  {
+   "args": [
+    "10000",
+    "8",
+    "1",
+    "3"
+   ],
+   "fn": "compound_interest",
+   "name": "yearly for 3 years",
+   "out": {
+    "amount": "12597.12",
+    "interest": "2597.12"
+   }
+  },
+  {
+   "args": [
+    "10000",
+    "8",
+    "4",
+    "2"
+   ],
+   "fn": "compound_interest",
+   "name": "quarterly for 2 years",
+   "out": {
+    "amount": "11716.59",
+    "interest": "1716.59"
+   },
+   "steps": [
+    "A = P × (1 + r ÷ (100 × n)) ^ (n × t)",
+    "A = 10000 × (1 + 8 ÷ (100 × 4)) ^ (4 × 2)",
+    "A = 11716.59",
+    "I = A − P = 11716.59 − 10000 = 1716.59"
+   ]
+  },
+  {
+   "args": [
+    "5000",
+    "12",
+    "12",
+    "1"
+   ],
+   "fn": "compound_interest",
+   "name": "monthly for a year (5634.12515... rounds up)",
+   "out": {
+    "amount": "5634.13",
+    "interest": "634.13"
+   }
+  },
+  {
+   "args": [
+    "2000",
+    "7.5",
+    "2",
+    "4"
+   ],
+   "fn": "compound_interest",
+   "name": "half-yearly for 4 years",
+   "out": {
+    "amount": "2684.94",
+    "interest": "684.94"
+   }
+  },
+  {
+   "args": [
+    "1500",
+    "3",
+    "12",
+    "2"
+   ],
+   "fn": "compound_interest",
+   "name": "monthly for 2 years",
+   "out": {
+    "amount": "1592.64",
+    "interest": "92.64"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "10",
+    "2",
+    "0.5"
+   ],
+   "fn": "compound_interest",
+   "name": "half a year, twice a year",
+   "out": {
+    "amount": "1050.00",
+    "interest": "50.00"
+   }
+  },
+  {
+   "args": [
+    "250.50",
+    "5",
+    "4",
+    "1"
+   ],
+   "fn": "compound_interest",
+   "name": "cents in the principal",
+   "out": {
+    "amount": "263.26",
+    "interest": "12.76"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "0",
+    "12",
+    "5"
+   ],
+   "fn": "compound_interest",
+   "name": "0% interest",
+   "out": {
+    "amount": "1000.00",
+    "interest": "0.00"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "5",
+    "12",
+    "0.4"
+   ],
+   "error": "periods_not_integer",
+   "fn": "compound_interest",
+   "name": "periods are not whole"
+  },
+  {
+   "args": [
+    "1000",
+    "5",
+    "12",
+    "101"
+   ],
+   "error": "too_many_periods",
+   "fn": "compound_interest",
+   "name": "too many periods"
+  },
+  {
+   "args": [
+    "1000",
+    "5",
+    "366",
+    "1"
+   ],
+   "error": "invalid_frequency",
+   "fn": "compound_interest",
+   "name": "more than 365 periods a year"
+  },
+  {
+   "args": [
+    "1000",
+    "5",
+    "0",
+    "1"
+   ],
+   "error": "must_be_positive",
+   "fn": "compound_interest",
+   "name": "zero periods a year"
+  },
+  {
+   "args": [
+    "1000",
+    "5",
+    "1.5",
+    "1"
+   ],
+   "error": "invalid_number",
+   "fn": "compound_interest",
+   "name": "a decimal frequency"
+  },
+  {
+   "args": [
+    "50000",
+    "250",
+    "150"
+   ],
+   "fn": "break_even",
+   "name": "exact",
+   "out": {
+    "contribution_margin": "100.00",
+    "revenue": "125000.00",
+    "units": "500",
+    "units_rounded_up": "500"
+   }
+  },
+  {
+   "args": [
+    "50001",
+    "250",
+    "150"
+   ],
+   "fn": "break_even",
+   "name": "a fraction of a unit rounds UP to whole units",
+   "out": {
+    "contribution_margin": "100.00",
+    "revenue": "125002.50",
+    "units": "500.01",
+    "units_rounded_up": "501"
+   },
+   "steps": [
+    "Contribution margin = price − variable cost",
+    "= 250 − 150 = 100.00",
+    "Break-even units = fixed costs ÷ contribution margin",
+    "= 50001 ÷ 100.00 = 500.01",
+    "Whole units needed = 501",
+    "Break-even revenue = 50001 ÷ 100.00 × 250 = 125002.50"
+   ]
+  },
+  {
+   "args": [
+    "0",
+    "10",
+    "4"
+   ],
+   "fn": "break_even",
+   "name": "no fixed costs",
+   "out": {
+    "contribution_margin": "6.00",
+    "revenue": "0.00",
+    "units": "0",
+    "units_rounded_up": "0"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "3",
+    "1"
+   ],
+   "fn": "break_even",
+   "name": "1000 fixed",
+   "out": {
+    "contribution_margin": "2.00",
+    "revenue": "1500.00",
+    "units": "500",
+    "units_rounded_up": "500"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "7",
+    "4"
+   ],
+   "fn": "break_even",
+   "name": "a repeating decimal",
+   "out": {
+    "contribution_margin": "3.00",
+    "revenue": "233.33",
+    "units": "33.3333333333",
+    "units_rounded_up": "34"
+   }
+  },
+  {
+   "args": [
+    "1000",
+    "100",
+    "100"
+   ],
+   "error": "no_break_even",
+   "fn": "break_even",
+   "name": "price equals variable cost"
+  },
+  {
+   "args": [
+    "1000",
+    "90",
+    "100"
+   ],
+   "error": "no_break_even",
+   "fn": "break_even",
+   "name": "price below variable cost"
+  },
+  {
+   "args": [
+    "500000",
+    "200000",
+    null
+   ],
+   "fn": "accounting_equation",
+   "name": "missing equity",
+   "out": {
+    "missing": "equity",
+    "value": "300000.00"
+   }
+  },
+  {
+   "args": [
+    null,
+    "200000",
+    "300000"
+   ],
+   "fn": "accounting_equation",
+   "name": "missing assets",
+   "out": {
+    "missing": "assets",
+    "value": "500000.00"
+   }
+  },
+  {
+   "args": [
+    "500000",
+    null,
+    "300000"
+   ],
+   "fn": "accounting_equation",
+   "name": "missing liabilities",
+   "out": {
+    "missing": "liabilities",
+    "value": "200000.00"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "150",
+    null
+   ],
+   "fn": "accounting_equation",
+   "name": "negative equity is allowed",
+   "out": {
+    "missing": "equity",
+    "value": "-50.00"
+   }
+  },
+  {
+   "args": [
+    null,
+    "100",
+    "-30"
+   ],
+   "fn": "accounting_equation",
+   "name": "assets with negative equity",
+   "out": {
+    "missing": "assets",
+    "value": "70.00"
+   }
+  },
+  {
+   "args": [
+    null,
+    "10",
+    "-30"
+   ],
+   "error": "negative_result",
+   "fn": "accounting_equation",
+   "name": "assets cannot be negative"
+  },
+  {
+   "args": [
+    "100",
+    null,
+    "150"
+   ],
+   "error": "negative_result",
+   "fn": "accounting_equation",
+   "name": "liabilities cannot be negative"
+  },
+  {
+   "args": [
+    "1",
+    "1",
+    "0"
+   ],
+   "error": "need_exactly_one_missing",
+   "fn": "accounting_equation",
+   "name": "nothing missing"
+  },
+  {
+   "args": [
+    "1",
+    null,
+    null
+   ],
+   "error": "need_exactly_one_missing",
+   "fn": "accounting_equation",
+   "name": "two missing"
+  },
+  {
+   "args": [
+    [
+     "2",
+     "4",
+     "4",
+     "4",
+     "5",
+     "5",
+     "7",
+     "9"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "the classic data set (scale 2)",
+   "out": {
+    "count": "8",
+    "max": "9.00",
+    "mean": "5.00",
+    "median": "4.50",
+    "min": "2.00",
+    "modes": [
+     "4"
+    ],
+    "pop_stdev": "2.00",
+    "pop_variance": "4.00",
+    "range": "7.00",
+    "sample_stdev": "2.14",
+    "sample_variance": "4.57",
+    "sum": "40.00"
+   }
+  },
+  {
+   "args": [
+    [
+     "2",
+     "4",
+     "4",
+     "4",
+     "5",
+     "5",
+     "7",
+     "9"
+    ],
+    4
+   ],
+   "fn": "statistics",
+   "name": "the classic data set (scale 4)",
+   "out": {
+    "max": "9.0000",
+    "mean": "5.0000",
+    "median": "4.5000",
+    "min": "2.0000",
+    "pop_stdev": "2.0000",
+    "pop_variance": "4.0000",
+    "range": "7.0000",
+    "sample_stdev": "2.1381",
+    "sample_variance": "4.5714",
+    "sum": "40.0000"
+   }
+  },
+  {
+   "args": [
+    [
+     "10",
+     "12",
+     "23",
+     "23",
+     "16",
+     "23",
+     "21",
+     "16"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "a second data set",
+   "out": {
+    "count": "8",
+    "max": "23.00",
+    "mean": "18.00",
+    "median": "18.50",
+    "min": "10.00",
+    "modes": [
+     "23"
+    ],
+    "pop_stdev": "4.90",
+    "pop_variance": "24.00",
+    "range": "13.00",
+    "sample_stdev": "5.24",
+    "sample_variance": "27.43",
+    "sum": "144.00"
+   }
+  },
+  {
+   "args": [
+    [
+     "1",
+     "1",
+     "2",
+     "2",
+     "3"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "two modes",
+   "out": {
+    "mean": "1.80",
+    "median": "2.00",
+    "modes": [
+     "1",
+     "2"
+    ],
+    "pop_stdev": "0.75",
+    "pop_variance": "0.56",
+    "sample_stdev": "0.84",
+    "sample_variance": "0.70"
+   }
+  },
+  {
+   "args": [
+    [
+     "1",
+     "2",
+     "3"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "no mode",
+   "out": {
+    "mean": "2.00",
+    "modes": [],
+    "pop_stdev": "0.82",
+    "pop_variance": "0.67",
+    "sample_stdev": "1.00",
+    "sample_variance": "1.00"
+   }
+  },
+  {
+   "args": [
+    [
+     "3",
+     "1",
+     "2"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "order does not matter (odd count median)",
+   "out": {
+    "max": "3.00",
+    "median": "2.00",
+    "min": "1.00"
+   }
+  },
+  {
+   "args": [
+    [
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "even count median",
+   "out": {
+    "mean": "2.50",
+    "median": "2.50"
+   }
+  },
+  {
+   "args": [
+    [
+     "5"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "one value",
+   "out": {
+    "count": "1",
+    "max": "5.00",
+    "mean": "5.00",
+    "median": "5.00",
+    "min": "5.00",
+    "modes": [],
+    "pop_stdev": "0.00",
+    "pop_variance": "0.00",
+    "range": "0.00",
+    "sample_stdev": "n/a",
+    "sample_variance": "n/a"
+   }
+  },
+  {
+   "args": [
+    [
+     "0.1",
+     "0.2",
+     "0.3"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "decimals are exact",
+   "out": {
+    "mean": "0.20",
+    "median": "0.20",
+    "pop_stdev": "0.08",
+    "pop_variance": "0.01",
+    "sample_stdev": "0.10",
+    "sample_variance": "0.01",
+    "sum": "0.60"
+   }
+  },
+  {
+   "args": [
+    [
+     "-1",
+     "1"
+    ],
+    2
+   ],
+   "fn": "statistics",
+   "name": "negative values and no negative zero",
+   "out": {
+    "max": "1.00",
+    "mean": "0.00",
+    "median": "0.00",
+    "min": "-1.00",
+    "pop_stdev": "1.00",
+    "pop_variance": "1.00",
+    "range": "2.00",
+    "sample_stdev": "1.41",
+    "sample_variance": "2.00"
+   }
+  },
+  {
+   "args": [
+    [
+     "1",
+     "2"
+    ],
+    0
+   ],
+   "fn": "statistics",
+   "name": "scale 0 rounds halves up",
+   "out": {
+    "max": "2",
+    "mean": "2",
+    "median": "2",
+    "min": "1",
+    "pop_stdev": "1",
+    "pop_variance": "0",
+    "range": "1",
+    "sample_stdev": "1",
+    "sample_variance": "1",
+    "sum": "3"
+   }
+  },
+  {
+   "args": [
+    [],
+    2
+   ],
+   "error": "empty_data",
+   "fn": "statistics",
+   "name": "no data"
+  },
+  {
+   "args": [
+    [
+     "1"
+    ],
+    9
+   ],
+   "error": "invalid_scale",
+   "fn": "statistics",
+   "name": "scale above 8"
+  },
+  {
+   "args": [
+    [
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1"
+    ],
+    2
+   ],
+   "error": "too_many_values",
+   "fn": "statistics",
+   "name": "more than 1000 values"
+  },
+  {
+   "args": [
+    [
+     "a"
+    ],
+    2
+   ],
+   "error": "invalid_number",
+   "fn": "statistics",
+   "name": "not a number"
+  },
+  {
+   "args": [
+    "1",
+    "mi",
+    "km"
+   ],
+   "fn": "convert",
+   "name": "1 mile in km",
+   "out": {
+    "exact": "true",
+    "result": "1.609344"
+   }
+  },
+  {
+   "args": [
+    "10",
+    "in",
+    "cm"
+   ],
+   "fn": "convert",
+   "name": "10 inches in cm",
+   "out": {
+    "exact": "true",
+    "result": "25.4"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "cm",
+    "m"
+   ],
+   "fn": "convert",
+   "name": "100 cm in m",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "km",
+    "mi"
+   ],
+   "fn": "convert",
+   "name": "1 km in miles (never exact)",
+   "out": {
+    "exact": "false",
+    "result": "0.6213711922"
+   }
+  },
+  {
+   "args": [
+    "5",
+    "ft",
+    "in"
+   ],
+   "fn": "convert",
+   "name": "5 ft in inches",
+   "out": {
+    "exact": "true",
+    "result": "60"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "yd",
+    "ft"
+   ],
+   "fn": "convert",
+   "name": "1 yard in feet",
+   "out": {
+    "exact": "true",
+    "result": "3"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "in",
+    "km"
+   ],
+   "fn": "convert",
+   "name": "1 inch in km",
+   "out": {
+    "exact": "true",
+    "result": "0.0000254"
+   }
+  },
+  {
+   "args": [
+    "2.5",
+    "km",
+    "m"
+   ],
+   "fn": "convert",
+   "name": "2.5 km in m",
+   "out": {
+    "exact": "true",
+    "result": "2500"
+   }
+  },
+  {
+   "args": [
+    "-5",
+    "ft",
+    "in"
+   ],
+   "fn": "convert",
+   "name": "negative lengths are fine",
+   "out": {
+    "exact": "true",
+    "result": "-60"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "km",
+    "mi"
+   ],
+   "fn": "convert",
+   "name": "zero",
+   "out": {
+    "exact": "true",
+    "result": "0"
+   }
+  },
+  {
+   "args": [
+    "5",
+    "m",
+    "m"
+   ],
+   "fn": "convert",
+   "name": "same unit",
+   "out": {
+    "exact": "true",
+    "result": "5"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "lb",
+    "kg"
+   ],
+   "fn": "convert",
+   "name": "1 lb in kg",
+   "out": {
+    "exact": "true",
+    "result": "0.45359237"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "kg",
+    "lb"
+   ],
+   "fn": "convert",
+   "name": "1 kg in lb (never exact)",
+   "out": {
+    "exact": "false",
+    "result": "2.2046226218"
+   }
+  },
+  {
+   "args": [
+    "16",
+    "oz",
+    "lb"
+   ],
+   "fn": "convert",
+   "name": "16 oz is 1 lb",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "t",
+    "kg"
+   ],
+   "fn": "convert",
+   "name": "1 tonne in kg",
+   "out": {
+    "exact": "true",
+    "result": "1000"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "gal",
+    "l"
+   ],
+   "fn": "convert",
+   "name": "1 US gallon in litres",
+   "out": {
+    "exact": "true",
+    "result": "3.785411784"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "l",
+    "ml"
+   ],
+   "fn": "convert",
+   "name": "1 litre in ml",
+   "out": {
+    "exact": "true",
+    "result": "1000"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "cup",
+    "ml"
+   ],
+   "fn": "convert",
+   "name": "1 US cup in ml",
+   "out": {
+    "exact": "true",
+    "result": "236.5882365"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "m3",
+    "l"
+   ],
+   "fn": "convert",
+   "name": "1 m3 in litres",
+   "out": {
+    "exact": "true",
+    "result": "1000"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "acre",
+    "ha"
+   ],
+   "fn": "convert",
+   "name": "1 acre in hectares: the exact value has 11 decimals, the display rule keeps 10",
+   "out": {
+    "exact": "false",
+    "result": "0.4046856422"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "ha",
+    "m2"
+   ],
+   "fn": "convert",
+   "name": "1 hectare in m2",
+   "out": {
+    "exact": "true",
+    "result": "10000"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "km2",
+    "ha"
+   ],
+   "fn": "convert",
+   "name": "1 km2 in hectares",
+   "out": {
+    "exact": "true",
+    "result": "100"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "acre",
+    "ft2"
+   ],
+   "fn": "convert",
+   "name": "1 acre is 43,560 square feet",
+   "out": {
+    "exact": "true",
+    "result": "43560"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "day",
+    "h"
+   ],
+   "fn": "convert",
+   "name": "1 day in hours",
+   "out": {
+    "exact": "true",
+    "result": "24"
+   }
+  },
+  {
+   "args": [
+    "90",
+    "min",
+    "h"
+   ],
+   "fn": "convert",
+   "name": "90 minutes in hours",
+   "out": {
+    "exact": "true",
+    "result": "1.5"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "week",
+    "day"
+   ],
+   "fn": "convert",
+   "name": "1 week in days",
+   "out": {
+    "exact": "true",
+    "result": "7"
+   }
+  },
+  {
+   "args": [
+    "36",
+    "kmh",
+    "ms"
+   ],
+   "fn": "convert",
+   "name": "36 km/h in m/s",
+   "out": {
+    "exact": "true",
+    "result": "10"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "mph",
+    "kmh"
+   ],
+   "fn": "convert",
+   "name": "1 mph in km/h",
+   "out": {
+    "exact": "true",
+    "result": "1.609344"
+   }
+  },
+  {
+   "args": [
+    "1",
+    "kn",
+    "kmh"
+   ],
+   "fn": "convert",
+   "name": "1 knot in km/h",
+   "out": {
+    "exact": "true",
+    "result": "1.852"
+   }
+  },
+  {
+   "args": [
+    "60",
+    "mph",
+    "ms"
+   ],
+   "fn": "convert",
+   "name": "60 mph in m/s",
+   "out": {
+    "exact": "true",
+    "result": "26.8224"
+   }
+  },
+  {
+   "args": [
+    "100",
+    "c",
+    "f"
+   ],
+   "fn": "convert",
+   "name": "100 C in F",
+   "out": {
+    "exact": "true",
+    "result": "212"
+   }
+  },
+  {
+   "args": [
+    "32",
+    "f",
+    "c"
+   ],
+   "fn": "convert",
+   "name": "32 F in C",
+   "out": {
+    "exact": "true",
+    "result": "0"
+   }
+  },
+  {
+   "args": [
+    "98.6",
+    "f",
+    "c"
+   ],
+   "fn": "convert",
+   "name": "98.6 F in C",
+   "out": {
+    "exact": "true",
+    "result": "37"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "k",
+    "c"
+   ],
+   "fn": "convert",
+   "name": "0 K in C",
+   "out": {
+    "exact": "true",
+    "result": "-273.15"
+   }
+  },
+  {
+   "args": [
+    "0",
+    "c",
+    "k"
+   ],
+   "fn": "convert",
+   "name": "0 C in K",
+   "out": {
+    "exact": "true",
+    "result": "273.15"
+   }
+  },
+  {
+   "args": [
+    "-40",
+    "c",
+    "f"
+   ],
+   "fn": "convert",
+   "name": "-40 is the same in C and F",
+   "out": {
+    "exact": "true",
+    "result": "-40"
+   }
+  },
+  {
+   "args": [
+    "-459.67",
+    "f",
+    "k"
+   ],
+   "fn": "convert",
+   "name": "absolute zero in F gives 0 K",
+   "out": {
+    "exact": "true",
+    "result": "0"
+   }
+  },
+  {
+   "args": [
+    "-273.16",
+    "c",
+    "k"
+   ],
+   "error": "below_absolute_zero",
+   "fn": "convert",
+   "name": "below absolute zero (C)"
+  },
+  {
+   "args": [
+    "-0.01",
+    "k",
+    "c"
+   ],
+   "error": "below_absolute_zero",
+   "fn": "convert",
+   "name": "below absolute zero (K)"
+  },
+  {
+   "args": [
+    "1",
+    "kg",
+    "m"
+   ],
+   "error": "incompatible_units",
+   "fn": "convert",
+   "name": "mass to length"
+  },
+  {
+   "args": [
+    "1",
+    "c",
+    "m"
+   ],
+   "error": "incompatible_units",
+   "fn": "convert",
+   "name": "temperature to length"
+  },
+  {
+   "args": [
+    "1",
+    "furlong",
+    "m"
+   ],
+   "error": "unknown_unit",
+   "fn": "convert",
+   "name": "unknown unit"
+  },
+  {
+   "args": [
+    "1",
+    "m",
+    "furlong"
+   ],
+   "error": "unknown_unit",
+   "fn": "convert",
+   "name": "unknown target"
+  },
+  {
+   "args": [
+    "x",
+    "m",
+    "km"
+   ],
+   "error": "invalid_number",
+   "fn": "convert",
+   "name": "not a number"
+  },
+  {
+   "args": [
+    "0.1+0.2"
+   ],
+   "fn": "evaluate",
+   "name": "0.1 + 0.2 is exactly 0.3",
+   "out": {
+    "exact": "true",
+    "result": "0.3"
+   }
+  },
+  {
+   "args": [
+    "1/3"
+   ],
+   "fn": "evaluate",
+   "name": "one third",
+   "out": {
+    "exact": "false",
+    "result": "0.3333333333"
+   }
+  },
+  {
+   "args": [
+    "2/3"
+   ],
+   "fn": "evaluate",
+   "name": "two thirds",
+   "out": {
+    "exact": "false",
+    "result": "0.6666666667"
+   }
+  },
+  {
+   "args": [
+    "1/3*3"
+   ],
+   "fn": "evaluate",
+   "name": "1/3*3 is exactly 1",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    "0.1*3"
+   ],
+   "fn": "evaluate",
+   "name": "0.1*3 is exactly 0.3",
+   "out": {
+    "exact": "true",
+    "result": "0.3"
+   }
+  },
+  {
+   "args": [
+    "(2+3)*4"
+   ],
+   "fn": "evaluate",
+   "name": "brackets",
+   "out": {
+    "exact": "true",
+    "result": "20"
+   }
+  },
+  {
+   "args": [
+    "2^10"
+   ],
+   "fn": "evaluate",
+   "name": "power",
+   "out": {
+    "exact": "true",
+    "result": "1024"
+   }
+  },
+  {
+   "args": [
+    "-3^2"
+   ],
+   "fn": "evaluate",
+   "name": "unary minus binds weaker than a power",
+   "out": {
+    "exact": "true",
+    "result": "-9"
+   }
+  },
+  {
+   "args": [
+    "(-2)^2"
+   ],
+   "fn": "evaluate",
+   "name": "brackets around a negative",
+   "out": {
+    "exact": "true",
+    "result": "4"
+   }
+  },
+  {
+   "args": [
+    "-2^2"
+   ],
+   "fn": "evaluate",
+   "name": "-2^2",
+   "out": {
+    "exact": "true",
+    "result": "-4"
+   }
+  },
+  {
+   "args": [
+    "2^3^2"
+   ],
+   "fn": "evaluate",
+   "name": "powers associate to the right",
+   "out": {
+    "exact": "true",
+    "result": "512"
+   }
+  },
+  {
+   "args": [
+    "2^-1"
+   ],
+   "fn": "evaluate",
+   "name": "negative exponent",
+   "out": {
+    "exact": "true",
+    "result": "0.5"
+   }
+  },
+  {
+   "args": [
+    "2*-3"
+   ],
+   "fn": "evaluate",
+   "name": "a negative factor",
+   "out": {
+    "exact": "true",
+    "result": "-6"
+   }
+  },
+  {
+   "args": [
+    "--3"
+   ],
+   "fn": "evaluate",
+   "name": "double minus",
+   "out": {
+    "exact": "true",
+    "result": "3"
+   }
+  },
+  {
+   "args": [
+    " 7 - 2 - 1 "
+   ],
+   "fn": "evaluate",
+   "name": "left to right subtraction",
+   "out": {
+    "exact": "true",
+    "result": "4"
+   }
+  },
+  {
+   "args": [
+    "8/4/2"
+   ],
+   "fn": "evaluate",
+   "name": "left to right division",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    "1.5*4"
+   ],
+   "fn": "evaluate",
+   "name": "decimal times integer",
+   "out": {
+    "exact": "true",
+    "result": "6"
+   }
+  },
+  {
+   "args": [
+    "10/4"
+   ],
+   "fn": "evaluate",
+   "name": "exact division",
+   "out": {
+    "exact": "true",
+    "result": "2.5"
+   }
+  },
+  {
+   "args": [
+    "200*10%"
+   ],
+   "fn": "evaluate",
+   "name": "percent of a number",
+   "out": {
+    "exact": "true",
+    "result": "20"
+   }
+  },
+  {
+   "args": [
+    "50%"
+   ],
+   "fn": "evaluate",
+   "name": "a percent alone",
+   "out": {
+    "exact": "true",
+    "result": "0.5"
+   }
+  },
+  {
+   "args": [
+    "100+10%"
+   ],
+   "fn": "evaluate",
+   "name": "percent is only a divide by 100",
+   "out": {
+    "exact": "true",
+    "result": "100.1"
+   }
+  },
+  {
+   "args": [
+    "0.5%"
+   ],
+   "fn": "evaluate",
+   "name": "small percent",
+   "out": {
+    "exact": "true",
+    "result": "0.005"
+   }
+  },
+  {
+   "args": [
+    "5%%"
+   ],
+   "fn": "evaluate",
+   "name": "double percent",
+   "out": {
+    "exact": "true",
+    "result": "0.0005"
+   }
+  },
+  {
+   "args": [
+    "-50%"
+   ],
+   "fn": "evaluate",
+   "name": "negative percent",
+   "out": {
+    "exact": "true",
+    "result": "-0.5"
+   }
+  },
+  {
+   "args": [
+    "1000000*1000000"
+   ],
+   "fn": "evaluate",
+   "name": "large product",
+   "out": {
+    "exact": "true",
+    "result": "1000000000000"
+   }
+  },
+  {
+   "args": [
+    "0.0000000001"
+   ],
+   "fn": "evaluate",
+   "name": "ten decimals are kept",
+   "out": {
+    "exact": "true",
+    "result": "0.0000000001"
+   }
+  },
+  {
+   "args": [
+    "3.0"
+   ],
+   "fn": "evaluate",
+   "name": "trailing zero",
+   "out": {
+    "exact": "true",
+    "result": "3"
+   }
+  },
+  {
+   "args": [
+    "(((((1)))))"
+   ],
+   "fn": "evaluate",
+   "name": "nested brackets",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    "0^0"
+   ],
+   "fn": "evaluate",
+   "name": "zero to the zero is 1",
+   "out": {
+    "exact": "true",
+    "result": "1"
+   }
+  },
+  {
+   "args": [
+    " 7 "
+   ],
+   "fn": "evaluate",
+   "name": "surrounding spaces",
+   "out": {
+    "exact": "true",
+    "result": "7"
+   }
+  },
+  {
+   "args": [
+    "\t1 +\n2\r"
+   ],
+   "fn": "evaluate",
+   "name": "tabs and newlines count as spaces",
+   "out": {
+    "exact": "true",
+    "result": "3"
+   }
+  },
+  {
+   "args": [
+    "5/0"
+   ],
+   "error": "division_by_zero",
+   "fn": "evaluate",
+   "name": "error: '5/0'"
+  },
+  {
+   "args": [
+    "0^-1"
+   ],
+   "error": "division_by_zero",
+   "fn": "evaluate",
+   "name": "error: '0^-1'"
+  },
+  {
+   "args": [
+    "2^0.5"
+   ],
+   "error": "non_integer_power",
+   "fn": "evaluate",
+   "name": "error: '2^0.5'"
+  },
+  {
+   "args": [
+    "1+"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1+'"
+  },
+  {
+   "args": [
+    "(1"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '(1'"
+  },
+  {
+   "args": [
+    "1)"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1)'"
+  },
+  {
+   "args": [
+    ""
+   ],
+   "error": "empty",
+   "fn": "evaluate",
+   "name": "error: ''"
+  },
+  {
+   "args": [
+    "   "
+   ],
+   "error": "empty",
+   "fn": "evaluate",
+   "name": "error: '   '"
+  },
+  {
+   "args": [
+    "1 2"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1 2'"
+  },
+  {
+   "args": [
+    "1e3"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1e3'"
+  },
+  {
+   "args": [
+    "abc"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: 'abc'"
+  },
+  {
+   "args": [
+    "()"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '()'"
+  },
+  {
+   "args": [
+    "*2"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '*2'"
+  },
+  {
+   "args": [
+    "2**3"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '2**3'"
+  },
+  {
+   "args": [
+    "1,5"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1,5'"
+  },
+  {
+   "args": [
+    "٣+٣"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '٣+٣'"
+  },
+  {
+   "args": [
+    "1 +2"
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '1\\xa0+2'"
+  },
+  {
+   "args": [
+    " "
+   ],
+   "error": "syntax_error",
+   "fn": "evaluate",
+   "name": "error: '\\xa0'"
+  },
+  {
+   "args": [
+    "2^1001"
+   ],
+   "error": "too_large",
+   "fn": "evaluate",
+   "name": "error: '2^1001'"
+  },
+  {
+   "args": [
+    "999999999999999^200"
+   ],
+   "error": "too_large",
+   "fn": "evaluate",
+   "name": "error: '999999999999999^200'"
+  },
+  {
+   "args": [
+    "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+   ],
+   "error": "too_long",
+   "fn": "evaluate",
+   "name": "error: '111111111111111111111111111111'"
+  },
+  {
+   "args": [
+    "0.00000000001"
+   ],
+   "error": "invalid_number",
+   "fn": "evaluate",
+   "name": "error: '0.00000000001'"
+  },
+  {
+   "args": [
+    "99999999999999999999"
+   ],
+   "error": "invalid_number",
+   "fn": "evaluate",
+   "name": "error: '99999999999999999999'"
+  }
+ ],
+ "rounding": "half away from zero, once, at the end"
+}

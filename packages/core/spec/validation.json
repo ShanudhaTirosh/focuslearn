@@ -1,0 +1,117 @@
+{
+  "_comment": "Client-side validation rules. They mirror the database constraints (checked by packages/core/tools/test_validation_contract.py) and may be STRICTER than the database, never looser. The database is the authority.",
+  "displayName": {
+    "min": 1,
+    "max": 40,
+    "trim": "ascii-space-only",
+    "forbidControl": "Cc (C0, DEL, C1)",
+    "clientAlsoRejectsWhitespaceOnly": true
+  },
+  "birthYear": {
+    "dbMin": 1950,
+    "dbMax": 2100,
+    "clientMinAge": 13,
+    "clientMaxAge": 80,
+    "possibleMinorIfYearDifferenceLessThan": 19
+  },
+  "streams": [
+    "technology",
+    "commerce",
+    "science",
+    "mathematics",
+    "arts",
+    "other"
+  ],
+  "subjects": {
+    "maxCount": 12,
+    "maxJoinedLength": 720,
+    "clientMaxEachLength": 60
+  },
+  "deviceName": {
+    "min": 1,
+    "max": 60
+  },
+  "appVersionMax": 32,
+  "platforms": [
+    "android",
+    "windows"
+  ],
+  "languages": [
+    "en",
+    "si",
+    "ta"
+  ],
+  "themes": [
+    "light",
+    "dark",
+    "system"
+  ],
+  "consentKinds": [
+    "terms",
+    "privacy",
+    "usage_monitor",
+    "calendar_sync",
+    "managed_device"
+  ],
+  "avatarKeyPattern": "^objects/[0-9a-f-]{36}/[0-9a-f-]{36}$",
+  "email": {
+    "maxLength": 254,
+    "pattern": "^[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+$"
+  },
+  "password": {
+    "minLength": 10,
+    "maxBytes": 72,
+    "note": "Length counts Unicode characters; the maximum counts UTF-8 BYTES because bcrypt-based auth truncates or rejects beyond 72 bytes (verify against the Auth server). No composition rules (NIST 800-63B). The blocklist is a tiny client-side convenience, not a substitute for a server-side leaked-password check.",
+    "blocklist": [
+      "password",
+      "password1",
+      "password12",
+      "password123",
+      "1234567890",
+      "12345678910",
+      "0123456789",
+      "qwertyuiop",
+      "1q2w3e4r5t",
+      "iloveyou12",
+      "srilanka123",
+      "colombo123",
+      "welcome123",
+      "abc1234567",
+      "letmein123",
+      "admin12345",
+      "focuslearn",
+      "focuslearn1",
+      "focuslearn123"
+    ],
+    "rejectIfContainsEmailLocalPartOfAtLeast": 4
+  },
+  "timeZone": {
+    "pattern": "^[A-Za-z_]+(/[A-Za-z0-9_+-]+)*$",
+    "note": "Format only on the client. The database checks the name against pg_timezone_names."
+  },
+  "clientKey": {
+    "secretPrefixes": [
+      "sb_secret_"
+    ],
+    "forbiddenJwtRoles": [
+      "service_role"
+    ],
+    "note": "The app must never ship a secret or service-role key. A publishable key or a legacy anon JWT is fine."
+  },
+  "authErrors": {
+    "invalid_credentials": "invalid_credentials",
+    "email_not_confirmed": "email_not_confirmed",
+    "over_request_rate_limit": "rate_limited",
+    "over_email_send_rate_limit": "rate_limited",
+    "captcha_failed": "captcha_failed",
+    "weak_password": "weak_password",
+    "user_already_exists": "email_taken",
+    "email_exists": "email_taken",
+    "same_password": "same_password",
+    "_status429": "rate_limited",
+    "_status5xx": "server",
+    "_network": "network",
+    "_default": "unknown",
+    "note": "Codes are GoTrue error codes as I remember them (verify against the Auth server). The UI must never reveal whether an account exists."
+  }
+}

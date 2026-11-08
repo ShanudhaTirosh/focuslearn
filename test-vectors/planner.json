@@ -1,0 +1,1642 @@
+{
+ "conflicts": [
+  {
+   "expect": [
+    [
+     0,
+     1
+    ]
+   ],
+   "in": [
+    [
+     600,
+     720
+    ],
+    [
+     700,
+     800
+    ],
+    [
+     800,
+     900
+    ],
+    [
+     900,
+     1000
+    ]
+   ],
+   "name": "overlap, then two that only touch"
+  },
+  {
+   "expect": [
+    [
+     0,
+     1
+    ]
+   ],
+   "in": [
+    [
+     0,
+     100
+    ],
+    [
+     10,
+     20
+    ]
+   ],
+   "name": "one inside another"
+  },
+  {
+   "expect": [
+    [
+     0,
+     1
+    ]
+   ],
+   "in": [
+    [
+     5,
+     10
+    ],
+    [
+     5,
+     10
+    ]
+   ],
+   "name": "identical"
+  },
+  {
+   "expect": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "in": [
+    [
+     0,
+     60
+    ],
+    [
+     30,
+     90
+    ],
+    [
+     45,
+     120
+    ]
+   ],
+   "name": "three at once"
+  },
+  {
+   "expect": [],
+   "in": [],
+   "name": "none"
+  },
+  {
+   "error": "invalid_interval",
+   "in": [
+    [
+     10,
+     10
+    ]
+   ],
+   "name": "an interval that ends before it starts is invalid"
+  }
+ ],
+ "durationHint": [
+  {
+   "expect": "short",
+   "minutes": 149
+  },
+  {
+   "expect": "within",
+   "minutes": 150
+  },
+  {
+   "expect": "within",
+   "minutes": 240
+  },
+  {
+   "expect": "long",
+   "minutes": 241
+  },
+  {
+   "expect": "short",
+   "minutes": 45
+  }
+ ],
+ "expand": [
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-10T16:30:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "the Tuesday 7:30 PM class recurs every week",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 60,
+   "expect": [
+    {
+     "e": "2026-10-20T15:00:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T15:00:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T15:00:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-10T15:00:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "a one-hour duration",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-17T16:30:00Z",
+     "s": "2026-11-17T14:00:00Z"
+    },
+    {
+     "e": "2026-12-01T16:30:00Z",
+     "s": "2026-12-01T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "every second week",
+   "override": [],
+   "rule": "FREQ=WEEKLY;INTERVAL=2;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-12-02T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-22T16:30:00Z",
+     "s": "2026-10-22T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-10-29T16:30:00Z",
+     "s": "2026-10-29T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "Tuesday and Thursday",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU,TH",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-10-30T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-21T04:00:00Z",
+     "s": "2026-10-21T01:30:00Z"
+    },
+    {
+     "e": "2026-10-26T04:00:00Z",
+     "s": "2026-10-26T01:30:00Z"
+    },
+    {
+     "e": "2026-10-28T04:00:00Z",
+     "s": "2026-10-28T01:30:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "the first week is partial: Monday before the start is not generated",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=MO,WE",
+   "skip": [],
+   "start": "2026-10-21T07:00",
+   "to": "2026-10-30T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "COUNT=3 stops after three",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU;COUNT=3",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2030-01-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "UNTIL excludes an occurrence after the instant",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20261103T000000Z",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2030-01-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "UNTIL includes an occurrence exactly at the instant",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20261103T140000Z",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2030-01-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-12-30T05:00:00Z",
+     "s": "2026-12-30T02:30:00Z"
+    },
+    {
+     "e": "2027-01-02T05:00:00Z",
+     "s": "2027-01-02T02:30:00Z"
+    },
+    {
+     "e": "2027-01-05T05:00:00Z",
+     "s": "2027-01-05T02:30:00Z"
+    },
+    {
+     "e": "2027-01-08T05:00:00Z",
+     "s": "2027-01-08T02:30:00Z"
+    }
+   ],
+   "from": "2026-12-29T00:00:00Z",
+   "name": "every third day across the new year",
+   "override": [],
+   "rule": "FREQ=DAILY;INTERVAL=3",
+   "skip": [],
+   "start": "2026-12-30T08:00",
+   "to": "2027-01-09T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-01-31T17:00:00Z",
+     "s": "2026-01-31T14:30:00Z"
+    },
+    {
+     "e": "2026-02-28T17:00:00Z",
+     "s": "2026-02-28T14:30:00Z"
+    },
+    {
+     "e": "2026-03-31T17:00:00Z",
+     "s": "2026-03-31T14:30:00Z"
+    },
+    {
+     "e": "2026-04-30T17:00:00Z",
+     "s": "2026-04-30T14:30:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "last day of the month (28 days in February 2026)",
+   "override": [],
+   "rule": "FREQ=MONTHLY;BYMONTHDAY=-1",
+   "skip": [],
+   "start": "2026-01-31T20:00",
+   "to": "2026-05-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2028-01-31T17:00:00Z",
+     "s": "2028-01-31T14:30:00Z"
+    },
+    {
+     "e": "2028-02-29T17:00:00Z",
+     "s": "2028-02-29T14:30:00Z"
+    },
+    {
+     "e": "2028-03-31T17:00:00Z",
+     "s": "2028-03-31T14:30:00Z"
+    }
+   ],
+   "from": "2028-01-01T00:00:00Z",
+   "name": "last day of the month in a leap year",
+   "override": [],
+   "rule": "FREQ=MONTHLY;BYMONTHDAY=-1",
+   "skip": [],
+   "start": "2028-01-31T20:00",
+   "to": "2028-04-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-01-31T17:00:00Z",
+     "s": "2026-01-31T14:30:00Z"
+    },
+    {
+     "e": "2026-03-31T17:00:00Z",
+     "s": "2026-03-31T14:30:00Z"
+    },
+    {
+     "e": "2026-05-31T17:00:00Z",
+     "s": "2026-05-31T14:30:00Z"
+    },
+    {
+     "e": "2026-07-31T17:00:00Z",
+     "s": "2026-07-31T14:30:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "the 31st skips months that have no 31st",
+   "override": [],
+   "rule": "FREQ=MONTHLY;BYMONTHDAY=31",
+   "skip": [],
+   "start": "2026-01-31T20:00",
+   "to": "2026-08-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-01-30T17:00:00Z",
+     "s": "2026-01-30T14:30:00Z"
+    },
+    {
+     "e": "2026-03-30T17:00:00Z",
+     "s": "2026-03-30T14:30:00Z"
+    },
+    {
+     "e": "2026-04-30T17:00:00Z",
+     "s": "2026-04-30T14:30:00Z"
+    },
+    {
+     "e": "2026-05-30T17:00:00Z",
+     "s": "2026-05-30T14:30:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "the 30th skips February",
+   "override": [],
+   "rule": "FREQ=MONTHLY;BYMONTHDAY=30",
+   "skip": [],
+   "start": "2026-01-30T20:00",
+   "to": "2026-06-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-01-31T17:00:00Z",
+     "s": "2026-01-31T14:30:00Z"
+    },
+    {
+     "e": "2026-03-31T17:00:00Z",
+     "s": "2026-03-31T14:30:00Z"
+    },
+    {
+     "e": "2026-05-31T17:00:00Z",
+     "s": "2026-05-31T14:30:00Z"
+    },
+    {
+     "e": "2026-07-31T17:00:00Z",
+     "s": "2026-07-31T14:30:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "monthly without BYMONTHDAY uses the day of the start",
+   "override": [],
+   "rule": "FREQ=MONTHLY",
+   "skip": [],
+   "start": "2026-01-31T20:00",
+   "to": "2026-08-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-03-01T17:00:00Z",
+     "s": "2026-03-01T14:30:00Z"
+    },
+    {
+     "e": "2026-03-15T17:00:00Z",
+     "s": "2026-03-15T14:30:00Z"
+    },
+    {
+     "e": "2026-04-01T17:00:00Z",
+     "s": "2026-04-01T14:30:00Z"
+    },
+    {
+     "e": "2026-04-15T17:00:00Z",
+     "s": "2026-04-15T14:30:00Z"
+    }
+   ],
+   "from": "2026-03-01T00:00:00Z",
+   "name": "two days a month",
+   "override": [],
+   "rule": "FREQ=MONTHLY;BYMONTHDAY=1,15",
+   "skip": [],
+   "start": "2026-03-01T20:00",
+   "to": "2026-04-20T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-01-10T17:00:00Z",
+     "s": "2026-01-10T14:30:00Z"
+    },
+    {
+     "e": "2026-03-10T17:00:00Z",
+     "s": "2026-03-10T14:30:00Z"
+    },
+    {
+     "e": "2026-05-10T17:00:00Z",
+     "s": "2026-05-10T14:30:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "every second month",
+   "override": [],
+   "rule": "FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=10",
+   "skip": [],
+   "start": "2026-01-10T20:00",
+   "to": "2026-06-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-19T00:00:00Z",
+     "s": "2026-10-18T21:30:00Z"
+    },
+    {
+     "e": "2026-10-26T00:00:00Z",
+     "s": "2026-10-25T21:30:00Z"
+    },
+    {
+     "e": "2026-11-02T00:00:00Z",
+     "s": "2026-11-01T21:30:00Z"
+    }
+   ],
+   "from": "2026-10-18T00:00:00Z",
+   "name": "local Monday 03:00 is Sunday 21:30 UTC",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=MO",
+   "skip": [],
+   "start": "2026-10-19T03:00",
+   "to": "2026-11-03T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-10T16:30:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "a skipped occurrence is removed",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [
+    "2026-10-27T14:00:00Z"
+   ],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-04T20:30:00Z",
+     "o": true,
+     "s": "2026-11-04T18:00:00Z"
+    },
+    {
+     "e": "2026-11-10T16:30:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "an overridden occurrence moves",
+   "override": [
+    {
+     "end": "2026-11-04T20:30:00Z",
+     "original": "2026-11-03T14:00:00Z",
+     "start": "2026-11-04T18:00:00Z"
+    }
+   ],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-10T16:30:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "an occurrence overridden to a time outside the window disappears",
+   "override": [
+    {
+     "end": "2026-12-01T12:30:00Z",
+     "original": "2026-10-27T14:00:00Z",
+     "start": "2026-12-01T10:00:00Z"
+    }
+   ],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-10-27T16:30:00Z",
+     "s": "2026-10-27T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    },
+    {
+     "e": "2026-11-10T16:30:00Z",
+     "s": "2026-11-10T14:00:00Z"
+    },
+    {
+     "e": "2026-11-12T12:30:00Z",
+     "o": true,
+     "s": "2026-11-12T10:00:00Z"
+    }
+   ],
+   "from": "2026-10-19T00:00:00Z",
+   "name": "an occurrence from outside the window overridden INTO it appears",
+   "override": [
+    {
+     "end": "2026-11-12T12:30:00Z",
+     "original": "2026-11-17T14:00:00Z",
+     "start": "2026-11-12T10:00:00Z"
+    }
+   ],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-10-20T19:30",
+   "to": "2026-11-17T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 150,
+   "expect": [
+    {
+     "e": "2026-10-20T16:30:00Z",
+     "s": "2026-10-20T14:00:00Z"
+    },
+    {
+     "e": "2026-11-03T16:30:00Z",
+     "s": "2026-11-03T14:00:00Z"
+    }
+   ],
+   "from": "2026-01-01T00:00:00Z",
+   "name": "COUNT counts skipped occurrences too",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU;COUNT=3",
+   "skip": [
+    "2026-10-27T14:00:00Z"
+   ],
+   "start": "2026-10-20T19:30",
+   "to": "2030-01-01T00:00:00Z",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "durationMin": 60,
+   "expect": [
+    {
+     "e": "2026-03-22T02:30:00Z",
+     "s": "2026-03-22T01:30:00Z"
+    },
+    {
+     "e": "2026-03-29T02:30:00Z",
+     "s": "2026-03-29T01:30:00Z"
+    },
+    {
+     "e": "2026-04-05T01:30:00Z",
+     "s": "2026-04-05T00:30:00Z"
+    }
+   ],
+   "from": "2026-03-22T00:00:00Z",
+   "name": "London: a time that does not exist (spring forward) moves forward",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=SU",
+   "skip": [],
+   "start": "2026-03-22T01:30",
+   "to": "2026-04-06T00:00:00Z",
+   "zone": "Europe/London"
+  },
+  {
+   "durationMin": 60,
+   "expect": [
+    {
+     "e": "2026-10-11T01:30:00Z",
+     "s": "2026-10-11T00:30:00Z"
+    },
+    {
+     "e": "2026-10-18T01:30:00Z",
+     "s": "2026-10-18T00:30:00Z"
+    },
+    {
+     "e": "2026-10-25T01:30:00Z",
+     "s": "2026-10-25T00:30:00Z"
+    },
+    {
+     "e": "2026-11-01T02:30:00Z",
+     "s": "2026-11-01T01:30:00Z"
+    }
+   ],
+   "from": "2026-10-11T00:00:00Z",
+   "name": "London: a time that happens twice (fall back) means the first one",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=SU",
+   "skip": [],
+   "start": "2026-10-11T01:30",
+   "to": "2026-11-02T00:00:00Z",
+   "zone": "Europe/London"
+  },
+  {
+   "durationMin": 60,
+   "expect": [
+    {
+     "e": "2026-03-24T20:30:00Z",
+     "s": "2026-03-24T19:30:00Z"
+    },
+    {
+     "e": "2026-03-31T19:30:00Z",
+     "s": "2026-03-31T18:30:00Z"
+    },
+    {
+     "e": "2026-04-07T19:30:00Z",
+     "s": "2026-04-07T18:30:00Z"
+    }
+   ],
+   "from": "2026-03-24T00:00:00Z",
+   "name": "London: the local class time stays 19:30 while UTC shifts",
+   "override": [],
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "skip": [],
+   "start": "2026-03-24T19:30",
+   "to": "2026-04-08T00:00:00Z",
+   "zone": "Europe/London"
+  }
+ ],
+ "freeSlots": [
+  {
+   "buffer": 0,
+   "busy": [
+    [
+     1170,
+     1320
+    ]
+   ],
+   "expect": [
+    [
+     360,
+     600
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "evening class leaves the whole day",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 15,
+   "busy": [
+    [
+     1170,
+     1320
+    ]
+   ],
+   "expect": [
+    [
+     360,
+     600
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "a buffer around the class changes nothing for the first block",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 0,
+   "busy": [
+    [
+     480,
+     540
+    ],
+    [
+     720,
+     780
+    ]
+   ],
+   "expect": [
+    [
+     540,
+     720
+    ],
+    [
+     780,
+     1020
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "gaps that are too short are ignored, long gaps are trimmed to the maximum",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 30,
+   "busy": [
+    [
+     480,
+     540
+    ],
+    [
+     720,
+     780
+    ]
+   ],
+   "expect": [
+    [
+     810,
+     1050
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "buffers can swallow a gap",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 0,
+   "busy": [
+    [
+     480,
+     600
+    ],
+    [
+     570,
+     700
+    ]
+   ],
+   "expect": [
+    [
+     700,
+     940
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "overlapping busy periods merge",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 0,
+   "busy": [
+    [
+     0,
+     300
+    ]
+   ],
+   "expect": [
+    [
+     360,
+     600
+    ]
+   ],
+   "max": 240,
+   "min": 150,
+   "name": "busy time outside the window is ignored",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 0,
+   "busy": [
+    [
+     300,
+     1400
+    ]
+   ],
+   "expect": [],
+   "max": 240,
+   "min": 150,
+   "name": "a fully busy window",
+   "window": [
+    360,
+    1320
+   ]
+  },
+  {
+   "buffer": 0,
+   "busy": [],
+   "error": "invalid_range",
+   "max": 240,
+   "min": 300,
+   "name": "a minimum above the maximum is invalid",
+   "window": [
+    360,
+    1320
+   ]
+  }
+ ],
+ "limits": {
+  "categories": [
+   "study",
+   "revision",
+   "homework",
+   "break",
+   "online_class"
+  ],
+  "eventMaxHours": 24,
+  "locationMax": 120,
+  "meetingUrlMax": 500,
+  "notesMax": 2000,
+  "preferredBlockMinutes": [
+   150,
+   240
+  ],
+  "reminderCountMax": 5,
+  "reminderOffsetMax": 10080,
+  "titleMax": 80
+ },
+ "meetingUrl": [
+  {
+   "code": "ok",
+   "in": "https://zoom.us/j/123456789?pwd=abc",
+   "name": "Zoom",
+   "normalized": "https://zoom.us/j/123456789?pwd=abc",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "https://us02web.zoom.us/j/123",
+   "name": "Zoom subdomain",
+   "normalized": "https://us02web.zoom.us/j/123",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "https://meet.google.com/abc-defg-hij",
+   "name": "Google Meet",
+   "normalized": "https://meet.google.com/abc-defg-hij",
+   "provider": "meet"
+  },
+  {
+   "code": "ok",
+   "in": "https://teams.microsoft.com/l/meetup-join/xyz",
+   "name": "Teams",
+   "normalized": "https://teams.microsoft.com/l/meetup-join/xyz",
+   "provider": "teams"
+  },
+  {
+   "code": "ok",
+   "in": "https://teams.live.com/meet/123",
+   "name": "Teams (live)",
+   "normalized": "https://teams.live.com/meet/123",
+   "provider": "teams"
+  },
+  {
+   "code": "ok",
+   "in": "https://example.org/class",
+   "name": "an unknown host is allowed but flagged by its provider",
+   "normalized": "https://example.org/class",
+   "provider": "other"
+  },
+  {
+   "code": "ok",
+   "in": "HTTPS://ZOOM.US/j/1",
+   "name": "uppercase scheme and host are normalised",
+   "normalized": "https://zoom.us/j/1",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "  https://zoom.us/j/1 ",
+   "name": "surrounding spaces are trimmed",
+   "normalized": "https://zoom.us/j/1",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "https://zoom.us",
+   "name": "a host with no path",
+   "normalized": "https://zoom.us",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "https://zoom.us:8443/j/1",
+   "name": "a port",
+   "normalized": "https://zoom.us:8443/j/1",
+   "provider": "zoom"
+  },
+  {
+   "code": "ok",
+   "in": "https://zoom.us.evil.com/j/1",
+   "name": "a look-alike suffix is not Zoom",
+   "normalized": "https://zoom.us.evil.com/j/1",
+   "provider": "other"
+  },
+  {
+   "code": "ok",
+   "in": "https://evilzoom.us/j/1",
+   "name": "a look-alike prefix is not Zoom",
+   "normalized": "https://evilzoom.us/j/1",
+   "provider": "other"
+  },
+  {
+   "code": "not_https",
+   "in": "http://zoom.us/j/1",
+   "name": "plain http"
+  },
+  {
+   "code": "not_https",
+   "in": "ftp://zoom.us/x",
+   "name": "ftp"
+  },
+  {
+   "code": "not_https",
+   "in": "javascript:alert(1)",
+   "name": "javascript"
+  },
+  {
+   "code": "not_https",
+   "in": "zoom.us/j/1",
+   "name": "no scheme at all"
+  },
+  {
+   "code": "credentials",
+   "in": "https://user:pass@zoom.us/j/1",
+   "name": "credentials in the link"
+  },
+  {
+   "code": "ip_host",
+   "in": "https://192.168.1.5/x",
+   "name": "an IPv4 address"
+  },
+  {
+   "code": "ip_host",
+   "in": "https://[::1]/x",
+   "name": "an IPv6 address"
+  },
+  {
+   "code": "invalid_host",
+   "in": "https://zооm.us/j/1",
+   "name": "a Cyrillic look-alike host"
+  },
+  {
+   "code": "invalid_host",
+   "in": "https://localhost/x",
+   "name": "a host with no dot"
+  },
+  {
+   "code": "invalid_url",
+   "in": "https://zoom.us?x=1",
+   "name": "a query straight after the host"
+  },
+  {
+   "code": "invalid_url",
+   "in": "https://zoom.us/a b",
+   "name": "a space inside"
+  },
+  {
+   "code": "invalid_url",
+   "in": "https://zoom.us:99999/j/1",
+   "name": "a port out of range",
+   "sqlMayAccept": true
+  },
+  {
+   "code": "blank",
+   "in": "",
+   "name": "empty"
+  },
+  {
+   "code": "blank",
+   "in": "   ",
+   "name": "only spaces"
+  },
+  {
+   "code": "too_long",
+   "in": "https://zoom.us/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "name": "501 characters"
+  },
+  {
+   "code": "ok",
+   "in": "https://zoom.us/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "name": "500 characters",
+   "normalized": "https://zoom.us/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "provider": "zoom"
+  }
+ ],
+ "reminders": [
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:00:00Z",
+     "shifted": false
+    },
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:50:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "two offsets, sorted by fire time",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    10,
+    60
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:50:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "reminders already in the past are dropped",
+   "now": "2026-10-20T13:30:00Z",
+   "offsets": [
+    10,
+    60
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [],
+   "name": "a reminder exactly at 'now' is dropped",
+   "now": "2026-10-20T13:50:00Z",
+   "offsets": [
+    10
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:50:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "duplicate offsets give one reminder",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    10,
+    10
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-21T01:30:00Z",
+     "fire": "2026-10-21T00:30:00Z",
+     "shifted": true
+    }
+   ],
+   "name": "quiet hours 22:00-06:00: a reminder at 05:30 local moves to 06:00 when that is still before the event",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    90
+   ],
+   "quiet": [
+    1320,
+    360
+   ],
+   "starts": [
+    "2026-10-21T01:30:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-21T01:30:00Z",
+     "fire": "2026-10-21T00:30:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "a reminder exactly when quiet hours end is not delayed",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    60
+   ],
+   "quiet": [
+    1320,
+    360
+   ],
+   "starts": [
+    "2026-10-21T01:30:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [],
+   "name": "a reminder that would move to the event start or later is dropped",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    30
+   ],
+   "quiet": [
+    1320,
+    360
+   ],
+   "starts": [
+    "2026-10-21T00:30:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T10:00:00Z",
+     "fire": "2026-10-20T09:30:00Z",
+     "shifted": true
+    }
+   ],
+   "name": "quiet hours that do not wrap midnight",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    60
+   ],
+   "quiet": [
+    780,
+    900
+   ],
+   "starts": [
+    "2026-10-20T10:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [],
+   "name": "an evening reminder inside quiet hours moves to the next morning only if the event is later",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    30
+   ],
+   "quiet": [
+    1320,
+    360
+   ],
+   "starts": [
+    "2026-10-20T17:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:50:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "start equal to end means no quiet hours",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    10
+   ],
+   "quiet": [
+    0,
+    0
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  },
+  {
+   "expect": [
+    {
+     "event": "2026-10-20T08:00:00Z",
+     "fire": "2026-10-20T07:45:00Z",
+     "shifted": false
+    },
+    {
+     "event": "2026-10-20T14:00:00Z",
+     "fire": "2026-10-20T13:45:00Z",
+     "shifted": false
+    }
+   ],
+   "name": "several events",
+   "now": "2026-10-20T00:00:00Z",
+   "offsets": [
+    15
+   ],
+   "starts": [
+    "2026-10-20T14:00:00Z",
+    "2026-10-20T08:00:00Z"
+   ],
+   "zone": "Asia/Colombo"
+  }
+ ],
+ "rrule": {
+  "invalid": [
+   {
+    "code": "empty",
+    "in": ""
+   },
+   {
+    "code": "unsupported_freq",
+    "in": "FREQ=YEARLY"
+   },
+   {
+    "code": "missing_freq",
+    "in": "INTERVAL=2"
+   },
+   {
+    "code": "invalid_byday",
+    "in": "FREQ=WEEKLY;BYDAY=1TU"
+   },
+   {
+    "code": "invalid_byday",
+    "in": "FREQ=WEEKLY;BYDAY=TU,TU",
+    "sqlMayAccept": true
+   },
+   {
+    "code": "invalid_byday",
+    "in": "FREQ=WEEKLY;BYDAY=XX"
+   },
+   {
+    "code": "byday_needs_weekly",
+    "in": "FREQ=DAILY;BYDAY=MO"
+   },
+   {
+    "code": "bymonthday_needs_monthly",
+    "in": "FREQ=WEEKLY;BYMONTHDAY=1"
+   },
+   {
+    "code": "invalid_bymonthday",
+    "in": "FREQ=MONTHLY;BYMONTHDAY=32"
+   },
+   {
+    "code": "invalid_bymonthday",
+    "in": "FREQ=MONTHLY;BYMONTHDAY=-2"
+   },
+   {
+    "code": "invalid_bymonthday",
+    "in": "FREQ=MONTHLY;BYMONTHDAY=0"
+   },
+   {
+    "code": "invalid_bymonthday",
+    "in": "FREQ=MONTHLY;BYMONTHDAY=5,5",
+    "sqlMayAccept": true
+   },
+   {
+    "code": "invalid_interval",
+    "in": "FREQ=WEEKLY;INTERVAL=0"
+   },
+   {
+    "code": "invalid_interval",
+    "in": "FREQ=WEEKLY;INTERVAL=1000"
+   },
+   {
+    "code": "invalid_count",
+    "in": "FREQ=DAILY;COUNT=0"
+   },
+   {
+    "code": "invalid_count",
+    "in": "FREQ=DAILY;COUNT=1001"
+   },
+   {
+    "code": "invalid_count",
+    "in": "FREQ=DAILY;COUNT=1.5"
+   },
+   {
+    "code": "count_and_until",
+    "in": "FREQ=DAILY;COUNT=3;UNTIL=20261231T000000Z"
+   },
+   {
+    "code": "invalid_until",
+    "in": "FREQ=DAILY;UNTIL=2026-12-31"
+   },
+   {
+    "code": "invalid_until",
+    "in": "FREQ=DAILY;UNTIL=20261331T000000Z"
+   },
+   {
+    "code": "unsupported_key",
+    "in": "freq=daily"
+   },
+   {
+    "code": "unsupported_key",
+    "in": "FREQ=DAILY;WKST=MO"
+   },
+   {
+    "code": "duplicate_key",
+    "in": "FREQ=DAILY;FREQ=DAILY"
+   },
+   {
+    "code": "invalid_syntax",
+    "in": "FREQ=DAILY;"
+   },
+   {
+    "code": "invalid_syntax",
+    "in": "FREQ"
+   },
+   {
+    "code": "invalid_syntax",
+    "in": "FREQ=DAILY "
+   },
+   {
+    "code": "too_long",
+    "in": "FREQ=DAILY;COUNT=9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+   }
+  ],
+  "valid": [
+   {
+    "canonical": "FREQ=WEEKLY;BYDAY=TU",
+    "in": "FREQ=WEEKLY;BYDAY=TU"
+   },
+   {
+    "canonical": "FREQ=WEEKLY;BYDAY=TU",
+    "in": "BYDAY=TU;FREQ=WEEKLY"
+   },
+   {
+    "canonical": "FREQ=WEEKLY;BYDAY=TU",
+    "in": "FREQ=WEEKLY;INTERVAL=1;BYDAY=TU"
+   },
+   {
+    "canonical": "FREQ=WEEKLY;BYDAY=MO,TU,TH",
+    "in": "FREQ=WEEKLY;BYDAY=TH,MO,TU"
+   },
+   {
+    "canonical": "FREQ=MONTHLY;BYMONTHDAY=1,15,-1",
+    "in": "FREQ=MONTHLY;BYMONTHDAY=-1,15,1"
+   },
+   {
+    "canonical": "FREQ=DAILY;COUNT=5",
+    "in": "FREQ=DAILY;COUNT=5"
+   },
+   {
+    "canonical": "FREQ=DAILY;UNTIL=20261231T235959Z",
+    "in": "FREQ=DAILY;UNTIL=20261231T235959Z"
+   },
+   {
+    "canonical": "FREQ=MONTHLY;INTERVAL=12;BYMONTHDAY=31;COUNT=1000",
+    "in": "COUNT=1000;BYMONTHDAY=31;INTERVAL=12;FREQ=MONTHLY"
+   },
+   {
+    "canonical": "FREQ=DAILY;INTERVAL=999",
+    "in": "FREQ=DAILY;INTERVAL=999"
+   }
+  ]
+ },
+ "split": [
+  {
+   "at": "2026-11-10T14:00:00Z",
+   "first": "FREQ=WEEKLY;BYDAY=TU;COUNT=3",
+   "name": "COUNT is divided between the two series",
+   "rule": "FREQ=WEEKLY;BYDAY=TU;COUNT=10",
+   "second": "FREQ=WEEKLY;BYDAY=TU;COUNT=7",
+   "secondStartUtc": "2026-11-10T14:00:00Z",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-11-10T14:00:00Z",
+   "first": "FREQ=WEEKLY;BYDAY=TU;COUNT=3",
+   "name": "the last occurrence of a COUNT series",
+   "rule": "FREQ=WEEKLY;BYDAY=TU;COUNT=4",
+   "second": "FREQ=WEEKLY;BYDAY=TU;COUNT=1",
+   "secondStartUtc": "2026-11-10T14:00:00Z",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-11-10T14:00:00Z",
+   "first": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20261110T135959Z",
+   "name": "an UNTIL series ends one second before the split",
+   "rule": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20270101T000000Z",
+   "second": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20270101T000000Z",
+   "secondStartUtc": "2026-11-10T14:00:00Z",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-11-10T14:00:00Z",
+   "first": "FREQ=WEEKLY;BYDAY=TU;UNTIL=20261110T135959Z",
+   "name": "an open-ended series",
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "second": "FREQ=WEEKLY;BYDAY=TU",
+   "secondStartUtc": "2026-11-10T14:00:00Z",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-10-20T14:00:00Z",
+   "error": "split_at_first",
+   "name": "splitting at the first occurrence is refused (edit the whole series instead)",
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-11-10T15:00:00Z",
+   "error": "not_an_occurrence",
+   "name": "a time that is not an occurrence",
+   "rule": "FREQ=WEEKLY;BYDAY=TU",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  },
+  {
+   "at": "2026-11-10T14:00:00Z",
+   "error": "not_an_occurrence",
+   "name": "an occurrence beyond COUNT does not exist",
+   "rule": "FREQ=WEEKLY;BYDAY=TU;COUNT=3",
+   "start": "2026-10-20T19:30",
+   "zone": "Asia/Colombo"
+  }
+ ]
+}

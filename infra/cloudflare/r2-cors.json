@@ -1,0 +1,12 @@
+[
+  {
+    "AllowedOrigins": [
+      "https://eduapp-admin.shanutechx.com",
+      "https://eduapp-app.shanutechx.com"
+    ],
+    "AllowedMethods": ["GET", "PUT", "HEAD"],
+    "AllowedHeaders": ["content-type", "content-length"],
+    "ExposeHeaders": ["ETag", "Content-Length", "Content-Range"],
+    "MaxAgeSeconds": 3600
+  }
+]

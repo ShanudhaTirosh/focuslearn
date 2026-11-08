@@ -1,0 +1,16 @@
+# Rendered by infra/docker/setup.sh into infra/docker/stack/cloudflared/config.yml (public mode only).
+# Placeholders: @TUNNEL_UUID@ @API_HOST@ @STUDIO_HOST@ @GATEWAY@
+tunnel: @TUNNEL_UUID@
+credentials-file: /etc/cloudflared/@TUNNEL_UUID@.json
+
+ingress:
+  # API hostname: ALLOWLIST of API paths only. Studio must never be reachable here (ADR-001).
+  # Go regexp syntax, matched against the request path. Anchored on purpose.
+  - hostname: @API_HOST@
+    path: '^/(auth/v1|rest/v1|realtime/v1|functions/v1)(/|$)'
+    service: http://@GATEWAY@:8000
+  # Studio hostname: full gateway, protected by Cloudflare Access (see infra/cloudflare/access-policies.md).
+  - hostname: @STUDIO_HOST@
+    service: http://@GATEWAY@:8000
+  # Everything else, including non-allowlisted paths on the API hostname: 404.
+  - service: http_status:404

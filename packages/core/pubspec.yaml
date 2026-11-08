@@ -1,0 +1,13 @@
+name: focuslearn_core
+description: Shared pure-Dart rules and models for FocusLearn (no Flutter dependency).
+publish_to: none
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"   # verify against the Flutter stable you install
+
+dependencies:
+  timezone: ^0.9.4         # IANA time-zone rules (pure Dart); verify the current version
+
+dev_dependencies:
+  lints: ^4.0.0            # verify current versions with `dart pub outdated`
+  test: ^1.25.0
