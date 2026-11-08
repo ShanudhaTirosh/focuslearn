@@ -17,6 +17,7 @@ dependencies:
   go_router: ^14.0.0
   supabase_flutter: ^2.5.0
   shared_preferences: ^2.2.0
+  url_launcher: ^6.3.0
   focuslearn_core:
     path: ../../packages/core
   focuslearn_design_system:

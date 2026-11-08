@@ -5,6 +5,8 @@ import '../features/auth/auth_repository.dart';
 import '../features/devices/device_repository.dart';
 import '../features/profile/profile.dart';
 import '../features/profile/profile_repository.dart';
+import '../platform/platform_channel.dart';
+import '../platform/turnstile_captcha.dart';
 
 /// Version sent with the device record. Set with --dart-define=APP_VERSION=1.2.3 (verify in the release pipeline).
 const String appVersion = String.fromEnvironment('APP_VERSION', defaultValue: '0.1.0');
@@ -17,8 +19,10 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) => ProfileRe
 
 final deviceRepositoryProvider = Provider<DeviceRepository>((ref) => DeviceRepository(ref.watch(supabaseClientProvider)));
 
-/// Replace with a Turnstile WebView implementation once that spike is done (see docs/LIMITATIONS.md).
-final captchaProvider = Provider<CaptchaProvider>((ref) => const NoCaptcha());
+final nativePlatformServiceProvider = Provider<NativePlatformService>((ref) => const NativePlatformService());
+
+/// Cloudflare Turnstile token provider with graceful fallback.
+final captchaProvider = Provider<CaptchaProvider>((ref) => const TurnstileCaptchaProvider());
 
 /// The current session, updated whenever the user signs in or out.
 final sessionProvider = StreamProvider<Session?>((ref) async* {

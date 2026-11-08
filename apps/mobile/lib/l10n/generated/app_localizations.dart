@@ -705,6 +705,612 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Done.'**
   String get doneMessage;
+
+  /// No description provided for @navPlanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Planner'**
+  String get navPlanner;
+
+  /// No description provided for @navFocus.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus'**
+  String get navFocus;
+
+  /// No description provided for @navCalculators.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculators'**
+  String get navCalculators;
+
+  /// No description provided for @navNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get navNotes;
+
+  /// No description provided for @navSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get navSettings;
+
+  /// No description provided for @calculatorsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Calculators'**
+  String get calculatorsTitle;
+
+  /// No description provided for @calcStandard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard & Fractions'**
+  String get calcStandard;
+
+  /// No description provided for @calcStandardDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Arithmetic with exact rationals, powers, and step-by-step working'**
+  String get calcStandardDesc;
+
+  /// No description provided for @calcPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage'**
+  String get calcPercentage;
+
+  /// No description provided for @calcPercentageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Percent of, what percent, percent change, increase and decrease'**
+  String get calcPercentageDesc;
+
+  /// No description provided for @calcCommercial.
+  ///
+  /// In en, this message translates to:
+  /// **'Commercial & Business'**
+  String get calcCommercial;
+
+  /// No description provided for @calcCommercialDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit and loss, margin, markup, interest, and break-even'**
+  String get calcCommercialDesc;
+
+  /// No description provided for @calcStatistics.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get calcStatistics;
+
+  /// No description provided for @calcStatisticsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Mean, median, mode, variance, and standard deviation'**
+  String get calcStatisticsDesc;
+
+  /// No description provided for @calcConverter.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit Converter'**
+  String get calcConverter;
+
+  /// No description provided for @calcConverterDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Length, mass, volume, area, time, speed, and temperature'**
+  String get calcConverterDesc;
+
+  /// No description provided for @calcFormulas.
+  ///
+  /// In en, this message translates to:
+  /// **'Formula Reference'**
+  String get calcFormulas;
+
+  /// No description provided for @calcFormulasDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Key formulas for G.C.E. Advanced Level syllabus streams'**
+  String get calcFormulasDesc;
+
+  /// No description provided for @calcCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate'**
+  String get calcCalculate;
+
+  /// No description provided for @calcClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get calcClear;
+
+  /// No description provided for @calcResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get calcResult;
+
+  /// No description provided for @calcSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculation Steps'**
+  String get calcSteps;
+
+  /// No description provided for @calcHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Calculations'**
+  String get calcHistory;
+
+  /// No description provided for @calcExpressionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. (1/3 + 2/5) * 15 or 100 + 10%'**
+  String get calcExpressionHint;
+
+  /// No description provided for @calcInputA.
+  ///
+  /// In en, this message translates to:
+  /// **'Value A'**
+  String get calcInputA;
+
+  /// No description provided for @calcInputB.
+  ///
+  /// In en, this message translates to:
+  /// **'Value B'**
+  String get calcInputB;
+
+  /// No description provided for @calcInputPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage (%)'**
+  String get calcInputPercent;
+
+  /// No description provided for @calcInputBase.
+  ///
+  /// In en, this message translates to:
+  /// **'Base Value'**
+  String get calcInputBase;
+
+  /// No description provided for @calcInputPart.
+  ///
+  /// In en, this message translates to:
+  /// **'Part'**
+  String get calcInputPart;
+
+  /// No description provided for @calcInputWhole.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole'**
+  String get calcInputWhole;
+
+  /// No description provided for @calcInputCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost Price'**
+  String get calcInputCost;
+
+  /// No description provided for @calcInputSellingPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Selling Price'**
+  String get calcInputSellingPrice;
+
+  /// No description provided for @calcInputMarkup.
+  ///
+  /// In en, this message translates to:
+  /// **'Markup %'**
+  String get calcInputMarkup;
+
+  /// No description provided for @calcInputMargin.
+  ///
+  /// In en, this message translates to:
+  /// **'Margin %'**
+  String get calcInputMargin;
+
+  /// No description provided for @calcInputPrincipal.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal'**
+  String get calcInputPrincipal;
+
+  /// No description provided for @calcInputRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Annual Rate (%)'**
+  String get calcInputRate;
+
+  /// No description provided for @calcInputPeriods.
+  ///
+  /// In en, this message translates to:
+  /// **'Periods (e.g. Years)'**
+  String get calcInputPeriods;
+
+  /// No description provided for @calcInputFixedCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed Costs'**
+  String get calcInputFixedCost;
+
+  /// No description provided for @calcInputUnitPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per Unit'**
+  String get calcInputUnitPrice;
+
+  /// No description provided for @calcInputVariableCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Variable Cost per Unit'**
+  String get calcInputVariableCost;
+
+  /// No description provided for @calcDataListHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter numbers separated by spaces or commas'**
+  String get calcDataListHint;
+
+  /// No description provided for @focusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus Timer'**
+  String get focusTitle;
+
+  /// No description provided for @focusForest.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Forest'**
+  String get focusForest;
+
+  /// No description provided for @focusAchievements.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievements'**
+  String get focusAchievements;
+
+  /// No description provided for @focusDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Session Duration'**
+  String get focusDuration;
+
+  /// No description provided for @focusMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} min'**
+  String focusMinutes(String count);
+
+  /// No description provided for @focusStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Focus'**
+  String get focusStart;
+
+  /// No description provided for @focusPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get focusPause;
+
+  /// No description provided for @focusResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get focusResume;
+
+  /// No description provided for @focusEndEarly.
+  ///
+  /// In en, this message translates to:
+  /// **'End Session'**
+  String get focusEndEarly;
+
+  /// No description provided for @focusEmergencyExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency Exit'**
+  String get focusEmergencyExit;
+
+  /// No description provided for @focusEmergencyExitConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop focus session now? Time completed so far will still count if at least 5 minutes.'**
+  String get focusEmergencyExitConfirm;
+
+  /// No description provided for @focusGentleRestDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Gentle Rest Day: 1 missed day per week is forgiven and keeps your streak alive!'**
+  String get focusGentleRestDay;
+
+  /// No description provided for @focusCurrentStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Streak'**
+  String get focusCurrentStreak;
+
+  /// No description provided for @focusDaysCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String focusDaysCount(String count);
+
+  /// No description provided for @focusLongestStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Streak: {count} days'**
+  String focusLongestStreak(String count);
+
+  /// No description provided for @focusTreeEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'Tree Earned: {tree}'**
+  String focusTreeEarned(String tree);
+
+  /// No description provided for @focusValidatedMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} min validated'**
+  String focusValidatedMinutes(String minutes);
+
+  /// No description provided for @focusTreeNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No tree (under 5 min)'**
+  String get focusTreeNone;
+
+  /// No description provided for @focusTreeSeedling.
+  ///
+  /// In en, this message translates to:
+  /// **'Seedling (5+ min)'**
+  String get focusTreeSeedling;
+
+  /// No description provided for @focusTreeSapling.
+  ///
+  /// In en, this message translates to:
+  /// **'Sapling (15+ min)'**
+  String get focusTreeSapling;
+
+  /// No description provided for @focusTreeTree.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Tree (25+ min)'**
+  String get focusTreeTree;
+
+  /// No description provided for @focusTreeGrove.
+  ///
+  /// In en, this message translates to:
+  /// **'Grove (50+ min)'**
+  String get focusTreeGrove;
+
+  /// No description provided for @focusSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Subject'**
+  String get focusSubject;
+
+  /// No description provided for @plannerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Planner & Timetable'**
+  String get plannerTitle;
+
+  /// No description provided for @plannerAddEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Event'**
+  String get plannerAddEvent;
+
+  /// No description provided for @plannerEditEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Event'**
+  String get plannerEditEvent;
+
+  /// No description provided for @plannerSubjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Subjects'**
+  String get plannerSubjects;
+
+  /// No description provided for @plannerAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get plannerAssignments;
+
+  /// No description provided for @plannerAgenda.
+  ///
+  /// In en, this message translates to:
+  /// **'Agenda'**
+  String get plannerAgenda;
+
+  /// No description provided for @plannerDayView.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get plannerDayView;
+
+  /// No description provided for @plannerWeekView.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get plannerWeekView;
+
+  /// No description provided for @plannerToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get plannerToday;
+
+  /// No description provided for @plannerConflictWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Time conflict detected with another event'**
+  String get plannerConflictWarning;
+
+  /// No description provided for @plannerJoinClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Class'**
+  String get plannerJoinClass;
+
+  /// No description provided for @plannerOpenLinkConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'External Class Link'**
+  String get plannerOpenLinkConfirm;
+
+  /// No description provided for @plannerOpenLinkWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This link opens an external host ({host}). Proceed?'**
+  String plannerOpenLinkWarning(String host);
+
+  /// No description provided for @plannerOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get plannerOpen;
+
+  /// No description provided for @plannerRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Recurrence'**
+  String get plannerRepeat;
+
+  /// No description provided for @plannerRepeatNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Does not repeat'**
+  String get plannerRepeatNone;
+
+  /// No description provided for @plannerRepeatDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get plannerRepeatDaily;
+
+  /// No description provided for @plannerRepeatWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get plannerRepeatWeekly;
+
+  /// No description provided for @plannerRepeatMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get plannerRepeatMonthly;
+
+  /// No description provided for @plannerSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get plannerSave;
+
+  /// No description provided for @plannerDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get plannerDelete;
+
+  /// No description provided for @plannerDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String plannerDue(String date);
+
+  /// No description provided for @plannerAssignmentCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get plannerAssignmentCompleted;
+
+  /// No description provided for @plannerAssignmentPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get plannerAssignmentPending;
+
+  /// No description provided for @notesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Notes'**
+  String get notesTitle;
+
+  /// No description provided for @notesNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Note'**
+  String get notesNew;
+
+  /// No description provided for @notesSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search notes'**
+  String get notesSearch;
+
+  /// No description provided for @notesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes yet. Tap + to write your first study note.'**
+  String get notesEmpty;
+
+  /// No description provided for @notesShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get notesShare;
+
+  /// No description provided for @notesDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Note'**
+  String get notesDelete;
+
+  /// No description provided for @socialTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Groups & Friends'**
+  String get socialTitle;
+
+  /// No description provided for @socialFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends'**
+  String get socialFriends;
+
+  /// No description provided for @socialGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups'**
+  String get socialGroups;
+
+  /// No description provided for @socialCreateGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Study Group'**
+  String get socialCreateGroup;
+
+  /// No description provided for @socialJoinGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Join Group with Code'**
+  String get socialJoinGroup;
+
+  /// No description provided for @socialSendMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send message'**
+  String get socialSendMessage;
+
+  /// No description provided for @socialChatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discussion'**
+  String get socialChatTitle;
 }
 
 class _AppLocalizationsDelegate

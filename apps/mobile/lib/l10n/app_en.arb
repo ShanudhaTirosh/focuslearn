@@ -135,5 +135,155 @@
   "configMissingKey": "The public key is missing from this build.",
   "configSecretKey": "This build contains a secret key. It must never ship in an app: rebuild with the publishable key.",
   "configInsecureUrl": "The server address must use https.",
-  "doneMessage": "Done."
+  "doneMessage": "Done.",
+  "navPlanner": "Planner",
+  "navFocus": "Focus",
+  "navCalculators": "Calculators",
+  "navNotes": "Notes",
+  "navSettings": "Settings",
+  "calculatorsTitle": "Study Calculators",
+  "calcStandard": "Standard & Fractions",
+  "calcStandardDesc": "Arithmetic with exact rationals, powers, and step-by-step working",
+  "calcPercentage": "Percentage",
+  "calcPercentageDesc": "Percent of, what percent, percent change, increase and decrease",
+  "calcCommercial": "Commercial & Business",
+  "calcCommercialDesc": "Profit and loss, margin, markup, interest, and break-even",
+  "calcStatistics": "Statistics",
+  "calcStatisticsDesc": "Mean, median, mode, variance, and standard deviation",
+  "calcConverter": "Unit Converter",
+  "calcConverterDesc": "Length, mass, volume, area, time, speed, and temperature",
+  "calcFormulas": "Formula Reference",
+  "calcFormulasDesc": "Key formulas for G.C.E. Advanced Level syllabus streams",
+  "calcCalculate": "Calculate",
+  "calcClear": "Clear",
+  "calcResult": "Result",
+  "calcSteps": "Calculation Steps",
+  "calcHistory": "Recent Calculations",
+  "calcExpressionHint": "e.g. (1/3 + 2/5) * 15 or 100 + 10%",
+  "calcInputA": "Value A",
+  "calcInputB": "Value B",
+  "calcInputPercent": "Percentage (%)",
+  "calcInputBase": "Base Value",
+  "calcInputPart": "Part",
+  "calcInputWhole": "Whole",
+  "calcInputCost": "Cost Price",
+  "calcInputSellingPrice": "Selling Price",
+  "calcInputMarkup": "Markup %",
+  "calcInputMargin": "Margin %",
+  "calcInputPrincipal": "Principal",
+  "calcInputRate": "Annual Rate (%)",
+  "calcInputPeriods": "Periods (e.g. Years)",
+  "calcInputFixedCost": "Fixed Costs",
+  "calcInputUnitPrice": "Price per Unit",
+  "calcInputVariableCost": "Variable Cost per Unit",
+  "calcDataListHint": "Enter numbers separated by spaces or commas",
+  "focusTitle": "Focus Timer",
+  "focusForest": "Study Forest",
+  "focusAchievements": "Achievements",
+  "focusDuration": "Session Duration",
+  "focusMinutes": "{count} min",
+  "@focusMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "focusStart": "Start Focus",
+  "focusPause": "Pause",
+  "focusResume": "Resume",
+  "focusEndEarly": "End Session",
+  "focusEmergencyExit": "Emergency Exit",
+  "focusEmergencyExitConfirm": "Stop focus session now? Time completed so far will still count if at least 5 minutes.",
+  "focusGentleRestDay": "Gentle Rest Day: 1 missed day per week is forgiven and keeps your streak alive!",
+  "focusCurrentStreak": "Current Streak",
+  "focusDaysCount": "{count} days",
+  "@focusDaysCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "focusLongestStreak": "Best Streak: {count} days",
+  "@focusLongestStreak": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "focusTreeEarned": "Tree Earned: {tree}",
+  "@focusTreeEarned": {
+    "placeholders": {
+      "tree": {
+        "type": "String"
+      }
+    }
+  },
+  "focusValidatedMinutes": "{minutes} min validated",
+  "@focusValidatedMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "focusTreeNone": "No tree (under 5 min)",
+  "focusTreeSeedling": "Seedling (5+ min)",
+  "focusTreeSapling": "Sapling (15+ min)",
+  "focusTreeTree": "Full Tree (25+ min)",
+  "focusTreeGrove": "Grove (50+ min)",
+  "focusSubject": "Study Subject",
+  "plannerTitle": "Planner & Timetable",
+  "plannerAddEvent": "Add Event",
+  "plannerEditEvent": "Edit Event",
+  "plannerSubjects": "Subjects",
+  "plannerAssignments": "Assignments",
+  "plannerAgenda": "Agenda",
+  "plannerDayView": "Day",
+  "plannerWeekView": "Week",
+  "plannerToday": "Today",
+  "plannerConflictWarning": "Time conflict detected with another event",
+  "plannerJoinClass": "Join Class",
+  "plannerOpenLinkConfirm": "External Class Link",
+  "plannerOpenLinkWarning": "This link opens an external host ({host}). Proceed?",
+  "@plannerOpenLinkWarning": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "plannerOpen": "Open",
+  "plannerRepeat": "Recurrence",
+  "plannerRepeatNone": "Does not repeat",
+  "plannerRepeatDaily": "Daily",
+  "plannerRepeatWeekly": "Weekly",
+  "plannerRepeatMonthly": "Monthly",
+  "plannerSave": "Save",
+  "plannerDelete": "Delete",
+  "plannerDue": "Due {date}",
+  "@plannerDue": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "plannerAssignmentCompleted": "Completed",
+  "plannerAssignmentPending": "Pending",
+  "notesTitle": "Study Notes",
+  "notesNew": "New Note",
+  "notesSearch": "Search notes",
+  "notesEmpty": "No notes yet. Tap + to write your first study note.",
+  "notesShare": "Share",
+  "notesDelete": "Delete Note",
+  "socialTitle": "Study Groups & Friends",
+  "socialFriends": "Friends",
+  "socialGroups": "Groups",
+  "socialCreateGroup": "Create Study Group",
+  "socialJoinGroup": "Join Group with Code",
+  "socialSendMessage": "Send message",
+  "socialChatTitle": "Discussion"
 }

@@ -339,4 +339,331 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get doneMessage => 'Done.';
+
+  @override
+  String get navPlanner => 'Planner';
+
+  @override
+  String get navFocus => 'Focus';
+
+  @override
+  String get navCalculators => 'Calculators';
+
+  @override
+  String get navNotes => 'Notes';
+
+  @override
+  String get navSettings => 'Settings';
+
+  @override
+  String get calculatorsTitle => 'Study Calculators';
+
+  @override
+  String get calcStandard => 'Standard & Fractions';
+
+  @override
+  String get calcStandardDesc =>
+      'Arithmetic with exact rationals, powers, and step-by-step working';
+
+  @override
+  String get calcPercentage => 'Percentage';
+
+  @override
+  String get calcPercentageDesc =>
+      'Percent of, what percent, percent change, increase and decrease';
+
+  @override
+  String get calcCommercial => 'Commercial & Business';
+
+  @override
+  String get calcCommercialDesc =>
+      'Profit and loss, margin, markup, interest, and break-even';
+
+  @override
+  String get calcStatistics => 'Statistics';
+
+  @override
+  String get calcStatisticsDesc =>
+      'Mean, median, mode, variance, and standard deviation';
+
+  @override
+  String get calcConverter => 'Unit Converter';
+
+  @override
+  String get calcConverterDesc =>
+      'Length, mass, volume, area, time, speed, and temperature';
+
+  @override
+  String get calcFormulas => 'Formula Reference';
+
+  @override
+  String get calcFormulasDesc =>
+      'Key formulas for G.C.E. Advanced Level syllabus streams';
+
+  @override
+  String get calcCalculate => 'Calculate';
+
+  @override
+  String get calcClear => 'Clear';
+
+  @override
+  String get calcResult => 'Result';
+
+  @override
+  String get calcSteps => 'Calculation Steps';
+
+  @override
+  String get calcHistory => 'Recent Calculations';
+
+  @override
+  String get calcExpressionHint => 'e.g. (1/3 + 2/5) * 15 or 100 + 10%';
+
+  @override
+  String get calcInputA => 'Value A';
+
+  @override
+  String get calcInputB => 'Value B';
+
+  @override
+  String get calcInputPercent => 'Percentage (%)';
+
+  @override
+  String get calcInputBase => 'Base Value';
+
+  @override
+  String get calcInputPart => 'Part';
+
+  @override
+  String get calcInputWhole => 'Whole';
+
+  @override
+  String get calcInputCost => 'Cost Price';
+
+  @override
+  String get calcInputSellingPrice => 'Selling Price';
+
+  @override
+  String get calcInputMarkup => 'Markup %';
+
+  @override
+  String get calcInputMargin => 'Margin %';
+
+  @override
+  String get calcInputPrincipal => 'Principal';
+
+  @override
+  String get calcInputRate => 'Annual Rate (%)';
+
+  @override
+  String get calcInputPeriods => 'Periods (e.g. Years)';
+
+  @override
+  String get calcInputFixedCost => 'Fixed Costs';
+
+  @override
+  String get calcInputUnitPrice => 'Price per Unit';
+
+  @override
+  String get calcInputVariableCost => 'Variable Cost per Unit';
+
+  @override
+  String get calcDataListHint => 'Enter numbers separated by spaces or commas';
+
+  @override
+  String get focusTitle => 'Focus Timer';
+
+  @override
+  String get focusForest => 'Study Forest';
+
+  @override
+  String get focusAchievements => 'Achievements';
+
+  @override
+  String get focusDuration => 'Session Duration';
+
+  @override
+  String focusMinutes(String count) {
+    return '$count min';
+  }
+
+  @override
+  String get focusStart => 'Start Focus';
+
+  @override
+  String get focusPause => 'Pause';
+
+  @override
+  String get focusResume => 'Resume';
+
+  @override
+  String get focusEndEarly => 'End Session';
+
+  @override
+  String get focusEmergencyExit => 'Emergency Exit';
+
+  @override
+  String get focusEmergencyExitConfirm =>
+      'Stop focus session now? Time completed so far will still count if at least 5 minutes.';
+
+  @override
+  String get focusGentleRestDay =>
+      'Gentle Rest Day: 1 missed day per week is forgiven and keeps your streak alive!';
+
+  @override
+  String get focusCurrentStreak => 'Current Streak';
+
+  @override
+  String focusDaysCount(String count) {
+    return '$count days';
+  }
+
+  @override
+  String focusLongestStreak(String count) {
+    return 'Best Streak: $count days';
+  }
+
+  @override
+  String focusTreeEarned(String tree) {
+    return 'Tree Earned: $tree';
+  }
+
+  @override
+  String focusValidatedMinutes(String minutes) {
+    return '$minutes min validated';
+  }
+
+  @override
+  String get focusTreeNone => 'No tree (under 5 min)';
+
+  @override
+  String get focusTreeSeedling => 'Seedling (5+ min)';
+
+  @override
+  String get focusTreeSapling => 'Sapling (15+ min)';
+
+  @override
+  String get focusTreeTree => 'Full Tree (25+ min)';
+
+  @override
+  String get focusTreeGrove => 'Grove (50+ min)';
+
+  @override
+  String get focusSubject => 'Study Subject';
+
+  @override
+  String get plannerTitle => 'Planner & Timetable';
+
+  @override
+  String get plannerAddEvent => 'Add Event';
+
+  @override
+  String get plannerEditEvent => 'Edit Event';
+
+  @override
+  String get plannerSubjects => 'Subjects';
+
+  @override
+  String get plannerAssignments => 'Assignments';
+
+  @override
+  String get plannerAgenda => 'Agenda';
+
+  @override
+  String get plannerDayView => 'Day';
+
+  @override
+  String get plannerWeekView => 'Week';
+
+  @override
+  String get plannerToday => 'Today';
+
+  @override
+  String get plannerConflictWarning =>
+      'Time conflict detected with another event';
+
+  @override
+  String get plannerJoinClass => 'Join Class';
+
+  @override
+  String get plannerOpenLinkConfirm => 'External Class Link';
+
+  @override
+  String plannerOpenLinkWarning(String host) {
+    return 'This link opens an external host ($host). Proceed?';
+  }
+
+  @override
+  String get plannerOpen => 'Open';
+
+  @override
+  String get plannerRepeat => 'Recurrence';
+
+  @override
+  String get plannerRepeatNone => 'Does not repeat';
+
+  @override
+  String get plannerRepeatDaily => 'Daily';
+
+  @override
+  String get plannerRepeatWeekly => 'Weekly';
+
+  @override
+  String get plannerRepeatMonthly => 'Monthly';
+
+  @override
+  String get plannerSave => 'Save';
+
+  @override
+  String get plannerDelete => 'Delete';
+
+  @override
+  String plannerDue(String date) {
+    return 'Due $date';
+  }
+
+  @override
+  String get plannerAssignmentCompleted => 'Completed';
+
+  @override
+  String get plannerAssignmentPending => 'Pending';
+
+  @override
+  String get notesTitle => 'Study Notes';
+
+  @override
+  String get notesNew => 'New Note';
+
+  @override
+  String get notesSearch => 'Search notes';
+
+  @override
+  String get notesEmpty =>
+      'No notes yet. Tap + to write your first study note.';
+
+  @override
+  String get notesShare => 'Share';
+
+  @override
+  String get notesDelete => 'Delete Note';
+
+  @override
+  String get socialTitle => 'Study Groups & Friends';
+
+  @override
+  String get socialFriends => 'Friends';
+
+  @override
+  String get socialGroups => 'Groups';
+
+  @override
+  String get socialCreateGroup => 'Create Study Group';
+
+  @override
+  String get socialJoinGroup => 'Join Group with Code';
+
+  @override
+  String get socialSendMessage => 'Send message';
+
+  @override
+  String get socialChatTitle => 'Discussion';
 }

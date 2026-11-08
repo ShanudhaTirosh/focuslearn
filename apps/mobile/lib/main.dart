@@ -14,6 +14,6 @@ Future<void> main() async {
     runApp(MisconfiguredApp(problem: problem));
     return;
   }
-  await Supabase.initialize(url: config.supabaseUrl.trim(), anonKey: config.publishableKey.trim());
+  await Supabase.initialize(url: config.supabaseUrl.trim(), anonKey: config.publishableKey.trim()); // ignore: deprecated_member_use
   runApp(const ProviderScope(child: FocusLearnApp()));
 }

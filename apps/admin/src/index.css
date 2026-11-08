@@ -1,0 +1,95 @@
+@import './styles/tokens.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--fl-color-surface);
+  color: var(--fl-color-text);
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.card {
+  background-color: var(--fl-color-background);
+  border: 1px solid var(--fl-color-border);
+  border-radius: var(--fl-radius-md);
+  padding: var(--fl-space-lg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fl-space-xs);
+  padding: var(--fl-space-sm) var(--fl-space-md);
+  border-radius: var(--fl-radius-sm);
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: var(--fl-color-primary);
+  color: var(--fl-color-on-primary);
+}
+
+.btn-secondary {
+  background-color: var(--fl-color-surface-variant);
+  color: var(--fl-color-text);
+  border: 1px solid var(--fl-color-border);
+}
+
+.btn-danger {
+  background-color: var(--fl-color-error);
+  color: var(--fl-color-on-error);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pending {
+  background-color: var(--fl-color-warning);
+  color: var(--fl-color-on-warning);
+}
+
+.badge-success {
+  background-color: var(--fl-color-success);
+  color: var(--fl-color-on-success);
+}
+
+.badge-error {
+  background-color: var(--fl-color-error);
+  color: var(--fl-color-on-error);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: var(--fl-space-md);
+  border-bottom: 1px solid var(--fl-color-border);
+}
+
+th {
+  font-weight: 600;
+  color: var(--fl-color-text-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
