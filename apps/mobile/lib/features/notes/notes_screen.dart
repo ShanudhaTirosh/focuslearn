@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
 import '../../l10n/generated/app_localizations.dart';
+import '../notebooks/notebooks_hub_screen.dart';
 import 'note_edit_screen.dart';
 import 'notes_repository.dart';
 
@@ -39,6 +40,15 @@ class _NotesScreenState extends ConsumerState<NotesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.notesTitle),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.auto_stories_outlined),
+            tooltip: l10n.navNotebooks,
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const NotebooksHubScreen()),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: l10n.notesNew,

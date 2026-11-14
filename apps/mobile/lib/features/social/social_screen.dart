@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
@@ -215,19 +216,13 @@ class _GroupChatScreen extends ConsumerStatefulWidget {
 
 class _GroupChatScreenState extends ConsumerState<_GroupChatScreen> {
   final TextEditingController _msgController = TextEditingController();
-  final List<ChatMessage> _messages = <ChatMessage>[
-    ChatMessage(
-      id: 'm1',
-      senderId: 'other-1',
-      senderName: 'Kasun',
-      body: 'Welcome to the revision study circle! Today we are working on Paper 2.',
-      createdAt: DateTime.now().subtract(const Duration(hours: 2)),
-    ),
-  ];
+  final List<ChatMessage> _messages = <ChatMessage>[];
+  StreamSubscription<List<ChatMessage>>? _messageSub;
 
   @override
   void initState() {
     super.initState();
+    // 1. Initial fetch
     Future.microtask(() async {
       final remote = await ref.read(socialRepositoryProvider).fetchMessages(widget.group.id);
       if (mounted && remote.isNotEmpty) {
@@ -237,10 +232,23 @@ class _GroupChatScreenState extends ConsumerState<_GroupChatScreen> {
         });
       }
     });
+
+    // 2. Real-time stream subscription with auto-reconnect
+    _messageSub = ref.read(socialRepositoryProvider).watchMessages(widget.group.id).listen((liveMessages) {
+      if (mounted && liveMessages.isNotEmpty) {
+        setState(() {
+          _messages.clear();
+          _messages.addAll(liveMessages);
+        });
+      }
+    }, onError: (_) {
+      // Reconnection handled transparently by Supabase Realtime client
+    });
   }
 
   @override
   void dispose() {
+    _messageSub?.cancel();
     _msgController.dispose();
     super.dispose();
   }

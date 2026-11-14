@@ -90,8 +90,8 @@ class FocusRepository {
           'ended_at': session.endedAt.toIso8601String(),
           'planned_s': session.plannedSeconds,
           'client_reported_s': session.clientReportedSeconds,
-          'pause_s': session.pauseSeconds,
-          'status': session.status,
+          'paused_s': session.pauseSeconds,
+          'outcome': session.status,
         });
         // Mark synced
         final updated = existing.map((s) {
@@ -107,5 +107,54 @@ class FocusRepository {
     }
 
     return session;
+  }
+
+  /// Syncs any locally saved sessions that were recorded while offline.
+  Future<int> syncPendingSessions() async {
+    final user = _supabase.auth.currentUser;
+    if (user == null) return 0;
+
+    final existing = await loadSessions();
+    final unsynced = existing.where((s) => !s.synced).toList();
+    if (unsynced.isEmpty) return 0;
+
+    int syncedCount = 0;
+    final updated = List<StudySession>.from(existing);
+
+    for (final session in unsynced) {
+      try {
+        await _supabase.from('study_sessions').insert(<String, dynamic>{
+          'client_uuid': session.clientUuid,
+          'started_at': session.startedAt.toIso8601String(),
+          'ended_at': session.endedAt.toIso8601String(),
+          'planned_s': session.plannedSeconds,
+          'client_reported_s': session.clientReportedSeconds,
+          'paused_s': session.pauseSeconds,
+          'outcome': session.status,
+        });
+
+        final idx = updated.indexWhere((s) => s.clientUuid == session.clientUuid);
+        if (idx != -1) {
+          updated[idx] = updated[idx].copyWith(synced: true);
+          syncedCount++;
+        }
+      } on PostgrestException catch (e) {
+        // If row was already inserted (unique constraint on user_id, client_uuid), treat as synced
+        if (e.code == '23505' || e.message.toLowerCase().contains('duplicate')) {
+          final idx = updated.indexWhere((s) => s.clientUuid == session.clientUuid);
+          if (idx != -1) {
+            updated[idx] = updated[idx].copyWith(synced: true);
+            syncedCount++;
+          }
+        }
+      } on Object {
+        // Network or other temporary error; keep unsynced to retry later
+      }
+    }
+
+    if (syncedCount > 0) {
+      await saveSessions(updated);
+    }
+    return syncedCount;
   }
 }

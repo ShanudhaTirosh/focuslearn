@@ -38,6 +38,26 @@ class NativePlatformService {
     }
   }
 
+  Future<bool> canScheduleExactAlarms() async {
+    if (!Platform.isAndroid) return true;
+    try {
+      final can = await _channel.invokeMethod<bool>('canScheduleExactAlarms');
+      return can ?? true;
+    } on PlatformException {
+      return true;
+    }
+  }
+
+  Future<bool> openExactAlarmSettings() async {
+    if (!Platform.isAndroid) return false;
+    try {
+      final success = await _channel.invokeMethod<bool>('openExactAlarmSettings');
+      return success ?? false;
+    } on PlatformException {
+      return false;
+    }
+  }
+
   Future<bool> checkUsagePermission() async {
     if (!Platform.isAndroid) return true;
     try {
@@ -77,6 +97,46 @@ class NativePlatformService {
     try {
       final result = await _channel.invokeMethod<bool>('setAlwaysOnTop', {'enabled': enabled});
       return result ?? false;
+    } on PlatformException {
+      return false;
+    }
+  }
+
+  Future<bool> checkOverlayPermission() async {
+    if (!Platform.isAndroid) return true;
+    try {
+      final granted = await _channel.invokeMethod<bool>('checkOverlayPermission');
+      return granted ?? false;
+    } on PlatformException {
+      return false;
+    }
+  }
+
+  Future<bool> openOverlaySettings() async {
+    if (!Platform.isAndroid) return false;
+    try {
+      final success = await _channel.invokeMethod<bool>('openOverlaySettings');
+      return success ?? false;
+    } on PlatformException {
+      return false;
+    }
+  }
+
+  Future<String?> getForegroundPackage() async {
+    if (!Platform.isAndroid) return null;
+    try {
+      final pkg = await _channel.invokeMethod<String>('getForegroundPackage');
+      return pkg;
+    } on PlatformException {
+      return null;
+    }
+  }
+
+  Future<bool> bringAppToFront() async {
+    if (!Platform.isAndroid) return false;
+    try {
+      final success = await _channel.invokeMethod<bool>('bringAppToFront');
+      return success ?? false;
     } on PlatformException {
       return false;
     }

@@ -171,6 +171,29 @@ class SocialRepository {
     }
   }
 
+  /// Real-time stream of messages for a study group with automatic reconnect.
+  Stream<List<ChatMessage>> watchMessages(String groupId) {
+    return _client
+        .from('messages')
+        .stream(primaryKey: ['id'])
+        .eq('group_id', groupId)
+        .order('created_at', ascending: true)
+        .map((rows) {
+          final uid = currentUserId;
+          return rows.map((row) {
+            final senderId = (row['sender_id'] as String?) ?? '';
+            final isMe = uid != null && senderId == uid;
+            return ChatMessage(
+              id: row['id'] as String,
+              senderId: senderId,
+              senderName: isMe ? 'You' : 'Student',
+              body: (row['body'] as String?) ?? '',
+              createdAt: DateTime.tryParse(row['created_at'] as String? ?? '') ?? DateTime.now(),
+            );
+          }).toList();
+        });
+  }
+
   Future<ChatMessage?> sendMessage({required String groupId, required String body}) async {
     final uid = currentUserId;
     if (uid == null) return null;

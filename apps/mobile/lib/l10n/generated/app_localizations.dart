@@ -1311,6 +1311,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Discussion'**
   String get socialChatTitle;
+
+  /// No description provided for @updatePasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set new password'**
+  String get updatePasswordTitle;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get newPasswordLabel;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @updatePasswordButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get updatePasswordButton;
+
+  /// No description provided for @passwordUpdatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password has been updated. You can now sign in.'**
+  String get passwordUpdatedSuccess;
+
+  /// No description provided for @passwordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get passwordMismatch;
+
+  /// No description provided for @enforcementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus Enforcement & Rules'**
+  String get enforcementTitle;
+
+  /// No description provided for @enforcementActiveRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Rules'**
+  String get enforcementActiveRules;
+
+  /// No description provided for @enforcementNoRules.
+  ///
+  /// In en, this message translates to:
+  /// **'No strict enforcement rules active. Focus mode is voluntary.'**
+  String get enforcementNoRules;
+
+  /// No description provided for @enforcementBlockedApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Restricted Distractions'**
+  String get enforcementBlockedApps;
+
+  /// No description provided for @enforcementAllowedApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Allowed Study Apps'**
+  String get enforcementAllowedApps;
+
+  /// No description provided for @enforcementScheduledWindows.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled Study Hours'**
+  String get enforcementScheduledWindows;
+
+  /// No description provided for @enforcementDailyLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Entertainment Limit'**
+  String get enforcementDailyLimit;
+
+  /// No description provided for @enforcementViolationsHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Violations & Interceptions'**
+  String get enforcementViolationsHistory;
+
+  /// No description provided for @enforcementNoViolations.
+  ///
+  /// In en, this message translates to:
+  /// **'No violations recorded. Keep up the great focus!'**
+  String get enforcementNoViolations;
+
+  /// No description provided for @enforcementOverridesHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency Overrides'**
+  String get enforcementOverridesHistory;
+
+  /// No description provided for @enforcementOverlayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus Mode Active'**
+  String get enforcementOverlayTitle;
+
+  /// No description provided for @enforcementOverlayPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is restricted during your scheduled study session.'**
+  String get enforcementOverlayPrompt;
+
+  /// No description provided for @enforcementOverlayTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Time remaining: {time}'**
+  String enforcementOverlayTimeRemaining(String time);
+
+  /// No description provided for @enforcementEmergencyOverride.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency Override'**
+  String get enforcementEmergencyOverride;
+
+  /// No description provided for @enforcementOverrideReasonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Reason for Override'**
+  String get enforcementOverrideReasonTitle;
+
+  /// No description provided for @enforcementOverrideReasonHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Your reason will be recorded transparently in the session history.'**
+  String get enforcementOverrideReasonHelp;
+
+  /// No description provided for @enforcementOverrideConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock 15 Minutes'**
+  String get enforcementOverrideConfirm;
+
+  /// No description provided for @enforcementPermissionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Required Permissions'**
+  String get enforcementPermissionsTitle;
+
+  /// No description provided for @enforcementUsageAccessRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage Access is required to detect distracting apps during focus sessions.'**
+  String get enforcementUsageAccessRequired;
+
+  /// No description provided for @enforcementOverlayRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Over Other Apps permission is required to show the study barrier.'**
+  String get enforcementOverlayRequired;
+
+  /// No description provided for @enforcementGrantPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Permission'**
+  String get enforcementGrantPermission;
+
+  /// No description provided for @enforcementPermissionGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission Granted'**
+  String get enforcementPermissionGranted;
+
+  /// No description provided for @navEnforcement.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules & Focus'**
+  String get navEnforcement;
+
+  /// No description provided for @calcScientific.
+  ///
+  /// In en, this message translates to:
+  /// **'Scientific & A/L Advanced'**
+  String get calcScientific;
+
+  /// No description provided for @calcScientificDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Trigonometry, complex numbers, matrices, equations, calculus, and chemistry stoichiometry'**
+  String get calcScientificDesc;
+
+  /// No description provided for @calcCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Camera Calculator'**
+  String get calcCamera;
+
+  /// No description provided for @calcCameraDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan math & science problems with step-by-step verified solutions'**
+  String get calcCameraDesc;
+
+  /// No description provided for @navNotebooks.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Notebooks'**
+  String get navNotebooks;
+
+  /// No description provided for @notebooksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Research Notebooks'**
+  String get notebooksTitle;
+
+  /// No description provided for @notebooksDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'NotebookLM-style grounded AI study notebooks from your own PDFs and notes'**
+  String get notebooksDesc;
 }
 
 class _AppLocalizationsDelegate

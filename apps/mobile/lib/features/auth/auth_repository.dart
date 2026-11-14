@@ -67,4 +67,8 @@ class AuthRepository {
 
   Future<void> resendConfirmation(String email, {String? captchaToken}) =>
       _guard(() => _client.auth.resend(type: OtpType.signup, email: email, captchaToken: captchaToken));
+
+  /// Sets a new password for the current user (used after following a reset link).
+  Future<void> updatePassword(String newPassword) =>
+      _guard(() => _client.auth.updateUser(UserAttributes(password: newPassword)));
 }

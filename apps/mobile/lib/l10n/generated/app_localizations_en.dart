@@ -666,4 +666,124 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get socialChatTitle => 'Discussion';
+
+  @override
+  String get updatePasswordTitle => 'Set new password';
+
+  @override
+  String get newPasswordLabel => 'New password';
+
+  @override
+  String get confirmPasswordLabel => 'Confirm new password';
+
+  @override
+  String get updatePasswordButton => 'Update password';
+
+  @override
+  String get passwordUpdatedSuccess =>
+      'Your password has been updated. You can now sign in.';
+
+  @override
+  String get passwordMismatch => 'Passwords do not match.';
+
+  @override
+  String get enforcementTitle => 'Focus Enforcement & Rules';
+
+  @override
+  String get enforcementActiveRules => 'Active Rules';
+
+  @override
+  String get enforcementNoRules =>
+      'No strict enforcement rules active. Focus mode is voluntary.';
+
+  @override
+  String get enforcementBlockedApps => 'Restricted Distractions';
+
+  @override
+  String get enforcementAllowedApps => 'Allowed Study Apps';
+
+  @override
+  String get enforcementScheduledWindows => 'Scheduled Study Hours';
+
+  @override
+  String get enforcementDailyLimit => 'Daily Entertainment Limit';
+
+  @override
+  String get enforcementViolationsHistory => 'Violations & Interceptions';
+
+  @override
+  String get enforcementNoViolations =>
+      'No violations recorded. Keep up the great focus!';
+
+  @override
+  String get enforcementOverridesHistory => 'Emergency Overrides';
+
+  @override
+  String get enforcementOverlayTitle => 'Focus Mode Active';
+
+  @override
+  String get enforcementOverlayPrompt =>
+      'This app is restricted during your scheduled study session.';
+
+  @override
+  String enforcementOverlayTimeRemaining(String time) {
+    return 'Time remaining: $time';
+  }
+
+  @override
+  String get enforcementEmergencyOverride => 'Emergency Override';
+
+  @override
+  String get enforcementOverrideReasonTitle => 'Enter Reason for Override';
+
+  @override
+  String get enforcementOverrideReasonHelp =>
+      'Your reason will be recorded transparently in the session history.';
+
+  @override
+  String get enforcementOverrideConfirm => 'Unlock 15 Minutes';
+
+  @override
+  String get enforcementPermissionsTitle => 'Required Permissions';
+
+  @override
+  String get enforcementUsageAccessRequired =>
+      'Usage Access is required to detect distracting apps during focus sessions.';
+
+  @override
+  String get enforcementOverlayRequired =>
+      'Display Over Other Apps permission is required to show the study barrier.';
+
+  @override
+  String get enforcementGrantPermission => 'Grant Permission';
+
+  @override
+  String get enforcementPermissionGranted => 'Permission Granted';
+
+  @override
+  String get navEnforcement => 'Rules & Focus';
+
+  @override
+  String get calcScientific => 'Scientific & A/L Advanced';
+
+  @override
+  String get calcScientificDesc =>
+      'Trigonometry, complex numbers, matrices, equations, calculus, and chemistry stoichiometry';
+
+  @override
+  String get calcCamera => 'AI Camera Calculator';
+
+  @override
+  String get calcCameraDesc =>
+      'Scan math & science problems with step-by-step verified solutions';
+
+  @override
+  String get navNotebooks => 'AI Notebooks';
+
+  @override
+  String get notebooksTitle => 'Research Notebooks';
+
+  @override
+  String get notebooksDesc =>
+      'NotebookLM-style grounded AI study notebooks from your own PDFs and notes';
 }

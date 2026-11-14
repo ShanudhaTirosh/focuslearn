@@ -285,5 +285,48 @@
   "socialCreateGroup": "Create Study Group",
   "socialJoinGroup": "Join Group with Code",
   "socialSendMessage": "Send message",
-  "socialChatTitle": "Discussion"
+  "socialChatTitle": "Discussion",
+  "updatePasswordTitle": "Set new password",
+  "newPasswordLabel": "New password",
+  "confirmPasswordLabel": "Confirm new password",
+  "updatePasswordButton": "Update password",
+  "passwordUpdatedSuccess": "Your password has been updated. You can now sign in.",
+  "passwordMismatch": "Passwords do not match.",
+  "enforcementTitle": "Focus Enforcement & Rules",
+  "enforcementActiveRules": "Active Rules",
+  "enforcementNoRules": "No strict enforcement rules active. Focus mode is voluntary.",
+  "enforcementBlockedApps": "Restricted Distractions",
+  "enforcementAllowedApps": "Allowed Study Apps",
+  "enforcementScheduledWindows": "Scheduled Study Hours",
+  "enforcementDailyLimit": "Daily Entertainment Limit",
+  "enforcementViolationsHistory": "Violations & Interceptions",
+  "enforcementNoViolations": "No violations recorded. Keep up the great focus!",
+  "enforcementOverridesHistory": "Emergency Overrides",
+  "enforcementOverlayTitle": "Focus Mode Active",
+  "enforcementOverlayPrompt": "This app is restricted during your scheduled study session.",
+  "enforcementOverlayTimeRemaining": "Time remaining: {time}",
+  "@enforcementOverlayTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "enforcementEmergencyOverride": "Emergency Override",
+  "enforcementOverrideReasonTitle": "Enter Reason for Override",
+  "enforcementOverrideReasonHelp": "Your reason will be recorded transparently in the session history.",
+  "enforcementOverrideConfirm": "Unlock 15 Minutes",
+  "enforcementPermissionsTitle": "Required Permissions",
+  "enforcementUsageAccessRequired": "Usage Access is required to detect distracting apps during focus sessions.",
+  "enforcementOverlayRequired": "Display Over Other Apps permission is required to show the study barrier.",
+  "enforcementGrantPermission": "Grant Permission",
+  "enforcementPermissionGranted": "Permission Granted",
+  "navEnforcement": "Rules & Focus",
+  "calcScientific": "Scientific & A/L Advanced",
+  "calcScientificDesc": "Trigonometry, complex numbers, matrices, equations, calculus, and chemistry stoichiometry",
+  "calcCamera": "AI Camera Calculator",
+  "calcCameraDesc": "Scan math & science problems with step-by-step verified solutions",
+  "navNotebooks": "AI Notebooks",
+  "notebooksTitle": "Research Notebooks",
+  "notebooksDesc": "NotebookLM-style grounded AI study notebooks from your own PDFs and notes"
 }

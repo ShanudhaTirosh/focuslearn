@@ -48,14 +48,24 @@ serve(async (req: Request) => {
     let authorized = fileObj.owner_id === user.id;
 
     if (!authorized) {
-      // Check if file is shared in notes or conversation attachments
-      const { count: sharedNoteCount } = await adminClient
+      // Check if file is linked to a note shared with the requesting user
+      const { data: noteWithAttachment } = await adminClient
         .from('notes')
-        .select('id', { count: 'exact', head: true })
-        .eq('owner_id', fileObj.owner_id);
+        .select('id')
+        .filter('attachments', 'cs', JSON.stringify([fileId]))
+        .limit(1);
 
-      if (sharedNoteCount && sharedNoteCount > 0) {
-        authorized = true;
+      if (noteWithAttachment && noteWithAttachment.length > 0) {
+        const noteId = noteWithAttachment[0].id;
+        const { count: shareCount } = await adminClient
+          .from('note_shares')
+          .select('id', { count: 'exact', head: true })
+          .eq('note_id', noteId)
+          .eq('grantee_user_id', user.id);
+
+        if (shareCount && shareCount > 0) {
+          authorized = true;
+        }
       }
     }
 

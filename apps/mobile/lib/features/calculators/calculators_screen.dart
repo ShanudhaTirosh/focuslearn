@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
 import '../../l10n/generated/app_localizations.dart';
+import 'camera_calc_screen.dart';
 import 'commercial_calc_screen.dart';
 import 'converter_screen.dart';
 import 'formula_library_screen.dart';
 import 'percentage_calc_screen.dart';
+import 'scientific_calc_screen.dart';
 import 'standard_calc_screen.dart';
 import 'statistics_calc_screen.dart';
 
@@ -27,6 +29,24 @@ class CalculatorsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                _CalcCard(
+                  icon: Icons.camera_alt_outlined,
+                  title: l10n.calcCamera,
+                  description: l10n.calcCameraDesc,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (_) => const CameraCalcScreen()),
+                  ),
+                ),
+                const SizedBox(height: Spacing.md),
+                _CalcCard(
+                  icon: Icons.science_outlined,
+                  title: l10n.calcScientific,
+                  description: l10n.calcScientificDesc,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (_) => const ScientificCalcScreen()),
+                  ),
+                ),
+                const SizedBox(height: Spacing.md),
                 _CalcCard(
                   icon: Icons.calculate_outlined,
                   title: l10n.calcStandard,

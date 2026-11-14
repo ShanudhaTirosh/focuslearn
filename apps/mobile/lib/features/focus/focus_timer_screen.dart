@@ -4,7 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focuslearn_core/focuslearn_core.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
+import '../../app/providers.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../enforcement/enforcement_overlay_screen.dart';
+import '../enforcement/enforcement_repository.dart';
+import '../enforcement/enforcement_rules_screen.dart';
 import 'focus_models.dart';
 import 'focus_repository.dart';
 import 'forest_screen.dart';
@@ -26,12 +30,15 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
   int _totalPausedSeconds = 0;
   _TimerState _state = _TimerState.idle;
   Timer? _timer;
+  Timer? _monitoringTimer;
   DateTime? _startedAt;
   DateTime? _pausedAt;
+  DateTime? _overrideUntil;
 
   @override
   void dispose() {
     _timer?.cancel();
+    _monitoringTimer?.cancel();
     super.dispose();
   }
 
@@ -51,10 +58,12 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
       _startedAt = DateTime.now();
     });
     _timer = Timer.periodic(const Duration(seconds: 1), _tick);
+    _startMonitoring();
   }
 
   void _pause() {
     _timer?.cancel();
+    _stopMonitoring();
     setState(() {
       _state = _TimerState.paused;
       _pausedAt = DateTime.now();
@@ -70,6 +79,54 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
       _state = _TimerState.running;
     });
     _timer = Timer.periodic(const Duration(seconds: 1), _tick);
+    _startMonitoring();
+  }
+
+  void _startMonitoring() {
+    _monitoringTimer?.cancel();
+    _monitoringTimer = Timer.periodic(const Duration(seconds: 3), (_) => _checkDistractions());
+  }
+
+  void _stopMonitoring() {
+    _monitoringTimer?.cancel();
+    _monitoringTimer = null;
+  }
+
+  Future<void> _checkDistractions() async {
+    if (_state != _TimerState.running) return;
+    if (_overrideUntil != null && DateTime.now().isBefore(_overrideUntil!)) return;
+
+    final platform = ref.read(nativePlatformServiceProvider);
+    final foreground = await platform.getForegroundPackage();
+    if (foreground == null || foreground.isEmpty) return;
+
+    final enforcementRepo = ref.read(enforcementRepositoryProvider);
+    final policies = await enforcementRepo.loadCachedPolicies();
+
+    if (enforcementRepo.isPackageRestricted(foreground, policies)) {
+      await enforcementRepo.recordViolation(
+        deviceId: 'current-device',
+        packageName: foreground,
+        violationType: 'distraction_opened',
+      );
+      await platform.bringAppToFront();
+
+      if (mounted) {
+        Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (_) => EnforcementOverlayScreen(
+              blockedPackage: foreground,
+              remainingSeconds: _remainingSeconds,
+              onOverrideGranted: () {
+                setState(() {
+                  _overrideUntil = DateTime.now().add(const Duration(minutes: 15));
+                });
+              },
+            ),
+          ),
+        );
+      }
+    }
   }
 
   void _tick(Timer timer) {
@@ -85,6 +142,7 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
 
   Future<void> _finish({required String status}) async {
     _timer?.cancel();
+    _stopMonitoring();
     if (_pausedAt != null) {
       _totalPausedSeconds += DateTime.now().difference(_pausedAt!).inSeconds;
       _pausedAt = null;
@@ -198,6 +256,13 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
       appBar: AppBar(
         title: Text(l10n.focusTitle),
         actions: <Widget>[
+          IconButton(
+            tooltip: l10n.enforcementTitle,
+            icon: const Icon(Icons.shield_outlined),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const EnforcementRulesScreen()),
+            ),
+          ),
           IconButton(
             tooltip: l10n.focusForest,
             icon: const Icon(Icons.park_outlined),

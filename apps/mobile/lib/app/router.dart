@@ -7,8 +7,11 @@ import 'package:go_router/go_router.dart';
 import '../features/auth/login_screen.dart';
 import '../features/auth/reset_password_screen.dart';
 import '../features/auth/signup_screen.dart';
+import '../features/auth/update_password_screen.dart';
 import '../features/auth/verify_email_screen.dart';
+import '../features/enforcement/enforcement_rules_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/notebooks/notebooks_hub_screen.dart';
 import '../features/settings/settings_screen.dart';
 import 'providers.dart';
 import 'routes.dart';
@@ -43,7 +46,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       if (!signedIn && !onAuthPage) {
         return Routes.login;
       }
-      if (signedIn && onAuthPage) {
+      if (signedIn && onAuthPage && location != Routes.updatePassword) {
         return Routes.home;
       }
       return null;
@@ -58,6 +61,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => VerifyEmailScreen(email: state.extra is String ? state.extra! as String : ''),
       ),
       GoRoute(path: Routes.reset, builder: (context, state) => const ResetPasswordScreen()),
+      GoRoute(path: Routes.updatePassword, builder: (context, state) => const UpdatePasswordScreen()),
+      GoRoute(path: Routes.enforcement, builder: (context, state) => const EnforcementRulesScreen()),
+      GoRoute(path: Routes.notebooks, builder: (context, state) => const NotebooksHubScreen()),
     ],
   );
 });

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, ShieldAlert, Users, FileText, Activity } from 'lucide-react';
+import { LayoutDashboard, ShieldAlert, Users, FileText, Activity, Shield, Gauge } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import { OverviewTab } from './components/OverviewTab';
 import { ModerationTab, ReportItem } from './components/ModerationTab';
 import { UsersTab, DeletionRequest } from './components/UsersTab';
 import { AuditTab, AuditEntry } from './components/AuditTab';
 import { StatusTab } from './components/StatusTab';
+import { EnforcementTab } from './components/EnforcementTab';
+import { UsageLimitTab } from './components/UsageLimitTab';
 
 const initialReports: ReportItem[] = [
   {
@@ -61,7 +63,7 @@ const initialAuditLogs: AuditEntry[] = [
 ];
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'moderation' | 'users' | 'audit' | 'status'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'moderation' | 'users' | 'enforcement' | 'usage' | 'audit' | 'status'>('overview');
   const [reports, setReports] = useState<ReportItem[]>(initialReports);
   const [deletions, setDeletions] = useState<DeletionRequest[]>(initialDeletions);
   const [auditLogs, setAuditLogs] = useState<AuditEntry[]>(initialAuditLogs);
@@ -156,6 +158,20 @@ export const App: React.FC = () => {
             <Users size={18} /> Users & Deletions
           </button>
           <button
+            onClick={() => setActiveTab('enforcement')}
+            className={`btn ${activeTab === 'enforcement' ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ width: '100%', justifyContent: 'flex-start' }}
+          >
+            <Shield size={18} /> Rules & Enforcement
+          </button>
+          <button
+            onClick={() => setActiveTab('usage')}
+            className={`btn ${activeTab === 'usage' ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ width: '100%', justifyContent: 'flex-start' }}
+          >
+            <Gauge size={18} /> Free-Plan Monitor
+          </button>
+          <button
             onClick={() => setActiveTab('audit')}
             className={`btn ${activeTab === 'audit' ? 'btn-primary' : 'btn-secondary'}`}
             style={{ width: '100%', justifyContent: 'flex-start' }}
@@ -185,6 +201,12 @@ export const App: React.FC = () => {
         )}
         {activeTab === 'users' && (
           <UsersTab deletions={deletions} onTriggerDeletionJob={handleTriggerDeletionJob} />
+        )}
+        {activeTab === 'enforcement' && (
+          <EnforcementTab />
+        )}
+        {activeTab === 'usage' && (
+          <UsageLimitTab />
         )}
         {activeTab === 'audit' && (
           <AuditTab logs={auditLogs} />

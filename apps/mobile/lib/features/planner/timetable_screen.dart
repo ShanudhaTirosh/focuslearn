@@ -4,6 +4,7 @@ import 'package:focuslearn_design_system/focuslearn_design_system.dart';
 
 import '../../app/providers.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../settings/settings_screen.dart';
 import 'assignments_screen.dart';
 import 'event_edit_screen.dart';
 import 'meeting_launcher.dart';
@@ -83,6 +84,13 @@ class _TimetableScreenState extends ConsumerState<TimetableScreen> {
             icon: const Icon(Icons.assignment_outlined),
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute<void>(builder: (_) => const AssignmentsScreen()),
+            ),
+          ),
+          IconButton(
+            tooltip: l10n.settingsTitle,
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(builder: (_) => const SettingsScreen()),
             ),
           ),
         ],

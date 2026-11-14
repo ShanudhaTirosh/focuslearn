@@ -1,0 +1,33 @@
+name: Supabase Free Plan Keep-Alive
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every 4 days to prevent the 7-day inactivity pause
+    - cron: '0 0 */4 * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST Gateway
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::warning::SUPABASE_URL or SUPABASE_ANON_KEY secret is not set. Skipping keep-alive ping."
+            exit 0
+          fi
+          echo "Sending keep-alive ping to Supabase..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "${SUPABASE_URL}/rest/v1/formula_entries?select=id&limit=1")
+          
+          echo "HTTP response: $RESPONSE"
+          if [ "$RESPONSE" -ge 200 ] && [ "$RESPONSE" -lt 400 ]; then
+            echo "Supabase free plan project is active and healthy."
+          else
+            echo "::warning::Unexpected response $RESPONSE from Supabase. Project may be paused or starting up."
+          fi
