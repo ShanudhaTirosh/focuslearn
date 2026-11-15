@@ -13,7 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any                    # flutter_localizations pins the exact version
-  flutter_riverpod: ^2.5.1     # all versions below: verify with `flutter pub outdated`
+  flutter_riverpod: ^3.5.0     # all versions below: verify with `flutter pub outdated`
   go_router: ^14.0.0
   supabase_flutter: ^2.5.0
   shared_preferences: ^2.2.0
