@@ -12,6 +12,7 @@ import '../features/auth/verify_email_screen.dart';
 import '../features/enforcement/enforcement_rules_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/notebooks/notebooks_hub_screen.dart';
+import '../features/parental/child_pairing_screen.dart';
 import '../features/settings/settings_screen.dart';
 import 'providers.dart';
 import 'routes.dart';
@@ -64,6 +65,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: Routes.updatePassword, builder: (context, state) => const UpdatePasswordScreen()),
       GoRoute(path: Routes.enforcement, builder: (context, state) => const EnforcementRulesScreen()),
       GoRoute(path: Routes.notebooks, builder: (context, state) => const NotebooksHubScreen()),
+      GoRoute(path: Routes.parental, builder: (context, state) => const ChildPairingScreen()),
     ],
   );
 });

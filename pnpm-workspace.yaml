@@ -1,5 +1,7 @@
 packages:
   - "apps/admin"
+  - "apps/web/parent"
+  - "apps/web/teacher"
   - "backend/supabase/functions"
 allowBuilds:
   esbuild: true

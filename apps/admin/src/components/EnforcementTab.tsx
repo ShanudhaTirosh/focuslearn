@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, AlertTriangle, Plus, Key, Lock, CheckCircle2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 export interface AdminPolicyItem {
   id: string;
@@ -80,40 +81,126 @@ const initialOverrides: AdminOverrideItem[] = [
 
 export const EnforcementTab: React.FC = () => {
   const [policies, setPolicies] = useState<AdminPolicyItem[]>(initialPolicies);
-  const [violations] = useState<AdminViolationItem[]>(initialViolations);
-  const [overrides] = useState<AdminOverrideItem[]>(initialOverrides);
+  const [violations, setViolations] = useState<AdminViolationItem[]>(initialViolations);
+  const [overrides, setOverrides] = useState<AdminOverrideItem[]>(initialOverrides);
 
   // New policy form state
   const [showAddForm, setShowAddForm] = useState(false);
   const [studentId, setStudentId] = useState('');
   const [policyTitle, setPolicyTitle] = useState('');
   const [blockedPackages, setBlockedPackages] = useState('com.instagram.android, com.zhiliaoapp.musically');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleCreatePolicy = (e: React.FormEvent) => {
+  useEffect(() => {
+    async function fetchEnforcementData() {
+      try {
+        const { data: polData } = await supabase
+          .from('enforcement_policies')
+          .select('*')
+          .order('created_at', { ascending: false });
+        if (polData && polData.length > 0) {
+          setPolicies(polData as AdminPolicyItem[]);
+        }
+
+        const { data: violData } = await supabase
+          .from('policy_violations')
+          .select('*')
+          .order('occurred_at', { ascending: false })
+          .limit(30);
+        if (violData && violData.length > 0) {
+          setViolations(violData as AdminViolationItem[]);
+        }
+
+        const { data: ovrData } = await supabase
+          .from('policy_overrides')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(30);
+        if (ovrData && ovrData.length > 0) {
+          setOverrides(ovrData as AdminOverrideItem[]);
+        }
+      } catch (err) {
+        console.warn('Error loading enforcement live data', err);
+      }
+    }
+    fetchEnforcementData();
+  }, []);
+
+  const handleCreatePolicy = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!studentId || !policyTitle) return;
 
-    const newPolicy: AdminPolicyItem = {
-      id: `pol-${Date.now()}`,
-      student_id: studentId,
-      creator_id: 'current-admin',
-      title: policyTitle,
-      mode: 'focus_session_lock',
-      blocked_packages: blockedPackages.split(',').map(s => s.trim()).filter(Boolean),
-      active: true,
-      created_at: new Date().toISOString(),
-    };
+    setIsSubmitting(true);
+    const pkgs = blockedPackages.split(',').map(s => s.trim()).filter(Boolean);
 
-    setPolicies([newPolicy, ...policies]);
-    setShowAddForm(false);
-    setStudentId('');
-    setPolicyTitle('');
+    try {
+      const { data: newRow, error } = await supabase
+        .from('enforcement_policies')
+        .insert({
+          student_id: studentId,
+          creator_id: (await supabase.auth.getUser()).data.user?.id || studentId,
+          title: policyTitle,
+          mode: 'focus_session_lock',
+          blocked_packages: pkgs,
+          active: true,
+        })
+        .select('*')
+        .single();
+
+      if (error) {
+        console.warn('Supabase insert failed, using local fallback:', error.message);
+        const fallbackPolicy: AdminPolicyItem = {
+          id: `pol-${Date.now()}`,
+          student_id: studentId,
+          creator_id: 'current-admin',
+          title: policyTitle,
+          mode: 'focus_session_lock',
+          blocked_packages: pkgs,
+          active: true,
+          created_at: new Date().toISOString(),
+        };
+        setPolicies(prev => [fallbackPolicy, ...prev]);
+      } else if (newRow) {
+        setPolicies(prev => [newRow as AdminPolicyItem, ...prev]);
+      }
+    } catch (_) {
+      const fallbackPolicy: AdminPolicyItem = {
+        id: `pol-${Date.now()}`,
+        student_id: studentId,
+        creator_id: 'current-admin',
+        title: policyTitle,
+        mode: 'focus_session_lock',
+        blocked_packages: pkgs,
+        active: true,
+        created_at: new Date().toISOString(),
+      };
+      setPolicies(prev => [fallbackPolicy, ...prev]);
+    } finally {
+      setIsSubmitting(false);
+      setShowAddForm(false);
+      setStudentId('');
+      setPolicyTitle('');
+    }
   };
 
-  const handleTogglePolicy = (policyId: string) => {
+  const handleTogglePolicy = async (policyId: string) => {
+    const current = policies.find(p => p.id === policyId);
+    if (!current) return;
+    const newActive = !current.active;
+
+    // Optimistic update
     setPolicies(prev =>
-      prev.map(p => (p.id === policyId ? { ...p, active: !p.active } : p))
+      prev.map(p => (p.id === policyId ? { ...p, active: newActive } : p))
     );
+
+    try {
+      await supabase
+        .from('enforcement_policies')
+        .update({ active: newActive })
+        .eq('id', policyId);
+    } catch (err) {
+      console.warn('Failed to update policy status on Supabase:', err);
+    }
   };
 
   return (
@@ -168,7 +255,9 @@ export const EnforcementTab: React.FC = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>Save Rule</button>
+          <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }} disabled={isSubmitting}>
+            {isSubmitting ? 'Saving...' : 'Save Rule'}
+          </button>
         </form>
       )}
 
@@ -198,7 +287,7 @@ export const EnforcementTab: React.FC = () => {
                   <td style={{ padding: 'var(--fl-space-md)', fontFamily: 'monospace', fontSize: '12px' }}>{p.student_id}</td>
                   <td style={{ padding: 'var(--fl-space-md)' }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--fl-space-xs)' }}>
-                      {p.blocked_packages.map(pkg => (
+                      {(p.blocked_packages || []).map(pkg => (
                         <span key={pkg} className="badge badge-secondary" style={{ fontSize: '11px' }}>
                           {pkg.split('.').pop()}
                         </span>

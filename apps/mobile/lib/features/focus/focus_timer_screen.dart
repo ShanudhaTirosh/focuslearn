@@ -104,8 +104,9 @@ class _FocusTimerScreenState extends ConsumerState<FocusTimerScreen> {
     final policies = await enforcementRepo.loadCachedPolicies();
 
     if (enforcementRepo.isPackageRestricted(foreground, policies)) {
+      final devId = await ref.read(deviceRepositoryProvider).installId();
       await enforcementRepo.recordViolation(
-        deviceId: 'current-device',
+        deviceId: devId,
         packageName: foreground,
         violationType: 'distraction_opened',
       );

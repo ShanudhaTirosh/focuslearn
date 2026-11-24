@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:focuslearn_core/focuslearn_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -81,8 +83,9 @@ class EnforcementRepository {
     bool allowEmergencyOverride = true,
   }) async {
     final user = _supabase.auth.currentUser;
+    final generatedId = generateUuidV4(Random.secure());
     final policy = EnforcementPolicy(
-      id: 'loc-${DateTime.now().millisecondsSinceEpoch}',
+      id: generatedId,
       studentId: user?.id ?? 'offline',
       creatorId: user?.id ?? 'offline',
       title: title,
@@ -171,8 +174,9 @@ class EnforcementRepository {
     required String violationType,
   }) async {
     final user = _supabase.auth.currentUser;
+    final generatedId = generateUuidV4(Random.secure());
     final violation = PolicyViolation(
-      id: 'viol-${DateTime.now().millisecondsSinceEpoch}',
+      id: generatedId,
       studentId: user?.id ?? 'offline',
       policyId: policyId,
       deviceId: deviceId,
@@ -250,8 +254,9 @@ class EnforcementRepository {
     int durationMinutes = 15,
   }) async {
     final user = _supabase.auth.currentUser;
+    final generatedId = generateUuidV4(Random.secure());
     final override = PolicyOverride(
-      id: 'ovr-${DateTime.now().millisecondsSinceEpoch}',
+      id: generatedId,
       studentId: user?.id ?? 'offline',
       policyId: policyId,
       reason: reason,

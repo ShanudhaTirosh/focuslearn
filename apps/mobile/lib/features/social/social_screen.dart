@@ -100,8 +100,8 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
 
     final remoteGroups = ref.watch(myGroupsProvider).valueOrNull;
     final remoteFriends = ref.watch(myFriendsProvider).valueOrNull;
-    final activeGroups = (remoteGroups != null && remoteGroups.isNotEmpty) ? remoteGroups : _groups;
-    final activeFriends = (remoteFriends != null && remoteFriends.isNotEmpty) ? remoteFriends : _friends;
+    final activeGroups = remoteGroups ?? _groups;
+    final activeFriends = remoteFriends ?? _friends;
 
     return Scaffold(
       appBar: AppBar(
@@ -130,73 +130,118 @@ class _SocialScreenState extends ConsumerState<SocialScreen> {
             ),
             Expanded(
               child: _tabIndex == 0
-                  ? ListView.separated(
-                      padding: const EdgeInsets.all(Spacing.md),
-                      itemCount: activeGroups.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
-                      itemBuilder: (context, index) {
-                        final g = activeGroups[index];
-                        return InkWell(
-                          onTap: () => _openChat(g),
-                          borderRadius: BorderRadius.circular(Radii.lg),
-                          child: AppCard(
+                  ? (activeGroups.isEmpty
+                      ? Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Spacing.xl),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Expanded(child: Text(g.name, style: theme.textTheme.titleMedium)),
-                                    Icon(Icons.chat_bubble_outline, size: Sizes.iconSm, color: colors.primary),
-                                  ],
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.groups_outlined, size: 64, color: colors.textMuted),
+                                const SizedBox(height: Spacing.md),
+                                Text('No Study Groups Yet', style: theme.textTheme.titleMedium),
+                                const SizedBox(height: Spacing.xs),
+                                Text(
+                                  'Join a study group with an invite code to collaborate with peers.',
+                                  textAlign: TextAlign.center,
+                                  style: theme.textTheme.bodyMedium?.copyWith(color: colors.textMuted),
                                 ),
-                                if (g.description != null) ...<Widget>[
-                                  const SizedBox(height: Spacing.xs),
-                                  Text(
-                                    g.description!,
-                                    style: theme.textTheme.bodySmall?.copyWith(color: colors.textMuted),
-                                  ),
-                                ],
+                                const SizedBox(height: Spacing.lg),
+                                AppButton(
+                                  label: l10n.socialJoinGroup,
+                                  onPressed: _showJoinGroupDialog,
+                                ),
                               ],
                             ),
                           ),
-                        );
-                      },
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.all(Spacing.md),
-                      itemCount: activeFriends.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
-                      itemBuilder: (context, index) {
-                        final f = activeFriends[index];
-                        return AppCard(
-                          child: Row(
-                            children: <Widget>[
-                              CircleAvatar(
-                                backgroundColor: colors.surfaceVariant,
-                                child: Text(
-                                  f.displayName[0],
-                                  style: TextStyle(color: colors.primary, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              const SizedBox(width: Spacing.md),
-                              Expanded(
+                        )
+                      : ListView.separated(
+                          padding: const EdgeInsets.all(Spacing.md),
+                          itemCount: activeGroups.length,
+                          separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
+                          itemBuilder: (context, index) {
+                            final g = activeGroups[index];
+                            return InkWell(
+                              onTap: () => _openChat(g),
+                              borderRadius: BorderRadius.circular(Radii.lg),
+                              child: AppCard(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(f.displayName, style: theme.textTheme.titleSmall),
-                                    Text(
-                                      f.stream.toUpperCase(),
-                                      style: theme.textTheme.bodySmall?.copyWith(color: colors.textMuted),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Expanded(child: Text(g.name, style: theme.textTheme.titleMedium)),
+                                        Icon(Icons.chat_bubble_outline, size: Sizes.iconSm, color: colors.primary),
+                                      ],
                                     ),
+                                    if (g.description != null) ...<Widget>[
+                                      const SizedBox(height: Spacing.xs),
+                                      Text(
+                                        g.description!,
+                                        style: theme.textTheme.bodySmall?.copyWith(color: colors.textMuted),
+                                      ),
+                                    ],
                                   ],
                                 ),
                               ),
-                            ],
+                            );
+                          },
+                        ))
+                  : (activeFriends.isEmpty
+                      ? Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Spacing.xl),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.people_outline, size: 64, color: colors.textMuted),
+                                const SizedBox(height: Spacing.md),
+                                Text('No Study Friends Added', style: theme.textTheme.titleMedium),
+                                const SizedBox(height: Spacing.xs),
+                                Text(
+                                  'Add classmates to compare focus milestones and share notes.',
+                                  textAlign: TextAlign.center,
+                                  style: theme.textTheme.bodyMedium?.copyWith(color: colors.textMuted),
+                                ),
+                              ],
+                            ),
                           ),
-                        );
-                      },
-                    ),
+                        )
+                      : ListView.separated(
+                          padding: const EdgeInsets.all(Spacing.md),
+                          itemCount: activeFriends.length,
+                          separatorBuilder: (_, __) => const SizedBox(height: Spacing.sm),
+                          itemBuilder: (context, index) {
+                            final f = activeFriends[index];
+                            return AppCard(
+                              child: Row(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    backgroundColor: colors.surfaceVariant,
+                                    child: Text(
+                                      f.displayName[0],
+                                      style: TextStyle(color: colors.primary, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  const SizedBox(width: Spacing.md),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(f.displayName, style: theme.textTheme.titleSmall),
+                                        Text(
+                                          f.stream.toUpperCase(),
+                                          style: theme.textTheme.bodySmall?.copyWith(color: colors.textMuted),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        )),
             ),
           ],
         ),

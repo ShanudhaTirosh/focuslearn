@@ -8,6 +8,7 @@ abstract final class Routes {
   static const String settings = '/settings';
   static const String enforcement = '/enforcement';
   static const String notebooks = '/notebooks';
+  static const String parental = '/parental';
 
   /// Pages a signed-out user may see.
   static const Set<String> authRoutes = <String>{login, signup, verify, reset, updatePassword};

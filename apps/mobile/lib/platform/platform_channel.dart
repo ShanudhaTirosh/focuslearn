@@ -141,5 +141,42 @@ class NativePlatformService {
       return false;
     }
   }
+
+  Future<Map<String, dynamic>> getBatteryStatus() async {
+    if (!Platform.isAndroid) return {'level': 100, 'isCharging': false};
+    try {
+      final res = await _channel.invokeMapMethod<String, dynamic>('getBatteryStatus');
+      return res ?? {'level': 100, 'isCharging': false};
+    } on PlatformException {
+      return {'level': 100, 'isCharging': false};
+    }
+  }
+
+  Future<String> getNetworkType() async {
+    if (!Platform.isAndroid) return 'wifi';
+    try {
+      final res = await _channel.invokeMethod<String>('getNetworkType');
+      return res ?? 'none';
+    } on PlatformException {
+      return 'none';
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> getAppUsageSummary({DateTime? startTime, DateTime? endTime}) async {
+    if (!Platform.isAndroid) return const [];
+    try {
+      final now = DateTime.now().millisecondsSinceEpoch;
+      final start = startTime?.millisecondsSinceEpoch ?? (now - 86400000);
+      final end = endTime?.millisecondsSinceEpoch ?? now;
+      final res = await _channel.invokeListMethod<Map<dynamic, dynamic>>('getAppUsageSummary', {
+        'startTime': start,
+        'endTime': end,
+      });
+      if (res == null) return const [];
+      return res.map((m) => Map<String, dynamic>.from(m)).toList();
+    } on PlatformException {
+      return const [];
+    }
+  }
 }
 

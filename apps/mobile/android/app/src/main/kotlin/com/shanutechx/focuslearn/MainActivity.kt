@@ -4,11 +4,16 @@ import android.app.AlarmManager
 import android.app.AppOpsManager
 import android.app.PendingIntent
 import android.app.usage.UsageEvents
+import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.BatteryManager
 import android.os.Build
 import android.os.Process
 import android.provider.Settings
@@ -110,7 +115,12 @@ class MainActivity : FlutterActivity() {
                     val mainIntent = Intent(Intent.ACTION_MAIN, null).apply {
                         addCategory(Intent.CATEGORY_LAUNCHER)
                     }
-                    val resolveInfos = pm.queryIntentActivities(mainIntent, 0)
+                    val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        PackageManager.MATCH_ALL
+                    } else {
+                        0
+                    }
+                    val resolveInfos = pm.queryIntentActivities(mainIntent, flags)
                     val apps = resolveInfos.map {
                         mapOf(
                             "name" to it.loadLabel(pm).toString(),
@@ -118,6 +128,65 @@ class MainActivity : FlutterActivity() {
                         )
                     }
                     result.success(apps)
+                }
+                "getBatteryStatus" -> {
+                    val ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+                    val batteryStatus: Intent? = registerReceiver(null, ifilter)
+                    val level: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1
+                    val scale: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_SCALE, -1) ?: -1
+                    val batteryPct = if (level != -1 && scale != -1) (level * 100 / scale.toFloat()).toInt() else 100
+                    val status: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
+                    val isCharging: Boolean = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                            status == BatteryManager.BATTERY_STATUS_FULL
+                    result.success(mapOf("level" to batteryPct, "isCharging" to isCharging))
+                }
+                "getNetworkType" -> {
+                    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                    var netType = "none"
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        val network = cm.activeNetwork
+                        val capabilities = cm.getNetworkCapabilities(network)
+                        if (capabilities != null) {
+                            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                                netType = "wifi"
+                            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                                netType = "cellular"
+                            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                                netType = "ethernet"
+                            }
+                        }
+                    } else {
+                        @Suppress("DEPRECATION")
+                        val activeInfo = cm.activeNetworkInfo
+                        if (activeInfo != null && activeInfo.isConnected) {
+                            netType = if (activeInfo.type == ConnectivityManager.TYPE_WIFI) "wifi" else "cellular"
+                        }
+                    }
+                    result.success(netType)
+                }
+                "getAppUsageSummary" -> {
+                    val usm = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+                    val startTime = call.argument<Long>("startTime") ?: (System.currentTimeMillis() - 86400000L)
+                    val endTime = call.argument<Long>("endTime") ?: System.currentTimeMillis()
+                    val stats = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startTime, endTime)
+                    val pm = packageManager
+                    val list = mutableListOf<Map<String, Any>>()
+                    for (usage in stats) {
+                        if (usage.totalTimeInForeground > 60000L) { // at least 1 minute
+                            val appName = try {
+                                val info = pm.getApplicationInfo(usage.packageName, 0)
+                                pm.getApplicationLabel(info).toString()
+                            } catch (_: Exception) {
+                                usage.packageName
+                            }
+                            list.add(mapOf(
+                                "packageName" to usage.packageName,
+                                "appLabel" to appName,
+                                "minutes" to (usage.totalTimeInForeground / 60000L).toInt()
+                            ))
+                        }
+                    }
+                    result.success(list)
                 }
                 "checkOverlayPermission" -> {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

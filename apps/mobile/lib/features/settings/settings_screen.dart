@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focuslearn_design_system/focuslearn_design_system.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../app/messages.dart';
 import '../../app/providers.dart';
+import '../../app/routes.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../auth/auth_repository.dart';
 import '../devices/device_repository.dart';
@@ -169,6 +171,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ),
                 const SizedBox(height: Spacing.sm),
                 Text(l10n.devicesNote, style: text.bodySmall),
+                const SizedBox(height: Spacing.xxl),
+                Text('Parental Controls & Wellbeing', style: text.titleLarge),
+                const SizedBox(height: Spacing.sm),
+                const Text(
+                  'Manage device pairing with your parent, view supervised schedules, and sync digital wellbeing rules.',
+                ),
+                const SizedBox(height: Spacing.md),
+                AppButton(
+                  label: 'Parental Device Management',
+                  kind: AppButtonKind.secondary,
+                  onPressed: () => context.push(Routes.parental),
+                ),
                 const SizedBox(height: Spacing.xxl),
                 Text(l10n.privacySection, style: text.titleLarge),
                 const SizedBox(height: Spacing.sm),
